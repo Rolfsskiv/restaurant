@@ -1,0 +1,39 @@
+<div class="personal-user" id="my-profile" ng-init="profile.init()">
+    <head-component></head-component>
+    <head-menu name="name"></head-menu>
+    <div id="home-page">
+        <head-profile image="2"></head-profile>
+        <div class="content-user">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="hidden-xs">Ваш профайл</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <profile profile="1" route-name="profile.routeName"></profile>
+                    <div class="right-content">
+                        <div class="rezervation-block">
+                            <div class="wrapper-left">
+                                <img src="img/logo-restaurant2.png" alt="logo-restaurant">
+                                <a href="#" class="name">Argentina Grill</a>
+                            </div>
+                            <div class="characteristic">
+                                <div class="characteristic-inner  left">
+                                    <div class="count-users">4 чел.</div>
+                                    <div class="time-visit">Время 17:00</div>
+                                </div>
+                                <div class="characteristic-inner">
+                                    <div class="discount">Скидка 15%</div>
+                                    <div class="day-visit">Дата: 10.02.2016</div>
+                                </div>
+                            </div>
+                            <button class="cansel">ОТМЕНА</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer-component></footer-component>
+</div>

@@ -1,0 +1,36 @@
+<div class="modal-content filters">
+    <table ng-repeat="item in cart.cart.getCart(cart.restaurantId) track by $index">
+        <tbody>
+        <tr>
+            <td class="photo"><img src="{{item.menu.image}}" alt="{{item.menu.name}}"></td>
+            <td class="title" colspan="2">{{item.menu.name}}</td>
+            <td class="cansel">
+                <button ng-click="cart.cart.remove(cart.restaurantId, $index)" type="button" class="close"></button>
+            </td>
+        </tr>
+        <tr class="title-name">
+            <td>стоимость</td>
+            <td>кол-во</td>
+            <td>итого</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="price">{{item.menu.price}} eur</td>
+            <td class="count">
+                <div class="dish-count">
+                    <input type="text" ng-model="countProduct" ng-init="countProduct = item.count" ng-value="item.count" ng-change="countProduct = cart.cart.setCount(cart.restaurantId, $index, countProduct)">
+                </div>
+            </td>
+            <td class="price total" colspan="2">{{item.total}} eur</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="modal-footer">
+        <div class="right-col">
+            <span class="total">ИТОГО: <strong>{{cart.cart.getTotal(cart.restaurantId)}} eur</strong></span>
+            <a href="modal-checkout/{{cart.restaurantId}}" class="checkout">ОФОРМИТЬ ЗАКАЗ</a>
+            <p>Стоимость без учета доставки</p>
+        </div>
+    </div>
+</div>

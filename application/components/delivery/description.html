@@ -1,0 +1,320 @@
+<div id="delivery-card" class="features-block-wrapper" ng-init="card.init()">
+    <head-component></head-component>
+    <div class="bottom-menu">
+        <div class="collapse navbar-collapse menu-navigation">
+            <div class="close-menu"></div>
+            <button type="button" class="menu-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <ul class="nav navbar-nav">
+                <li><a href="restaurants">РЕСТОРАНЫ</a></li>
+                <li><a href="delivery">ДОСТАВКА ЕДЫ</a></li>
+                <li><a href="complaints">КНИГА ЖАЛОБ И ПРЕДЛОЖЕНИЙ </a></li>
+                <li><a href="dinner">ОБЕДЫ</a></li>
+                <li><a href="special-proposal">СПЕЦПРЕДЛОЖЕНИЯ</a></li>
+                <li class="hide-item"><a href="cooking-boss">БЛЮДО ОТ ШЕФ ПОВАРА</a></li>
+                <li class="hide-item"><a href="top50">ТОП 50</a></li>
+            </ul>
+            <ul class="navbar-nav mobile-show">
+                <li><a href="cooking-boss">БЛЮДО ОТ ШЕФ ПОВАРА</a></li>
+                <li><a href="top50">ТОП 50</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="home-page">
+        <div class="restaurants-block">
+            <div class="container hidden-xs">
+                <div class="breadcrumbs">
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="delivery">Доставка еды</a></li>
+                        <li><a href="delivery/card/{{card.menus.slug}}/" class="current">{{card.menus.name}}</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mobile-holder visible-xs">
+                <div class="breadcrumbs">
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="delivery">Доставка еды</a></li>
+                        <li><a href="delivery/card/{{card.menus.slug}}/" class="current">{{card.menus.name}}</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown drop-option">
+                    <h3>ДОСТАВКА</h3>
+                    <a data-toggle="dropdown" href="#"></a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                        <div class="menu-two">
+                            <li><a href="restaurants">РЕСТОРАНЫ</a></li>
+                            <li><a href="delivery">ДОСТАВКА ЕДЫ</a></li>
+                            <li><a href="complaints">КНИГА ЖАЛОБ И ПРЕДЛОЖЕНИЙ </a></li>
+                            <li><a href="dinner">ОБЕДЫ</a></li>
+                            <li><a href="special-proposal">СПЕЦПРЕДЛОЖЕНИЯ</a></li>
+                            <li><a href="cooking-boss">БЛЮДО ОТ ШЕФ ПОВАРА</a></li>
+                            <li><a href="top50">ТОП 50</a></li>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <h3 class="hidden-xs">{{card.name}}</h3>
+            <div class="delivery-block">
+                <div class="row">
+                    <div class="col-md-12 hidden-lg">
+                        <div class="restaurant-name-card-block  row-eq-height">
+                            <div class="restaurant-name-card">
+                                <div class="wrapper">
+                                    <img ng-src="{{card.menus.image}}" alt="{{card.menus.name}}">
+                                    <div class="name-restaurant">
+                                        <h4>{{card.menus.name}}</h4>
+                                        <p class="hidden-xs">Стоимость доставки: <span>{{card.menus.min_price}} - {{card.menus.max_price}}€</span>
+                                        </p>
+                                    </div>
+                                    <div class="wrapper-block-star">
+                                        <div class="block-stars">
+                                            <div ng-repeat="star in [1, 2, 3, 4, 5]" class="star"
+                                                 ng-class="star <= card.menus.rating ? 'active' : ''"></div>
+                                        </div>
+                                        <strong>- {{card.menus.rating}}</strong>
+                                        <div class="address-block">
+                                            <span class="visible-sm">Заказов: {{card.menus.orderfood_count}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="kitchen hidden-xs">Кухня: {{card.menus.food}} </p>
+                                <div class="address-block">
+                                    <a href="#" class="address">{{card.menus.address}}</a>
+                                    <a ng-if="card.menus.site" href="{{card.menus.site}}" class="mail">{{card.menus.site}}</a>
+                                    <span class="hidden-xs hidden-sm">Заказов: {{card.menus.orderfood_count}}</span>
+                                </div>
+                                <div class="services-block hidden-xs">
+                                    <a ng-href="delivery/card/{{card.menus.slug}}/description/"
+                                       class="description"><span>Описание</span></a>
+                                    <a ng-href="delivery/card/{{card.menus.slug}}/complaints/" class="testimonial"><span>Отзывы (0)</span></a>
+                                    <a ng-href="restaurant/{{card.menus.slug}}" class="book"><span>Забронировать столик</span></a>
+                                    <div class="networks other hidden-sm">
+                                        <ul>
+                                            <li><a href="#" class="facebook">facebook</a></li>
+                                            <li><a href="#" class="twitter">twitter</a></li>
+                                            <li><a href="#" class="vkontakte">vkontakte</a></li>
+                                            <li><a href="#" class="google">google</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="option visible-xs">
+                                    <p class="kitchen-mobile">{{card.menus.food}}</p>
+                                    <p class="cost">Стоимость доставки: <span>{{card.menus.min_price}} - {{card.menus.max_price}}€</span>
+                                    </p>
+                                    <div class="wrapper">
+                                        <span class="count-order">Заказов: {{card.menus.orderfood_count}}</span>
+                                        <div class="networks other">
+                                            <ul>
+                                                <li><a href="#" class="facebook">facebook</a></li>
+                                                <li><a href="#" class="twitter">twitter</a></li>
+                                                <li><a href="#" class="vkontakte">vkontakte</a></li>
+                                                <li><a href="#" class="google">google</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="button-block visible-xs restaurants-card">
+                                <div class="wrapper services-block-button">
+                                    <div class="dropdown">
+                                        <a id="dLabel" class="time-working" role="button" data-toggle="dropdown"
+                                           data-target="#">
+                                            Время работы
+                                        </a>
+                                        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                            <div class="time-work">
+                                                <div class="wrapper-time-work">
+                                                    <span>Часы работы:</span>
+                                                    <ul>
+                                                        <li ng-if="card.menus.time_work.monday"><strong>{{card.daysName[0] | date:
+                                                            'EEE'}}</strong>{{card.menus.time_work.monday.from}} -
+                                                            {{card.menus.time_work.monday.to}}
+                                                        </li>
+                                                        <li ng-if="card.menus.time_work.tuesday"><strong>{{card.daysName[1] | date:
+                                                            'EEE'}}</strong>{{card.menus.time_work.tuesday.from}} -
+                                                            {{card.menus.time_work.tuesday.to}}
+                                                        </li>
+                                                        <li ng-if="card.menus.time_work.wednesday"><strong>{{card.daysName[2] | date:
+                                                            'EEE'}}</strong>{{card.menus.time_work.wednesday.from}} -
+                                                            {{card.menus.time_work.wednesday.to}}
+                                                        </li>
+                                                        <li ng-if="card.menus.time_work.thursday"><strong>{{card.daysName[3] | date:
+                                                            'EEE'}}</strong>{{card.menus.time_work.thursday.from}} -
+                                                            {{card.menus.time_work.thursday.to}}
+                                                        </li>
+                                                        <li ng-if="card.menus.time_work.friday"><strong>{{card.daysName[4] | date:
+                                                            'EEE'}}</strong>{{card.menus.time_work.friday.from}} -
+                                                            {{card.menus.time_work.friday.to}}
+                                                        </li>
+                                                        <li ng-if="card.menus.time_work.saturday"><strong>{{card.daysName[5] | date:
+                                                            'EEE'}}</strong>{{card.menus.time_work.saturday.from}} -
+                                                            {{card.menus.time_work.saturday.to}}
+                                                        </li>
+                                                        <li ng-if="card.menus.time_work.sunday"><strong>{{card.daysName[6] | date:
+                                                            'EEE'}}</strong>{{card.menus.time_work.sunday.from}} -
+                                                            {{card.menus.time_work.sunday.to}}
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </ul>
+                                    </div>
+                                    <a ng-href="delivery/card/{{card.menus.slug}}/complaints/" class="testimonial"><span>Отзывы ({{card.menus.complaints_count}})</span></a>
+                                </div>
+                                <a ng-href="restaurant/{{card.menus.slug}}" class="book"><span>Забронировать столик</span></a>
+                            </div>
+                            <div class="time-work">
+                                <div ng-scrollbars ng-scrollbars-config="{setTop: 0}" class="wrapper-time-work content-scrollable mCustomScrollbar _mCS_1 mCS_no_scrollbar">
+                                    <span>Часы работы:</span>
+                                    <ul>
+                                        <li ng-if="card.menus.time_work.monday"><strong>{{card.daysName[0] | date:
+                                            'EEE'}}</strong>{{card.menus.time_work.monday.from}} -
+                                            {{card.menus.time_work.monday.to}}
+                                        </li>
+                                        <li ng-if="card.menus.time_work.tuesday"><strong>{{card.daysName[1] | date:
+                                            'EEE'}}</strong>{{card.menus.time_work.tuesday.from}} -
+                                            {{card.menus.time_work.tuesday.to}}
+                                        </li>
+                                        <li ng-if="card.menus.time_work.wednesday"><strong>{{card.daysName[2] | date:
+                                            'EEE'}}</strong>{{card.menus.time_work.wednesday.from}} -
+                                            {{card.menus.time_work.wednesday.to}}
+                                        </li>
+                                        <li ng-if="card.menus.time_work.thursday"><strong>{{card.daysName[3] | date:
+                                            'EEE'}}</strong>{{card.menus.time_work.thursday.from}} -
+                                            {{card.menus.time_work.thursday.to}}
+                                        </li>
+                                        <li ng-if="card.menus.time_work.friday"><strong>{{card.daysName[4] | date:
+                                            'EEE'}}</strong>{{card.menus.time_work.friday.from}} -
+                                            {{card.menus.time_work.friday.to}}
+                                        </li>
+                                        <li ng-if="card.menus.time_work.saturday"><strong>{{card.daysName[5] | date:
+                                            'EEE'}}</strong>{{card.menus.time_work.saturday.from}} -
+                                            {{card.menus.time_work.saturday.to}}
+                                        </li>
+                                        <li ng-if="card.menus.time_work.sunday"><strong>{{card.daysName[6] | date:
+                                            'EEE'}}</strong>{{card.menus.time_work.sunday.from}} -
+                                            {{card.menus.time_work.sunday.to}}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3  col-sm-3 visible-lg">
+                        <div class="list-structure">
+                            <ul>
+                                <li ng-repeat="menu in card.menus.menus" class="dropdown">
+                                    <a href="#" data-toggle="dropdown">{{menu.category}}</a>
+                                    <ul class="dropdown-menu subcategory" >
+                                        <li ng-repeat="item in menu.children"><a href="#">{{item.category}}</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-9 col-sm-9 visible-lg">
+                        <div class="restaurant-name-card-block row-eq-height">
+                            <div class="restaurant-name-card">
+                                <div class="wrapper">
+                                    <img ng-src="{{card.menus.image}}" alt="{{card.menus.name}}">
+                                    <div class="name-restaurant">
+                                        <h4>{{card.menus.name}}</h4>
+                                        <p>Стоимость доставки: <span>{{card.menus.min_price}} - {{card.menus.max_price}}€</span>
+                                        </p>
+                                    </div>
+                                    <div class="wrapper-block-star">
+                                        <div class="block-stars">
+                                            <div ng-repeat="star in [1, 2, 3, 4, 5]" class="star"
+                                                 ng-class="star <= card.menus.rating ? 'active' : ''"></div>
+                                        </div>
+                                        <strong>- {{card.menus.rating}}</strong>
+                                    </div>
+                                </div>
+                                <p class="kitchen">Кухня: {{card.menus.food}} </p>
+                                <div class="address-block">
+                                    <a href="" class="address">{{card.menus.address}}</a>
+                                    <a ng-if="card.menus.name" href="{{card.menus.site}}" class="mail">{{card.menus.site}}</a>
+                                    <span>Заказов: {{card.menus.orderfood_count}}</span>
+                                </div>
+                                <div class="services-block">
+                                    <a ng-href="delivery/card/{{card.menus.slug}}/description/"
+                                       class="description"><span>Описание</span></a>
+                                    <a ng-href="delivery/card/{{card.menus.slug}}/complaints/" class="testimonial"><span>Отзывы ({{card.menus.complaints_count}})</span></a>
+                                    <a ng-href="restaurant/{{card.menus.slug}}" class="book"><span>Забронировать столик</span></a>
+                                    <div class="networks other">
+                                        <ul>
+                                            <li><a href="#" class="facebook">facebook</a></li>
+                                            <li><a href="#" class="twitter">twitter</a></li>
+                                            <li><a href="#" class="vkontakte">vkontakte</a></li>
+                                            <li><a href="#" class="google">google</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="time-work">
+                                <div ng-scrollbars ng-scrollbars-config="{setTop: 0}" class="wrapper-time-work content-scrollable mCustomScrollbar _mCS_2">
+                                    <span>Часы работы:</span>
+                                    <ul>
+                                        <li ng-if="card.menus.time_work.monday"><strong>{{card.daysName[0] | date:
+                                            'EEE'}}</strong>{{card.menus.time_work.monday.from}} -
+                                            {{card.menus.time_work.monday.to}}
+                                        </li>
+                                        <li ng-if="card.menus.time_work.tuesday"><strong>{{card.daysName[1] | date:
+                                            'EEE'}}</strong>{{card.menus.time_work.tuesday.from}} -
+                                            {{card.menus.time_work.tuesday.to}}
+                                        </li>
+                                        <li ng-if="card.menus.time_work.wednesday"><strong>{{card.daysName[2] | date:
+                                            'EEE'}}</strong>{{card.menus.time_work.wednesday.from}} -
+                                            {{card.menus.time_work.wednesday.to}}
+                                        </li>
+                                        <li ng-if="card.menus.time_work.thursday"><strong>{{card.daysName[3] | date:
+                                            'EEE'}}</strong>{{card.menus.time_work.thursday.from}} -
+                                            {{card.menus.time_work.thursday.to}}
+                                        </li>
+                                        <li ng-if="card.menus.time_work.friday"><strong>{{card.daysName[4] | date:
+                                            'EEE'}}</strong>{{card.menus.time_work.friday.from}} -
+                                            {{card.menus.time_work.friday.to}}
+                                        </li>
+                                        <li ng-if="card.menus.time_work.saturday"><strong>{{card.daysName[5] | date:
+                                            'EEE'}}</strong>{{card.menus.time_work.saturday.from}} -
+                                            {{card.menus.time_work.saturday.to}}
+                                        </li>
+                                        <li ng-if="card.menus.time_work.sunday"><strong>{{card.daysName[6] | date:
+                                            'EEE'}}</strong>{{card.menus.time_work.sunday.from}} -
+                                            {{card.menus.time_work.sunday.to}}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row restaurants-card">
+                    <div class="col-md-9 col-md-offset-3 col-lg-9 col-lg-offset-3">
+                        <div class="description-block">
+                            <div class="wrapper">
+                                <h4>О ресторане</h4>
+                                <p>{{card.menus.desc}}</p>
+                                <p class="visible-sm">{{card.menus.desc}}</p>
+                            </div>
+                            <div class="wrapper">
+                                <h4>Интерьер</h4>
+                                <p>{{card.menus.interior}}</p>
+                                <p class="visible-sm">{{card.menus.interior}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="top-menu">
+        <button type="button" class="navbar-toggle left-button" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <div class="navbar-block" >
+            <div class="navbar-header">
+                <div class="dropdown languages mobile visible-xs">
+                    <a ng-href="auth" class="profile"></a>
+                    <a data-toggle="dropdown" href="#/" class="dropdown-toggle"> <span></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li class="change">Выберите язык</li>
+
+                        <li ng-repeat="lang in head.langs" class="{{lang.slug}}">
+                            <img src="img/russia.jpg" alt="{{lang.name}}">
+                            <strong>{{lang.name}}</strong>
+                        </li>
+
+                    </ul>
+                </div>
+                <strong class="logo"><a  href="/">Getresto</a></strong>
+            </div>
+
+            <div class="navbar-collapse enter-profile collapse">
+                <div class="dropdown languages">
+                    <a data-toggle="dropdown" href="#" class="dropdown-toggle"> <span>Русский</span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu collapsing" role="menu">
+                        <li class="change">Выберите язык</li>
+                        <li ng-repeat="lang in head.langs" class="{{lang.slug}}">
+                            <img src="/img/russia.jpg" alt="{{lang.name}}">
+                            <strong>{{lang.name}}</strong>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <button ng-if="head.auth.isAuth()" ng-click="head.auth.logout()" class="enter btn btn-primary">Выход</button>
+                <button ng-if="head.auth.isAuth()" class="registration btn btn-primary"><a style="color: white" href="{{head.auth.getLink()}}">Личный кабинет</a></button>
+
+                <button ng-if="!head.auth.isAuth()" class="enter btn btn-primary" data-toggle="modal" data-target=".enter-modal">Вход</button>
+                <button ng-if="!head.auth.isAuth()" class="registration btn btn-primary" data-toggle="modal" data-target=".registration-modal">Регистрация</button>
+            </div>
+        </div>
+    </div>
+</div>

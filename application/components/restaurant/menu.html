@@ -1,0 +1,582 @@
+<div class="restaurants-card" ng-cloak>
+    <head-component></head-component>
+    <div class="bottom-menu">
+        <div class="collapse navbar-collapse menu-navigation">
+            <div class="close-menu"></div>
+            <button type="button" class="menu-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <ul class="nav navbar-nav">
+                <li><a href="restaurants">РЕСТОРАНЫ</a></li>
+                <li><a href="delivery">ДОСТАВКА ЕДЫ</a></li>
+                <li><a href="complaints">КНИГА ЖАЛОБ И ПРЕДЛОЖЕНИЙ </a></li>
+                <li><a href="dinner">ОБЕДЫ</a></li>
+                <li><a href="special-proposal">СПЕЦПРЕДЛОЖЕНИЯ</a></li>
+                <li class="hide-item"><a href="cooking-boss">БЛЮДО ОТ ШЕФ ПОВАРА</a></li>
+                <li class="hide-item"><a href="top50">ТОП 50</a></li>
+            </ul>
+            <ul class="navbar-nav mobile-show">
+                <li><a href="cooking-boss">БЛЮДО ОТ ШЕФ ПОВАРА</a></li>
+                <li><a href="top50">ТОП 50</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="home-page" class="restaurants-card">
+        <div class="restaurants-block restaurants-card">
+            <div class="container hidden-xs">
+                <div class="row">
+                    <div class="breadcrumbs">
+                        <ul>
+                            <li><a href="/">Главная</a></li>
+                            <li><a href="/restaurants">РЕСТОРАНЫ</a></li>
+                            <li><a href="/restaurant/{{rest.restaurant.slug}}/" class="current">{{rest.restaurant.name}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="mobile-holder visible-xs">
+                <div class="breadcrumbs">
+                    <ul>
+                        <li><a href="index">Главная</a></li>
+                        <li><a href="restaurants">РЕСТОРАНЫ</a></li>
+                        <li><a href="/restaurant/{{rest.restaurant.slug}}/" class="current">{{rest.restaurant.name}}</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown drop-option">
+                    <h3>{{rest.restaurant.name}}</h3>
+                    <a data-toggle="dropdown" href="#"></a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                        <div class="menu-two">
+                            <li><a href="restaurants">РЕСТОРАНЫ</a></li>
+                            <li><a href="delivery">ДОСТАВКА ЕДЫ</a></li>
+                            <li><a href="complaints">КНИГА ЖАЛОБ И ПРЕДЛОЖЕНИЙ </a></li>
+                            <li><a href="dinner">Обеды</a></li>
+                            <li><a href="special-proposal">СПЕЦПРЕДЛОЖЕНИЯ</a></li>
+                            <li><a href="cooking-boss">БЛЮДО ОТ ШЕФ ПОВАРА</a></li>
+                            <li><a href="top50">ТОП 50</a></li>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <h3 class="hidden-xs">{{rest.restaurant.name}}</h3>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="restaurant-name-card-block hidden-lg">
+                        <img ng-src="{{rest.restaurant.image}}" class="main-img" alt="{{rest.restaurant.name}}">
+                        <!--<div ng-if="rest.restaurant.discount" class="sale">-{{rest.restaurant.discount}}%</div>-->
+                        <a href="#" class="heart-icon"></a>
+                        <div class="wrapper-content row-eq-height">
+                            <div class="restaurant-name-card">
+                                <div class="wrapper">
+                                    <div class="name-restaurant">
+                                        <h4 class="hidden-xs">ресторан {{rest.restaurant.name}}</h4>
+                                        <h4 class="visible-xs">{{rest.restaurant.name}} </h4>
+                                    </div>
+                                    <div class="wrapper-block-star">
+                                        <div class="block-stars">
+                                            <div ng-repeat="star in [1, 2, 3, 4, 5]" class="star" ng-class="star <= rest.restaurant.rating ? 'active' : ''"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="wrapper">
+                                    <p class="kitchen-mobile visible-xs">
+                                        <span ng-repeat="filter in restaurant.filters" ng-bind="filter.name"></span> /
+                                    <div class="address-block">
+                                        <a ng-if="rest.restaurant.address" href="" class="address">{{rest.restaurant.address}}</a>
+                                        <a ng-if="rest.restaurant.site !== ''" href="{{rest.restaurant.site}}" class="mail">{{rest.restaurant.site}}</a>
+                                        <span class="visible-lg">Посетитили: {{rest.restaurant.complaints_count}}</span>
+                                    </div>
+                                    <div class="address-block other hidden-lg">
+                                        <span class="order">Посетитили: {{rest.restaurant.complaints_count}}</span>
+                                        <div class="networks other">
+                                            <ul>
+                                                <li><a href="#" class="facebook">facebook</a></li>
+                                                <li><a href="#" class="twitter">twitter</a></li>
+                                                <li><a href="#" class="vkontakte">vkontakte</a></li>
+                                                <li><a href="#" class="google">google</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="services-block hidden-xs">
+                                    <a href="/restaurant/{{rest.restaurant.slug}}/description" class="description"><span>Описание</span></a>
+                                    <a href="/restaurant/{{rest.restaurant.slug}}/complaints" class="testimonial"><span>Отзывы ({{rest.restaurant.complaints_count}})</span></a>
+                                    <a href="delivery/card/{{rest.restaurant.slug}}" class="delivery-food"><span>Доставка еды</span></a>
+                                    <a href="restaurants-card-menu" class="menu-restaraunt"><span>Меню</span></a>
+                                    <div class="networks other visible-lg">
+                                        <ul>
+                                            <li><a href="#" class="facebook">facebook</a></li>
+                                            <li><a href="#" class="twitter">twitter</a></li>
+                                            <li><a href="#" class="vkontakte">vkontakte</a></li>
+                                            <li><a href="#" class="google">google</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="time-work hidden-xs">
+                                <div ng-scrollbars ng-scrollbars-config="{setTop: 0}" class="wrapper-time-work content-scrollable">
+                                    <span>Часы работы:</span>
+                                    <ul>
+                                        <li ng-if="rest.restaurant.time_work.monday"><strong>{{rest.daysName[0] | date:
+                                            'EEE'}}</strong>{{rest.restaurant.time_work.monday.from}} -
+                                            {{rest.restaurant.time_work.monday.to}}
+                                        </li>
+                                        <li ng-if="rest.restaurant.time_work.tuesday"><strong>{{rest.daysName[1] | date:
+                                            'EEE'}}</strong>{{rest.restaurant.time_work.tuesday.from}} -
+                                            {{rest.restaurant.time_work.tuesday.to}}
+                                        </li>
+                                        <li ng-if="rest.restaurant.time_work.wednesday"><strong>{{rest.daysName[2] | date:
+                                            'EEE'}}</strong>{{rest.restaurant.time_work.wednesday.from}} -
+                                            {{rest.restaurant.time_work.wednesday.to}}
+                                        </li>
+                                        <li ng-if="rest.restaurant.time_work.thursday"><strong>{{rest.daysName[3] | date:
+                                            'EEE'}}</strong>{{rest.restaurant.time_work.thursday.from}} -
+                                            {{rest.restaurant.time_work.thursday.to}}
+                                        </li>
+                                        <li ng-if="rest.restaurant.time_work.friday"><strong>{{rest.daysName[4] | date:
+                                            'EEE'}}</strong>{{rest.restaurant.time_work.friday.from}} -
+                                            {{rest.restaurant.time_work.friday.to}}
+                                        </li>
+                                        <li ng-if="rest.restaurant.time_work.saturday"><strong>{{rest.daysName[5] | date:
+                                            'EEE'}}</strong>{{rest.restaurant.time_work.saturday.from}} -
+                                            {{rest.restaurant.time_work.saturday.to}}
+                                        </li>
+                                        <li ng-if="rest.restaurant.time_work.sunday"><strong>{{rest.daysName[6] | date:
+                                            'EEE'}}</strong>{{rest.restaurant.time_work.sunday.from}} -
+                                            {{rest.restaurant.time_work.sunday.to}}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 visible-xs">
+                    <div class="services-block-button">
+                        <a href="modal-order/{{rest.restaurant.slug}}" class="book-restaurant">забронировать</a>
+                        <div class="wrapper">
+                            <div class="dropdown">
+                                <a id="dLabel" class="time-working" role="button" data-toggle="dropdown" data-target="#">
+                                    Время работы
+                                </a>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                    <div class="time-work">
+                                        <div class="wrapper-time-work">
+                                            <span>Часы работы:</span>
+                                            <ul>
+                                                <li ng-if="rest.restaurant.time_work.monday"><strong>{{rest.daysName[0] | date:
+                                                    'EEE'}}</strong>{{rest.restaurant.time_work.monday.from}} -
+                                                    {{rest.restaurant.time_work.monday.to}}
+                                                </li>
+                                                <li ng-if="rest.restaurant.time_work.tuesday"><strong>{{rest.daysName[1] | date:
+                                                    'EEE'}}</strong>{{rest.restaurant.time_work.tuesday.from}} -
+                                                    {{rest.restaurant.time_work.tuesday.to}}
+                                                </li>
+                                                <li ng-if="rest.restaurant.time_work.wednesday"><strong>{{rest.daysName[2] |
+                                                    date: 'EEE'}}</strong>{{rest.restaurant.time_work.wednesday.from}} -
+                                                    {{rest.restaurant.time_work.wednesday.to}}
+                                                </li>
+                                                <li ng-if="rest.restaurant.time_work.thursday"><strong>{{rest.daysName[3] |
+                                                    date: 'EEE'}}</strong>{{rest.restaurant.time_work.thursday.from}} -
+                                                    {{rest.restaurant.time_work.thursday.to}}
+                                                </li>
+                                                <li ng-if="rest.restaurant.time_work.friday"><strong>{{rest.daysName[4] | date:
+                                                    'EEE'}}</strong>{{rest.restaurant.time_work.friday.from}} -
+                                                    {{rest.restaurant.time_work.friday.to}}
+                                                </li>
+                                                <li ng-if="rest.restaurant.time_work.saturday"><strong>{{rest.daysName[5] |
+                                                    date: 'EEE'}}</strong>{{rest.restaurant.time_work.saturday.from}} -
+                                                    {{rest.restaurant.time_work.saturday.to}}
+                                                </li>
+                                                <li ng-if="rest.restaurant.time_work.sunday"><strong>{{rest.daysName[6] | date:
+                                                    'EEE'}}</strong>{{rest.restaurant.time_work.sunday.from}} -
+                                                    {{rest.restaurant.time_work.sunday.to}}
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </ul>
+                            </div>
+                            <a href="/restaurant/{{rest.restaurant.slug}}/complaints"
+                               class="testimonial"><span>Отзывы ({{rest.restaurant.complaints_count}})</span></a>
+                        </div>
+                        <div class="wrapper">
+                            <a href="/restaurant/{{rest.restaurant.slug}}/description" class="description"><span>Описание</span></a>
+                            <a href="delivery/card/{{rest.restaurant.slug}}" class="delivery-food">Доставка еды</a>
+                        </div>
+                        <a href="restaurants-card-menu" class="menu-restaraunt"><span>Меню</span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="wrapper">
+                    <div class="statistics-block hidden-xs">
+                        <div class="sale-block dropdown">
+                            <h5 class="title center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Скидка от общего счета</h5>
+                            <div class="drop-holder">
+                                <strong>{{rest.restaurant.discount}}%</strong>
+                            </div>
+                        </div>
+                        <div class="timer-block dropdown">
+                            <h5 class="title center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">До
+                                завершения осталось</h5>
+                            <div class="drop-holder">
+                                <div class="countdown-area">
+                                    <div class="countdown-wrapper">
+                                        <div class="countdown" id="countdown"></div>
+                                    </div>
+                                </div>
+                                <strong class="hidden-xs">Зарезервировали человек</strong>
+                                <p class="count-people hidden-xs">{{rest.restaurant.visit}}</p>
+                                <button ng-if="rest.restaurantTimes.length > 0" class="book-restaurant hidden-xs" data-toggle="modal" data-target=".order-table">
+                                    забронировать
+                                </button>
+                            </div>
+                        </div>
+                        <div class="features-restaurant dropdown">
+                            <h5 class="title kitchen" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Кухня</h5>
+                            <div class="drop-holder">
+                                <span ng-repeat="kitchen in rest.restaurant.filtersName.foods">{{kitchen}}</span>
+                            </div>
+                        </div>
+                        <div class="features-restaurant dropdown">
+                            <h5 class="title check" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Средний чек</h5>
+                            <div class="drop-holder">
+                                <span>{{rest.restaurant.min_price}} - {{rest.restaurant.max_price}} eur.</span>
+                            </div>
+                        </div>
+                        <div class="features-restaurant dropdown">
+                            <h5 class="title subject" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Тип
+                                и тематика</h5>
+                            <div class="drop-holder">
+                                <span ng-repeat="type in rest.restaurant.filtersName.types">{{type}}</span>
+                            </div>
+                        </div>
+                        <div class="features-restaurant dropdown">
+                            <h5 class="title features" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Особенности</h5>
+                            <div class="drop-holder">
+                                <span ng-repeat="feature in rest.restaurant.filtersName.features">{{feature}}</span>
+                            </div>
+                        </div>
+                        <div class="map-block dropdown">
+                            <h5 class=" title features dropdown visible-xs" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">ресторан на карте</h5>
+                            <div class="drop-holder">
+                                <div id="map1" style="width:100%; height:196px">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="statistics-block visible-xs">
+                        <div class="sale-block dropdown">
+                            <h5 class="title center">Скидка от общего счета</h5>
+                            <div class="drop-holder dropdown-menu">
+                                <strong>{{rest.restaurant.discount}}%</strong>
+                            </div>
+                        </div>
+                        <div class="timer-block dropdown">
+                            <h5 class="title center">До завершения осталось</h5>
+                            <div class="drop-holder dropdown-menu">
+                                <div class="countdown-area">
+                                    <div class="countdown-wrapper">
+                                        <div class="countdown" id="countdown-2"></div>
+                                    </div>
+                                </div>
+                                <strong class="hidden-xs">Зарезервировали человек</strong>
+                                <p class="count-people hidden-xs">{{rest.restaurant.visit}}</p>
+                                <button ng-if="rest.restaurantTimes.length > 0" class="book-restaurant hidden-xs" data-toggle="modal"
+                                        data-target="http://dev.neatcode.xyz/31/markup/modal-order/{{rest.restaurant.slug}}">забронировать
+                                </button>
+                            </div>
+                        </div>
+                        <div class="features-restaurant dropdown">
+                            <h5 class="title kitchen">Кухня</h5>
+                            <div class="drop-holder dropdown-menu">
+                                <span>Европейская</span>
+                                <span>Бельгийская</span>
+                            </div>
+                        </div>
+                        <div class="features-restaurant dropdown">
+                            <h5 class="title check">Средний чек</h5>
+                            <div class="drop-holder dropdown-menu">
+                                <span>{{rest.restaurant.min_price}} - {{rest.restaurant.max_price}} eur.</span>
+                            </div>
+                        </div>
+                        <div class="features-restaurant dropdown">
+                            <h5 class="title subject">Тип и тематика</h5>
+                            <div class="drop-holder dropdown-menu">
+                                <span>РЕСТОРАНЫ</span>
+                                <span>Бары и пабы</span>
+                            </div>
+                        </div>
+                        <div class="features-restaurant dropdown">
+                            <h5 class="title features">Особенности</h5>
+                            <div class="drop-holder dropdown-menu">
+                                <span>Летняя терасса</span>
+                                <span>Wifi</span>
+                                <span>TV-спорт</span>
+                            </div>
+                        </div>
+                        <div class="map-block dropdown">
+                            <h5 class="map-trigger title features">ресторан на карте</h5>
+                            <div class="drop-holder dropdown-menu">
+                                <div id="map2" style="width:100%; height:196px">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <article>
+                        <div class="restaurant-name-card-block visible-lg">
+                            <img src="/img/restaruant-foto.jpg" class="main-img" alt="restaruant-foto">
+                            <!--<div class="sale">-{{rest.restaurant.discount}}%</div>-->
+                            <a href="#" class="heart-icon"></a>
+                            <div class="wrapper-content">
+                                <div class="restaurant-name-card">
+                                    <div class="wrapper">
+                                        <div class="name-restaurant">
+                                            <h4>ресторан {{rest.restaurant.name}}</h4>
+                                        </div>
+                                        <div class="wrapper-block-star">
+                                            <div class="block-stars">
+                                                <div ng-repeat="star in [1, 2, 3, 4, 5]" class="star" ng-class="star <= rest.restaurant.rating ? 'active' : ''"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="address-block">
+                                        <a ng-if="rest.restaurant.address" href="#" class="address">{{rest.restaurant.address}}</a>
+                                        <a ng-if="rest.restaurant.site" href="{{rest.restaurant.site}}" class="mail">{{rest.restaurant.site}}</a>
+                                        <span>Заказов: {{rest.restaurant.visit}}</span>
+                                    </div>
+                                    <div class="services-block">
+                                        <a ng-href="/restaurant/{{rest.restaurant.slug}}/description"
+                                           class="description"><span>Описание</span></a>
+                                        <a ng-href="/restaurant/{{rest.restaurant.slug}}/complaints" class="testimonial"><span>Отзывы ({{rest.restaurant.complaints_count}})</span></a>
+                                        <a ng-href="delivery/card/{{rest.restaurant.slug}}" class="delivery-food"><span>Доставка еды</span></a>
+                                        <a ng-href="restaurant/card/{{rest.restaurant.slug}}/menu" class="menu-restaraunt"><span>Меню</span></a>
+                                        <div class="networks other">
+                                            <ul>
+                                                <li><a href="#" class="facebook">facebook</a></li>
+                                                <li><a href="#" class="twitter">twitter</a></li>
+                                                <li><a href="#" class="vkontakte">vkontakte</a></li>
+                                                <li><a href="#" class="google">google</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="time-work">
+                                    <div ng-scrollbars ng-scrollbars-config="{setTop: 0}" class="wrapper-time-work content-scrollable">
+                                        <span>Часы работы:</span>
+                                        <ul>
+                                            <li ng-if="rest.restaurant.time_work.monday"><strong>{{rest.daysName[0] | date:
+                                                'EEE'}}</strong>{{rest.restaurant.time_work.monday.from}} -
+                                                {{rest.restaurant.time_work.monday.to}}
+                                            </li>
+                                            <li ng-if="rest.restaurant.time_work.tuesday"><strong>{{rest.daysName[1] | date:
+                                                'EEE'}}</strong>{{rest.restaurant.time_work.tuesday.from}} -
+                                                {{rest.restaurant.time_work.tuesday.to}}
+                                            </li>
+                                            <li ng-if="rest.restaurant.time_work.wednesday"><strong>{{rest.daysName[2] | date:
+                                                'EEE'}}</strong>{{rest.restaurant.time_work.wednesday.from}} -
+                                                {{rest.restaurant.time_work.wednesday.to}}
+                                            </li>
+                                            <li ng-if="rest.restaurant.time_work.thursday"><strong>{{rest.daysName[3] | date:
+                                                'EEE'}}</strong>{{rest.restaurant.time_work.thursday.from}} -
+                                                {{rest.restaurant.time_work.thursday.to}}
+                                            </li>
+                                            <li ng-if="rest.restaurant.time_work.friday"><strong>{{rest.daysName[4] | date:
+                                                'EEE'}}</strong>{{rest.restaurant.time_work.friday.from}} -
+                                                {{rest.restaurant.time_work.friday.to}}
+                                            </li>
+                                            <li ng-if="rest.restaurant.time_work.saturday"><strong>{{rest.daysName[5] | date:
+                                                'EEE'}}</strong>{{rest.restaurant.time_work.saturday.from}} -
+                                                {{rest.restaurant.time_work.saturday.to}}
+                                            </li>
+                                            <li ng-if="rest.restaurant.time_work.sunday"><strong>{{rest.daysName[6] | date:
+                                                'EEE'}}</strong>{{rest.restaurant.time_work.sunday.from}} -
+                                                {{rest.restaurant.time_work.sunday.to}}
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="description-block">
+                            <div ng-if="rest.restaurant.desc" class="wrapper">
+                                <h4>О ресторане</h4>
+                                <p>{{rest.restaurant.desc}}</p>
+                                <p class="visible-sm">{{rest.restaurant.desc}}</p>
+                            </div>
+                            <div ng-if="rest.restaurant.interior" class="wrapper">
+                                <h4>Интерьер</h4>
+                                <p>{{rest.restaurant.interior}}</p>
+                                <p class="visible-sm">{{rest.restaurant.interior}}</p>
+                            </div>
+                            <div ng-if="rest.restaurant.details" class="wrapper">
+                                <h4>Детали</h4>
+                                <p>{{rest.restaurant.details}}</p>
+                                <p class="visible-sm">{{rest.restaurant.details}}</p>
+                            </div>
+                            <div ng-if="rest.restaurant.food" class="wrapper">
+                                <h4>Кухня</h4>
+                                <p>{{rest.restaurant.food}}</p>
+                                <p class="visible-sm">{{rest.restaurant.food}} </p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            var map1, map2;
+            function initMap() {
+                map1 = new google.maps.Map(document.getElementById('map1'), {
+                    zoom: 12,
+                    center: {lat: 58.362219, lng: 25.580499}
+                });
+                map2 = new google.maps.Map(document.getElementById('map2'), {
+                    zoom: 12,
+                    center: {lat: 58.362219, lng: 25.580499}
+                });
+
+                var image = 'img/logo-icon.png';
+                new google.maps.Marker({
+                    position: {lat: 58.362219, lng: 25.580499},
+                    map: map1,
+                    icon: image
+                });
+                new google.maps.Marker({
+                    position: {lat: 58.362219, lng: 25.580499},
+                    map: map2,
+                    icon: image
+                });
+            }
+            $('.map-trigger').on('click', function () {
+                setTimeout(function () {
+                    var center = map2.getCenter();
+                    google.maps.event.trigger(map2, 'resize');
+                    map2.setCenter(center);
+                }, 500);
+            });
+        </script>
+        <link rel="stylesheet" type="text/css" media="all" href="/css/flipclock.css">
+
+
+
+        <div class="modal fade modal-delivery order-table" tabindex="-3" role="dialog" aria-labelledby="myLargeModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content filters">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                        <div class="title-filter">
+                            <p>Бронирование столика</p>
+                        </div>
+                    </div>
+                    <div class="order-table-block">
+                        <form id="order-table-block" action="" method="POST">
+
+                            <div class="left-column">
+                                <div class="count-people">
+                                    <span class="pull-left">Количество человек:</span>
+                                    <div class="select-person pull-right">
+                                        <select selectpicker person ng-model="rest.find.count_person" ng-value="find.count_person"
+                                                class="form-control person selectpicker-person">
+                                            <option value="">Количество персон?</option>
+                                            <option ng-repeat="person in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]"
+                                                    value="{{person}}">{{person}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="count-people-table">
+                                    <table>
+                                        <tr>
+                                            <td ng-repeat="person in [1,2,3,4,5,6,7,8,9,10]" data-value="{{person}}"
+                                                ng-click="rest.personChange(person)">{{person}}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td ng-repeat="person in [11,12,13,14,15,16,17,18,19,20]"
+                                                ng-click="rest.personChange(person)" data-value="{{person}}">{{person}}
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="time-sale visible-lg">
+                                    <span>Время:</span>
+                                    <div class="select-oclock">
+                                        <select selectpicker ng-model="rest.find.time" ng-value="rest.find.time" class="oclock selectpicker">
+                                            <option value="">Время</option>
+                                            <option ng-repeat="time in rest.restaurantTimes track by $index" value="{{time.time}}">{{time.time}}</option>
+                                        </select>
+                                    </div>
+                                    <strong>- скидка {{rest.find.discount}}%</strong>
+                                </div>
+                                <div ng-scrollbars ng-scrollbars-config="{setTop: 0}" class="shedule content-scrollable visible-lg">
+                                    <div class="row-sh">
+                                        <div ng-repeat="time in rest.restaurantTimes track by $index" ng-click="rest.setTime($event, $index)" class="cell-sh"">{{time.time}}<strong> - {{time.value}}%</strong></div>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="right-column">
+                        <div class="select-data">
+                            <span class="title">Дата</span>
+                            <div class="select-data">
+                                <input ng-model="rest.find.date" value="{{rest.find.date}}" type="text" id="datepicker"
+                                       class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div id="date"></div>
+                    <div class="time-sale hidden-lg">
+                        <span>Время:</span>
+                        <div class="select-oclock">
+                            <select selectpicker ng-model="rest.find.time" ng-value="rest.find.time" class="oclock selectpicker">
+                                <option value="">Время</option>
+                                <option ng-repeat="time in rest.restaurantTimes track by $index" value="{{time.time}}">{{time.time}}</option>
+                            </select>
+                        </div>
+                        <strong> - скидка {{rest.find.discount.value}}%</strong>
+                    </div>
+                    <div ng-scrollbars ng-scrollbars-config="{setTop: 0}" class="shedule content-scrollable hidden-lg">
+                        <div class="row-sh">
+                            <div ng-repeat="time in rest.restaurantTimes track by $index" ng-click="rest.setTime($event, $index)" class="cell-sh">{{time.time}}<strong> - {{time.value}}%</strong></div>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <div class="wrapper">
+                        <div class="count-users">{{rest.find.count_person}} чел.</div>
+                        <div class="discount">Скидка {{rest.find.discount}}%</div>
+                        <div class="time-visit">Время {{rest.find.time}}</div>
+                        <div class="day-visit">Дата: {{rest.find.date}}</div>
+                    </div>
+                    <button class="order-table-but" ng-click="rest.reserveRestaurant()" data-dismiss="modal" aria-hidden="true"
+                            data-toggle="modal" data-target=".order-table-success">забронировать столик
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('#datepicker').datepicker('rebuild');
+</script>
+</div>

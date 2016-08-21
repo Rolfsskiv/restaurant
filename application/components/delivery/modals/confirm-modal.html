@@ -1,0 +1,111 @@
+<div id="delivery-card" class="features-block-wrapper modal-static">
+    <head-component></head-component>
+    <div class="bottom-menu">
+        <div class="collapse navbar-collapse menu-navigation">
+            <div class="close-menu"></div>
+            <button type="button" class="menu-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <ul class="nav navbar-nav">
+                <li><a href="restaurants">РЕСТОРАНЫ</a></li>
+                <li><a href="delivery">ДОСТАВКА ЕДЫ</a></li>
+                <li><a href="complaints">КНИГА ЖАЛОБ И ПРЕДЛОЖЕНИЙ </a></li>
+                <li><a href="dinner">ОБЕДЫ</a></li>
+                <li><a href="special-proposal">СПЕЦПРЕДЛОЖЕНИЯ</a></li>
+                <li class="hide-item"><a href="cooking-boss">БЛЮДО ОТ ШЕФ ПОВАРА</a></li>
+                <li class="hide-item"><a href="top50">ТОП 50</a></li>
+            </ul>
+            <ul class="navbar-nav mobile-show">
+                <li><a href="cooking-boss">БЛЮДО ОТ ШЕФ ПОВАРА</a></li>
+                <li><a href="top50">ТОП 50</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="home-page">
+        <div class="restaurants-block">
+
+            <div class="mobile-holder visible-xs">
+                <div class="breadcrumbs">
+                    <ul>
+                        <li><a href="index">Главная</a></li>
+                        <li><a href="#" class="current"></a></li>
+                    </ul>
+                </div>
+                <div class="dropdown drop-option">
+                    <h3>подтверждение номера</h3>
+                    <a data-toggle="dropdown" href="#"></a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                        <div class="menu-two">
+                            <li><a href="restaurants">РЕСТОРАНЫ</a></li>
+                            <li><a href="delivery">ДОСТАВКА ЕДЫ</a></li>
+                            <li><a href="complaints">КНИГА ЖАЛОБ И ПРЕДЛОЖЕНИЙ </a></li>
+                            <li><a href="dinner">ОБЕДЫ</a></li>
+                            <li><a href="special-proposal">СПЕЦПРЕДЛОЖЕНИЯ</a></li>
+                            <li><a href="cooking-boss">БЛЮДО ОТ ШЕФ ПОВАРА</a></li>
+                            <li><a href="top50">ТОП 50</a></li>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="modal-delivery confirm-number">
+                <div class="modal-dialog modal-lg">
+                    <confirm-number></confirm-number>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modal-delivery checkout-modal" tabindex="-2" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg">
+        <checkout></checkout>
+    </div>
+</div>
+<div class="modal fade modal-delivery uncorrect-number" tabindex="-3" role="dialog" aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content filters">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+            <div class="main-contant">
+                <div class="uncorrect-number-block">
+                    <h4>Введен неверный номер</h4>
+                    <button type="submit" class="agree" data-dismiss="modal" aria-hidden="true" data-toggle="modal"
+                            data-target=".successful-order">ok
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade modal-delivery successful-order2" tabindex="-3" role="dialog" aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content filters">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+            <div class="main-contant">
+                <div class="successful-order-block">
+                    <h3>вы успешно отправили заказ</h3>
+                    <p>В ближайшее время наш менеджер свяжеться с Вами по номеру:+7455655656 <a href="#"
+                                                                                                class="compose"></a> для
+                        подтверждения заказа. </p>
+                    <p class="bottom">Просмотреть заказ в <a href="my-profile" class="private-office">личном кабинете</a></p>
+                    <div class="modal-footer">
+                        <div class="left-column">
+                            <strong>получено бонусов</strong>
+                            <div class="gift">5</div>
+                        </div>
+                        <div class="right-column">
+                            <span>Обменять бонусы в</span>
+                            <a href="catalog-bonus" class="catalog-bonus">каталог бонусов</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

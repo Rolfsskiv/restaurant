@@ -1,0 +1,793 @@
+<div ng-cloak ng-init="ctrl.init()">
+    <head-component></head-component>
+    <div class="bottom-menu">
+        <navbar></navbar>
+    </div>
+    <div id="home-page">
+        <div class="main-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2>Сотни ресторанов в одном месте, выбирай и заказывай!</h2>
+                        <div class="col-md-12">
+                            <div class="change-content">
+                                <form role="form">
+                                    <div class="wrapper-select hidden-xs">
+                                        <span>СТРАНА</span>
+                                        <select selectpicker data-change="{{ctrl.countries}}"
+                                                ng-model="ctrl.currentCountry" class="form-control country">
+                                            <option value="">Выберите страну</option>
+                                            <option ng-repeat="country in ctrl.countries" value="{{country.id}}">
+                                                {{country.name}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <div class="wrapper-select hidden-xs">
+                                        <span>ГОРОД</span>
+                                        <select selectpicker data-change="{{ctrl.cities}}" ng-model="ctrl.currentCity"
+                                                class="form-control city">
+                                            <option>Выберите город</option>
+                                            <option ng-repeat="city in ctrl.cities" value="{{city.localization[0].id}}">
+                                                {{city.localization[0].value}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="restaurants-block">
+            <div class="container">
+                <div class="step-block hidden-xs">
+                    <div class="container">
+                        <div class="row">
+                            <div class="step first visible-lg">
+                                <strong>Как это работает?</strong>
+                            </div>
+                            <div class="step-number">
+                                <div class="col-md-4 col-sm-4">
+                                    <div class="step">
+                                        <div class="number">1</div>
+                                        <div class="text">
+                                            <span>Выберите ресторан</span>
+                                            <p>в котором Вы хотите провести время</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-4">
+                                    <div class="step">
+                                        <div class="number">2</div>
+                                        <div class="text">
+                                            <span>Забронируйте</span>
+                                            <p>онлайн за пару кликов</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-4">
+                                    <div class="step last">
+                                        <div class="number">3</div>
+                                        <div class="text">
+                                            <span>Получите скидку</span>
+                                            <p>от общего счета в ресторане</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h3>РЕСТОРАНЫ</h3>
+                <button class="search"></button>
+                <button class="parametrs one"></button>
+                <div class="search-block">
+                    <form action="">
+                        <input type="text" placeholder="Найти">
+                        <div class="close-menu"></div>
+                    </form>
+                </div>
+                <div class="select-mobile one">
+                    <form action="">
+                        <div class="change-item">
+                            <h4>Кухня</h4>
+
+                            <div ng-repeat="food in ctrl.filters.foods | limitTo:7" class="block-checkbox">
+                                <label class="checkbox">
+                                    <input type="checkbox" checklist-model="ctrl.currentFilters.foods"
+                                           checklist-value="food.id"> {{food.name}}
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div ng-if="ctrl.filters.foods.length > 7" class="dropdown">
+                                <button type="button" class="show-content">
+                                    Показать все
+                                    <span class="caret"></span>
+                                </button>
+                                <div class="collapse see-more">
+                                    <div ng-repeat="food in ctrl.filters.foods | startFrom:8" class="block-checkbox">
+                                        <label class="checkbox">
+                                            <input type="checkbox" checklist-model="ctrl.currentFilters.foods"
+                                                   checklist-value="food.id" {{food.name}}
+                                            <span></span>
+                                        </label>
+                                    </div>
+                                    <button type="button" class="hide-content">Скрыть</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="change-item">
+                            <h4>Тип и тематика</h4>
+
+                            <div ng-repeat="type in ctrl.filters.types | limitTo:6" class="block-checkbox">
+                                <label class="checkbox">
+                                    <input type="checkbox" checklist-model="ctrl.currentFilters.types"
+                                           checklist-value="type.id"> {{type.name}}
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div ng-if="ctrl.filters.types.length > 6" class="dropdown">
+                                <button type="button" class="show-content">
+                                    Показать все
+                                    <span class="caret"></span>
+                                </button>
+                                <div class="collapse see-more">
+                                    <div ng-repeat="type in ctrl.filters.types | startFrom:8" class="block-checkbox">
+                                        <label class="checkbox">
+                                            <input type="checkbox" checklist-model="ctrl.currentFilters.types"
+                                                   checklist-value="type.id">>{{type.name}}
+                                            <span></span>
+                                        </label>
+                                    </div>
+
+                                    <button type="button" class="hide-content">Скрыть</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="change-item">
+                            <h4>Особенности ресторана</h4>
+                            <div ng-repeat="feature in ctrl.filters.features | limitTo:6" class="block-checkbox">
+                                <label class="checkbox">
+                                    <input type="checkbox" checklist-model="ctrl.currentFilters.features"
+                                           checklist-value="feature.id"> {{feature.name}}
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div ng-if="ctrl.filters.types.length > 6" class="dropdown">
+                                <button type="button" class="show-content">
+                                    Показать все
+                                    <span class="caret"></span>
+                                </button>
+                                <div class="collapse see-more">
+                                    <div ng-repeat="feature in ctrl.filters.features | startFrom:7"
+                                         class="block-checkbox">
+                                        <label class="checkbox">
+                                            <input type="checkbox" checklist-model="ctrl.currentFilters.features"
+                                                   checklist-value="feature.id">{{feature.name}}
+                                            <span></span>
+                                        </label>
+                                    </div>
+                                    <button type="button" class="hide-content">Скрыть</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="change-item">
+                            <h4>Средний чек</h4>
+                            <rzslider
+                                    rz-slider-model="ctrl.sliderRestaurant.minValue"
+                                    rz-slider-high="ctrl.sliderRestaurant.maxValue"
+                                    rz-slider-options="ctrl.sliderRestaurant.options"></rzslider>
+                        </div>
+                        <button class="find">НАЙТИ</button>
+                        <div class="close-menu"></div>
+                    </form>
+                </div>
+                <div class="select-time hidden-xs ">
+                    <form role="form">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="select-person">
+                                    <span class="title">Кол-во персон</span>
+                                    <select ng-model="ctrl.filterDatePerson.countPersons" selectpicker
+                                            class="form-control person selectpicker">
+                                        <option value="">Выберите</option>
+                                        <option ng-repeat="countPerson in [2, 3, 4, 5, 6, 7, 8, 9]"
+                                                ng-selected="countPerson == ctrl.countPerson" value="{{countPerson}}">
+                                            {{countPerson}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="select-data">
+                                    <span class="title">Дата</span>
+                                    <input title="Выберите" ng-model="ctrl.filterDatePerson.date" type="text"
+                                           class="form-control" id="datepicker">
+                                </div>
+                                <div class="select-oclock">
+                                    <span class="title">Время</span>
+                                    <select ng-model="ctrl.filterDatePerson.time" selectpicker class="oclock selectpicker">
+                                        <option selected value="11:00">11:00</option>
+                                        <option value="11:30">11:30</option>
+                                        <option value="12:00">12:00</option>
+                                        <option value="12:30">12:30</option>
+                                        <option value="13:00">13:00</option>
+                                        <option value="13:30">13:30</option>
+                                        <option value="13:30">14:00</option>
+                                        <option value="13:30">14:30</option>
+                                        <option value="13:30">15:00</option>
+                                    </select>
+                                </div>
+                                <button ng-init="ctrl.hideFilter = true" ng-click="ctrl.hideFilter = !ctrl.hideFilter"
+                                        class="filter-hide">Свернуть фильтр
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div ng-show="ctrl.hideFilter" class="select-component first-list hidden-xs">
+                    <form role="form">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="select-type">
+                                    <p>Кухня</p>
+                                    <select ng-model="ctrl.currentFilters.foods" id="type-restaraunt" class="type"
+                                            multiple="multiple" data-target="#main-modal">
+                                        <option value="">Выберите</option>
+                                        <option ng-repeat="food in ctrl.filters.foods" value="{{food.id}}">{{food.name}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="select-subject">
+                                    <p>Тип и тематика</p>
+                                    <select ng-model="ctrl.currentFilters.types" id="subjects-restaraunt"
+                                            multiple="multiple" class="subjects">
+                                        <option value="">Выберите</option>
+                                        <option ng-repeat="type in ctrl.filters.types" value="{{type.id}}">{{type.name}}
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <div class="select-features">
+                                    <p>Особенности ресторана</p>
+                                    <select ng-model="ctrl.currentFilters.features" id="features-restaraunt"
+                                            multiple="multiple" class="features">
+                                        <option value="">Выберите</option>
+                                        <option ng-repeat="feature in ctrl.filters.features" value="{{feature.id}}">
+                                            {{feature.name}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="select-check">
+                                    <p>Средний чек</p>
+
+                                    <div class="wrapper">
+                                        <button type="button" class="dropdown check-price">
+                                            <a data-toggle="dropdown" href="#">
+                                                <span class="check-val" id="slider-price-value-min">{{ctrl.sliderRestaurant.minValue}}-</span>
+                                                <span class="check-val" id="slider-price-value-max">{{ctrl.sliderRestaurant.maxValue}}</span>
+                                            </a>
+                                            <span class="caret"></span>
+                                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                                <rzslider
+                                                        rz-slider-model="ctrl.sliderRestaurant.minValue"
+                                                        rz-slider-high="ctrl.sliderRestaurant.maxValue"
+                                                        rz-slider-options="ctrl.sliderRestaurant.options"></rzslider>
+
+                                            </ul>
+                                        </button>
+                                        <button class="find">НАЙТИ</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="book-hotel">
+                    <div class="row">
+
+                        <div ng-repeat="restaurant in ctrl.backRestaurants | limitTo:3" class="col-md-6 col-lg-4 col-sm-6">
+                            <div class="restaurant-name">
+                                <div class="photo">
+                                    <img ng-src="{{restaurant.image}}" alt="{{restaurant.name}}">
+                                    <div class="sale">-{{restaurant.discount}}%</div>
+                                    <div ng-if="restaurant.get_resto" class="recommendations">GETRESTO РЕКОМЕНДУЕТ<i
+                                            class="fa fa-thumbs-o-up"></i></div>
+                                    <div class="name">
+                                        <a href="#" class="heart-icon"></a>
+                                        <span>{{restaurant.name}}</span>
+                                        <div class="block-stars">
+                                            <div ng-repeat="star in [1, 2, 3, 4, 5]" class="star"
+                                                 ng-class="star <= restaurant.rating ? 'active' : ''"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="information">
+                                    <a href="#" class="address">{{restaurant.address}}</a>
+                                    <div ng-if="restaurant.new" class="new">NEW</div>
+                                    <div class="option">
+                                        <p>Кухня: {{restaurant.food}}</p>
+                                        <p class="several-shop">Средний чек: {{(restaurant.min_price+restaurant.max_price) / 2}} <i class="fa fa-rub"></i></p>
+                                    </div>
+                                    <div class="activity">
+                                        <a href="#" class="participants">{{restaurant.visit}}</a>
+                                        <a href="#" class="visits">{{restaurant.complaints_count}}</a>
+                                        <a href="/restaurant/{{restaurant.slug}}" class="book">ЗАБРОНИРОВАТЬ</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <a ng-href="restaurants" class="show-more"><i class="fa fa-chevron-down"></i>ПОКАЗАТЬ ВСЕ</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="step-block four-steps hidden-xs">
+            <div class="container">
+                <div class="row">
+                    <div class="step first visible-lg">
+                        <strong>Как это работает?</strong>
+                    </div>
+                    <div class="step-item">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3">
+                                <div class="step">
+                                    <div class="number">1</div>
+                                    <div class="text">
+                                        <span>Выберите ресторан</span>
+                                        <p>в котором Вы хотите провести время</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-3">
+                                <div class="step">
+                                    <div class="number">2</div>
+                                    <div class="text">
+                                        <span>Подтвердите заказ</span>
+                                        <p>за пару кликов</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-3">
+                                <div class="step">
+                                    <div class="number">3</div>
+                                    <div class="text">
+                                        <span>Забронируйте</span>
+                                        <p>онлайн за пару кликов</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-3">
+                                <div class="step last">
+                                    <div class="number">4</div>
+                                    <div class="text">
+                                        <span>Получите скидку</span>
+                                        <p>от общего счета в ресторане</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="delivery">
+            <div class="container">
+                <h3>ДОСТАВКА ЕДЫ</h3>
+                <button class="parametrs two active-block"></button>
+                <div class="select-mobile two">
+                    <form action="">
+                        <div class="change-item">
+                            <h4>Кухня</h4>
+                            <div ng-repeat="food in ctrl.filters.foods | limitTo:7" class="block-checkbox">
+                                <label class="checkbox">
+                                    <input type="checkbox" checklist-model="ctrl.currentFilters.foods"
+                                           checklist-value="food.id"> {{food.name}}
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div ng-if="ctrl.filters.foods.length > 7" class="dropdown">
+                                <button type="button" class="show-content">
+                                    Показать все
+                                    <span class="caret"></span>
+                                </button>
+                                <div class="collapse see-more">
+                                    <div ng-repeat="food in ctrl.filters.foods | startFrom:8" class="block-checkbox">
+                                        <label class="checkbox">
+                                            <input type="checkbox" checklist-model="ctrl.currentFilters.foods"
+                                                   checklist-value="food.id"> {{food.name}}
+                                            <span></span>
+                                        </label>
+                                    </div>
+                                    <button type="button" class="hide-content">Скрыть</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="change-item">
+                            <h4>Типы блюд</h4>
+
+                            <div ng-repeat="type_dinner in ctrl.filters.type_dinners | limitTo:6" class="block-checkbox">
+                                <label class="checkbox">
+                                    <input type="checkbox" checklist-model="ctrl.currentFiltersDinner.type_dinners"
+                                           checklist-value="type_dinner.id">> {{type_dinner.name}}
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div ng-if="ctrl.filters.type_dinners.length > 6" class="dropdown">
+                                <button type="button" class="show-content">
+                                    Показать все
+                                    <span class="caret"></span>
+                                </button>
+                                <div class="collapse see-more">
+                                    <div ng-repeat="type_dinner in ctrl.filters.type_dinners | startFrom:7" class="block-checkbox">
+                                        <label class="checkbox">
+                                            <input type="checkbox" checklist-model="ctrl.currentFiltersDinner.type_dinners"
+                                                   checklist-value="type_dinner.id">>{{type_dinner.name}}
+                                            <span></span>
+                                        </label>
+                                    </div>
+
+                                    <button type="button" class="hide-content">Скрыть</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="change-item">
+                            <p>Средний чек</p>
+                            <div class="wrapper">
+                                <button type="button" class="dropdown check-price">
+                                    <a data-toggle="dropdown" href="#">
+                                        <span class="check-val"
+                                              id="slider-food-min">{{ctrl.sliderFood.minValue}}-</span>
+                                        <span class="check-val" id="slider-food-max">{{ctrl.sliderFood.maxValue}}</span>
+                                    </a>
+                                    <span class="caret"></span>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                        <rzslider
+                                                rz-slider-model="ctrl.sliderFood.minValue"
+                                                rz-slider-high="ctrl.sliderFood.maxValue"
+                                                rz-slider-options="ctrl.sliderFood.options"></rzslider>
+
+                                    </ul>
+                                </button>
+                            </div>
+                        </div>
+                        <button class="find">НАЙТИ</button>
+                        <div class="close-menu"></div>
+                    </form>
+                </div>
+                <div class="select-component hidden-xs">
+                    <form role="form">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-4">
+                                <div class="select-kitchen">
+                                    <p>Кухня</p>
+                                    <select ng-model="ctrl.currentFiltersDinner.foods" id="type-restaraunt-kitchen"
+                                            class="type" multiple="multiple" data-target="#main-modal">
+                                        <option value="">Выберите</option>
+                                        <option ng-repeat="food in ctrl.filters.foods" value="{{food.id}}">
+                                            {{food.name}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-4">
+                                <div class="select-food">
+                                    <p>Типы блюд</p>
+                                    <select id="change-food" ng-model="ctrl.currentFiltersDinner.type_dinners"
+                                            multiple="multiple" class="type">
+                                        <option value="">Выберите</option>
+                                        <option ng-repeat="type_dinner in ctrl.filters.type_dinners"
+                                                value="{{type_dinner.id}}">{{type_dinner.name}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-5 col-sm-4">
+                                <div class="several-check">
+                                    <p>Средний чек</p>
+                                    <div class="wrapper">
+                                        <button class="dropdown check-price">
+                                            <a data-toggle="dropdown" href="#">
+                                                <span class="check-val" id="slider-food-min1">{{ctrl.sliderFood.minValue}}-</span>
+                                                <span class="check-val" id="slider-food-max1">{{ctrl.sliderFood.maxValue}}</span>
+                                            </a>
+                                            <span class="caret"></span>
+                                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                                <rzslider
+                                                        rz-slider-model="ctrl.sliderFood.minValue"
+                                                        rz-slider-high="ctrl.sliderFood.maxValue"
+                                                        rz-slider-options="ctrl.sliderFood.options"></rzslider>
+
+                                            </ul>
+                                        </button>
+                                        <button class="find">НАЙТИ</button>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="row">
+
+                    <div ng-repeat="delivery in ctrl.backDeliveries" class="col-md-6 col-lg-4 col-sm-6">
+                        <div class="restaurant-name">
+                            <div class="photo">
+                                <img ng-src="{{delivery.image}}" alt="{{delivery.name}}">
+                                <!--<div class="sale">-40%</div>-->
+                                <div class="name">
+                                    <a href="#" class="heart-icon"></a>
+                                    <span>{{delivery.name}}</span>
+                                    <div class="block-stars">
+                                        <div ng-repeat="star in [1, 2, 3, 4, 5]" class="star"
+                                             ng-class="star <= delivery.rating ? 'active' : ''"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="information">
+                                <a href="#" class="address">{{delivery.address}}</a>
+                                <div ng-if="delivery.new" class="new">NEW</div>
+                                <div class="option">
+                                    <p>Кухня: {{delivery.food}}</p>
+                                    <p class="cost">Стоимость доставки: <span>{{delivery.order_food_min}} - {{delivery.order_food_max}}€</span>
+                                    </p>
+                                    <p class='several-cost'>Средний чек: <span>{{delivery.min_price}} - {{delivery.max_price}}€</span>
+                                    </p>
+                                </div>
+                                <div class="activity">
+                                    <a href="#" class="participants">{{delivery.complaints_count}}</a>
+                                    <a href="#" class="visits">{{delivery.orderfood_count}}</a>
+                                    <a ng-href="delivery/card/{{delivery.slug}}" class="book">ЗАКАЗАТЬ</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <a ng-href="delivery" class="show-more"><i class="fa fa-chevron-down"></i>ПОКАЗАТЬ ВСЕ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="stock">
+            <h2>Бронируй столики, заказывай еду и получай подарки</h2>
+            <a href="catalog-bonus.html">КАТАЛОГ БОНУСОВ</a>
+        </div>
+        <div class="special-proposal">
+            <div class="container">
+                <h3>СПЕЦПРЕДЛОЖЕНИЯ</h3>
+                <div class="row">
+                    <div ng-repeat="special in ctrl.specialProposal | limitTo:3" class="col-md-6 col-lg-4 col-sm-6">
+                        <div class="restaurant-name">
+                            <div class="photo">
+                                <img src="{{special.restaurant.image}}" alt="{{special.name}}">
+                                <div class="name">
+                                    <span class="discount">{{special.name}}</span>
+                                </div>
+                            </div>
+                            <div class="information">
+                                <div class="option">
+                                    <p class="conditions hidden-xs">{{special.brief}}</p>
+                                </div>
+                                <div class="activity">
+                                    <h5>{{special.restaurant.name}}</h5>
+                                    <a ng-href="special-proposal/{{special.id}}/card" class="book">СМОТРЕТЬ</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <a ng-href="special-proposal" class="show-more"><i class="fa fa-chevron-down"></i>ПОКАЗАТЬ
+                            ВСЕ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="food-in-office">
+            <div class="container">
+                <h3>КОМПЛЕКСНЫЕ ОБЕДЫ В ОФИС</h3>
+                <div class="responsive">
+                    <slick ng-if="ctrl.dinners.length" slides-to-show="3" responsive="ctrl.slickConfig.responsive"
+                           settings="ctrl.slickConfig">
+                        <div ng-repeat="dinner in ctrl.dinners" class="restaurant-menu-block">
+                            <div class="restaurant-menu">
+                                <div class="carousel-caption">
+                                    <div class="price">{{dinner.price}} €</div>
+                                    <div class="data">{{dinner.dinner_date | date}}</div>
+                                    <h4>{{dinner.name}}</h4>
+                                    <div class="composed">
+                                        В меню: <span ng-repeat="item in dinner.consist track by $index">{{$index + 1}}. {{item.name}} </span>
+                                    </div>
+                                    <div class="time">Время: {{dinner.time_start}} - {{dinner.time_end}}</div>
+                                    <a href="dinner" class="see-more">Ознакомиться</a>
+                                </div>
+                                <img src="{{dinner.image}}" alt="restaurants-menu-3">
+                            </div>
+                        </div>
+                    </slick>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <a ng-href="dinner" class="show-more"><i class="fa fa-chevron-down"></i>ПОКАЗАТЬ ВСЕ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="testimonials">
+            <div class="container">
+                <h3><a href="complaints">КНИГА ЖАЛОБ И ПРЕДЛОЖЕНИЙ</a></h3>
+                <a href="complaints" class="read"> ЧИТАТЬ</a>
+                <div class="slider-testimonials">
+
+                    <slick ng-if="ctrl.complaints.length" slides-to-show="2" responsive="ctrl.slickConfig.responsive"
+                           settings="ctrl.slickConfig">
+
+                        <div ng-repeat="complaint in ctrl.complaints" class="read-testimonial">
+                            <div class="col-md-4 col-sm-3">
+                                <div class="left-block">
+                                    <img тп-src="{{complaint.user.image}}" alt="{{complaint.user.name}}">
+                                    <div class="name">
+                                        <p>{{complaint.user.name}}</p>
+                                        <!--<span>Константинополов</span>-->
+                                    </div>
+                                    <div class="status">{{complaint.user.user_status}}</div>
+                                </div>
+                            </div>
+                            <div class="col-md-8 col-sm-8">
+                                <div class="right-block">
+                                    <div class="text-testimonial">
+                                        <p>{{complaint.text}}</p>
+                                        <div class="wrapper">
+                                            <a href="complaints">Читать полностью </a>
+                                            <div class="evaluation">
+                                                <a href="#" class="good">{{complaint.like}}</a>
+                                                <a href="#" class="bad">{{complaint.dislike}}</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </slick>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade bs-example-modal-lg" id="main-modal" tabctrl="-1" role="dialog"
+     aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content filters">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <div class="title-filter">
+                    <p>Фильтр ресторанов</p>
+                </div>
+            </div>
+            <div class="filters-block content-scrollable">
+                <div class="wrapper">
+                    <div class="change-item">
+                        <h4>Кухня</h4>
+                        <div ng-repeat="food in ctrl.filters.foods | limitTo:7" class="block-checkbox">
+                            <label class="checkbox">
+                                <input type="checkbox" checklist-model="ctrl.currentFilters.foods"
+                                       checklist-value="food.id"> {{food.name}}
+                                <span></span>
+                            </label>
+                        </div>
+                        <div ng-if="ctrl.filters.foods.length > 7" class="dropdown">
+                            <button type="button" class="show-content">
+                                Показать все
+                                <span class="caret"></span>
+                            </button>
+                            <div class="collapse see-more">
+                                <div ng-repeat="food in ctrl.filters.foods | startFrom:8" class="block-checkbox">
+                                    <label class="checkbox">
+                                        <input type="checkbox" checklist-model="ctrl.currentFilters.foods"
+                                               checklist-value="food.id"> {{food.name}}
+                                        <span></span>
+                                    </label>
+                                </div>
+
+                                <button type="button" class="hide-content">Скрыть</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="change-item"
+                    <h4>Тип и тематика</h4>
+
+                    <div ng-repeat="type in ctrl.filters.types | limitTo:6" class="block-checkbox">
+                        <label class="checkbox">
+                            <input type="checkbox" checklist-model="ctrl.currentFilters.types"
+                                   checklist-value="type.id"> {{type.name}}
+                            <span></span>
+                        </label>
+                    </div>
+                    <div ng-if="ctrl.filters.types.length > 6" class="dropdown">
+                        <button type="button" class="show-content">
+                            Показать все
+                            <span class="caret"></span>
+                        </button>
+                        <div class="collapse see-more">
+                            <div ng-repeat="type in ctrl.filters.types | startFrom:7" class="block-checkbox">
+                                <label class="checkbox">
+                                    <input type="checkbox" checklist-model="ctrl.currentFilters.types"
+                                           checklist-value="type.id">>{{type.name}}
+                                    <span></span>
+                                </label>
+                            </div>
+
+                            <button type="button" class="hide-content">Скрыть</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wrapper">
+                <div class="change-item">
+                    <h4>Особенности ресторана</h4>
+                    <div ng-repeat="feature in ctrl.filters.features | limitTo:6" class="block-checkbox">
+                        <label class="checkbox">
+                            <input type="checkbox" checklist-model="ctrl.currentFilters.features"
+                                   checklist-value="feature.id"> {{feature.name}}
+                            <span></span>
+                        </label>
+                    </div>
+                    <div ng-if="ctrl.filters.types.length > 6" class="dropdown">
+                        <button type="button" class="show-content">
+                            Показать все
+                            <span class="caret"></span>
+                        </button>
+                        <div class="collapse see-more">
+                            <div ng-repeat="feature in ctrl.filters.features | startFrom:7" class="block-checkbox">
+                                <label class="checkbox">
+                                    <input type="checkbox" checklist-model="ctrl.currentFilters.features"
+                                           checklist-value="feature.id">{{feature.name}}
+                                    <span></span>
+                                </label>
+                            </div>
+                            <button type="button" class="hide-content">Скрыть</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="change-item">
+                    <p>Средний чек</p>
+                    <div class="wrapper">
+                        <button type="button" class="dropdown check-price">
+                            <a data-toggle="dropdown" href="#">
+                                <span class="check-val" id="slider-food-min">{{ctrl.sliderFood.minValue}}-</span>
+                                <span class="check-val" id="slider-food-max">{{ctrl.sliderFood.maxValue}}</span>
+                            </a>
+                            <span class="caret"></span>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                <rzslider
+                                        rz-slider-model="ctrl.sliderFood.minValue"
+                                        rz-slider-high="ctrl.sliderFood.maxValue"
+                                        rz-slider-options="ctrl.sliderFood.options"></rzslider>
+
+                            </ul>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <button class="find">НАЙТИ</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

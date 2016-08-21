@@ -1,0 +1,43 @@
+{
+  "name": "Rolfwork",
+  "authors": [
+    "Insidexa <nostresss77@gmail.com>"
+  ],
+  "description": "",
+  "main": "index",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-route": "^1.5.8",
+    "angular-slick": "master",
+    "angularjs-datepicker": "^2.1.6",
+    "angularjs-slider": "^5.4.3",
+    "bootstrap-datepicker": "^1.6.4",
+    "bootstrap-multiselect": "^0.9.13",
+    "bootstrap-select": "^1.10.0",
+    "bootstrap-timepicker": "^0.5.2",
+    "font-awesome": "^4.6.3",
+    "slick": "*",
+    "nouislider": "^8.5.1",
+    "malihu-custom-scrollbar-plugin": "^3.1.5",
+    "angular-ui-notification": "^0.2.0",
+    "ng-scrollbars": "^0.0.10",
+    "angular-socialshare": "angularjs-socialshare#^2.2.5",
+    "checklist-model": "^0.10.0",
+    "satellizer": "^0.15.4",
+    "jquery": "^3.1.0",
+    "wnumb": "^1.0.4",
+    "ng-img-crop": "ngImgCrop#^0.3.2",
+    "bootstrap": "^3.3.7"
+  }
+}

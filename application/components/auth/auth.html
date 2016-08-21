@@ -1,0 +1,95 @@
+<div id="delivery-card" class="features-block-wrapper modal-static" ng-controller="LoginController as login">
+    <head-component></head-component>
+    <div class="bottom-menu">
+        <div class="collapse navbar-collapse menu-navigation">
+            <div class="close-menu"></div>
+            <button type="button" class="menu-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <ul class="nav navbar-nav">
+                <li><a href="restaurants">РЕСТОРАНЫ</a></li>
+                <li><a href="delivery">ДОСТАВКА ЕДЫ</a></li>
+                <li><a href="complaints">КНИГА ЖАЛОБ И ПРЕДЛОЖЕНИЙ </a></li>
+                <li><a href="dinner">ОБЕДЫ</a></li>
+                <li><a href="special-proposal">СПЕЦПРЕДЛОЖЕНИЯ</a></li>
+                <li class="hide-item"><a href="cooking-boss">БЛЮДО ОТ ШЕФ ПОВАРА</a></li>
+                <li class="hide-item"><a href="top50">ТОП 50</a></li>
+            </ul>
+            <ul class="navbar-nav mobile-show">
+                <li><a href="cooking-boss">БЛЮДО ОТ ШЕФ ПОВАРА</a></li>
+                <li><a href="top50">ТОП 50</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="home-page">
+        <div class="restaurants-block">
+
+            <div class="mobile-holder visible-xs">
+                <div class="breadcrumbs">
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="#" class="current"></a></li>
+                    </ul>
+                </div>
+                <div class="dropdown drop-option">
+                    <h3>ВХОД НА САЙТ</h3>
+                    <a data-toggle="dropdown" href="#"></a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                        <div class="menu-two">
+                            <li><a href="restaurants">РЕСТОРАНЫ</a></li>
+                            <li><a href="delivery">ДОСТАВКА ЕДЫ</a></li>
+                            <li><a href="complaints">КНИГА ЖАЛОБ И ПРЕДЛОЖЕНИЙ </a></li>
+                            <li><a href="dinner">ОБЕДЫ</a></li>
+                            <li><a href="special-proposal">СПЕЦПРЕДЛОЖЕНИЯ</a></li>
+                            <li><a href="cooking-boss">БЛЮДО ОТ ШЕФ ПОВАРА</a></li>
+                            <li><a href="top50">ТОП 50</a></li>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="modal-delivery enter-modal">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content filters">
+                        <form action="">
+                            <div class="item">
+                                <label for="login">Логин:</label>
+                                <input id="login" type="text" ng-model="login.user.email" placeholder="Введите свой логин">
+                            </div>
+                            <div class="item">
+                                <label for="name">Пароль:</label>
+                                <input id="name" type="text" ng-model="login.user.password" placeholder="Введите свой пароль">
+                            </div>
+                            <div class="item enter">
+                                <a href="#" class="forgot">Забыли пароль?</a>
+                                <button ng-click="login.auth()" class="enter">ВОЙТИ</button>
+                            </div>
+                        </form>
+                        <div class="networks">
+                            <span>Войти через:</span>
+                            <ul>
+                                <li><a href="#" class="facebook">facebook</a></li>
+                                <li><a href="#" class="twitter">twitter</a></li>
+                                <li><a href="#" class="vkontakte">vkontakte</a></li>
+                                <li><a href="#" class="google">google</a></li>
+                            </ul>
+                        </div>
+                        <div class="registration-type">
+                            <p>регистрация</p>
+                            <div class="wrapper">
+                                <a ng-href="registration-user" class="pull-left">пользователя</a>
+                                <a ng-href="registration-restaurant" class="pull-right">ресторана</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <footer-component></footer-component>
+</div>

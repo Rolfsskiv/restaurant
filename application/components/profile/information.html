@@ -1,0 +1,123 @@
+<div class="personal-user" id="my-profile" ng-init="profile.init()">
+    <head-component></head-component>
+    <head-menu name="name"></head-menu>
+    <div id="home-page">
+        <head-profile image="2"></head-profile>
+        <div class="content-user">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="hidden-xs">Ваш профайл</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <profile profile="1" route-name="profile.routeName"></profile>
+                    <div class="right-content">
+                        <h4>Редактирование</h4>
+                        <form ng-submit="profile.userUpdate()" class="personal-info">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-10  col-sm-10 col-xs-12 left-column">
+                                    <div class="item-holder">
+                                        <div class="item">
+                                            <label for="name">Ваше имя:</label>
+                                            <input ng-model="profile.user.name" id="name" type="text" placeholder="Введите свое имя" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Введите свое имя'">
+                                        </div>
+                                        <div class="item">
+                                            <label for="password">Пароль:</label>
+                                            <input ng-model="profile.user.password" id="password" type="password" placeholder="************" onfocus="this.placeholder = ''" onblur="this.placeholder = '************'">
+                                        </div>
+                                        <div class="item">
+                                            <label for="password-repeat">Повторите пароль:</label>
+                                            <input ng-model="profile.user.password_confirmation" id="password-repeat" type="password" placeholder="************" onfocus="this.placeholder = ''" onblur="this.placeholder = '************'">
+                                        </div>
+                                        <div class="item">
+                                            <label for="email">E-Mail:</label>
+                                            <input ng-model="profile.user.email" id="email" type="text" placeholder="Введите свой e-mail" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Введите свой e-mail'">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-10 col-sm-10 col-xs-12 ">
+                                    <div class="item-holder">
+                                        <div class="item select-place">
+                                            <label for="country">Страна:</label>
+                                            <select selectpicker ng-model="profile.user.country_id" class="form-control country selectpicker hidden-xs bs-select-hidden">
+                                                <option>Выберите страну</option>
+                                                <option>Россия</option>
+                                                <option>Украина</option>
+                                                <option>Беларусь</option>
+                                                <option>Чехия</option>
+                                                <option>Венгрия</option>
+                                                <option>Словакия</option>
+                                                <option>Турция</option>
+                                                <option>Грузия</option>
+                                            </select>
+                                        </div>
+                                        <div class="item select-place">
+                                            <label for="city">Ваш город:</label>
+                                            <select selectpicker ng-model="profile.user.city_id" class="form-control city selectpicker hidden-xs bs-select-hidden">
+                                                <option>Выберите город</option>
+                                                <option>Киев</option>
+                                                <option>Одесса</option>
+                                                <option>Харьков</option>
+                                                <option>Донецк</option>
+                                                <option>Минск</option>
+                                                <option>Москва</option>
+                                                <option>Санкт-Петербург</option>
+                                            </select>
+                                        </div>
+                                        <div class="item">
+                                            <label for="phone">Телефон:</label>
+                                            <input ng-model="profile.user.phone" id="phone" type="text" placeholder="Введите свой телефон" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Введите свой телефон'">
+                                        </div>
+                                        <div class="item">
+                                            <label>Фото:</label>
+                                            <button type="button" data-toggle="modal" data-target=".download-photo-modal" class="change-foto ">ИЗМЕНИТЬ ФОТО</button>
+                                            <!--<a href="modal-download-photo.html" class="visible-xs change-foto">ИЗМЕНИТЬ ФОТО</a>-->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-sm-10 col-xs-12">
+                                    <button type="submit" class="find">СОХРАНИТЬ</button>
+                                    <button type="reset" class="find">ОТМЕНА</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer-component></footer-component>
+</div>
+
+<div class="modal fade download-photo-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content filters">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+            <h3>Загрузка фотографии</h3>
+            <p>Вы можете загрузить изображение в формате JPG, GIF или PNG.</p>
+            <input type="file" id="fileInput"/>
+            <!--<button class="modal-change-foto" data-toggle="modal" data-dismiss="modal" aria-hidden="true" data-target=".download-photo-modal-2">Загрузить фото</button>-->
+        </div>
+    </div>
+</div>
+<div class="modal fade download-photo-modal-2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content filters">
+            <form ng-submit="profile.saveImage()">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h3>Фотография на Вашей странице</h3>
+                <p>Выбранная область будет показываться на Вашей странице. <br>
+                    Если изображение ориентировано неправильно, фотографию можно повернуть.
+                </p>
+                <div class="cropArea">
+                    <img-crop area-type="square" image="profile.myImage" result-image="profile.myCroppedImage"></img-crop>
+                </div>
+                <button type="submit">сохранить</button>
+                <button type="reset" class="cansel" data-dismiss="modal">отмена</button>
+            </form>
+        </div>
+    </div>
+</div>

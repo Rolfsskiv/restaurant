@@ -1,0 +1,615 @@
+<div id="cooking-boss" class="features-block-wrapper" ng-init="cook.init()" ng-cloak>
+    <head-compoent></head-compoent>
+    <div class="bottom-menu">
+        <div class="collapse navbar-collapse menu-navigation">
+            <div class="close-menu"></div>
+            <button type="button" class="menu-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <ul class="nav navbar-nav">
+                <li><a href="restaurants">РЕСТОРАНЫ</a></li>
+                <li><a href="delivery">ДОСТАВКА ЕДЫ</a></li>
+                <li><a href="complaints">КНИГА ЖАЛОБ И ПРЕДЛОЖЕНИЙ </a></li>
+                <li><a href="dinner">ОБЕДЫ</a></li>
+                <li><a href="special-proposal">СПЕЦПРЕДЛОЖЕНИЯ</a></li>
+                <li class="hide-item"><a href="cooking-boss">БЛЮДО ОТ ШЕФ ПОВАРА</a></li>
+                <li class="hide-item"><a href="top50">ТОП 50</a></li>
+            </ul>
+            <ul class="navbar-nav mobile-show">
+                <li><a href="cooking-boss">БЛЮДО ОТ ШЕФ ПОВАРА</a></li>
+                <li><a href="top50">ТОП 50</a></li>
+            </ul>
+        </div>
+        <h2>Лучшие рецепты от шеф-поваров, специально для Вас!</h2>
+    </div>
+    <div id="home-page">
+        <div class="restaurants-block">
+            <div class="container hidden-xs">
+                <div class="breadcrumbs">
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="cooking-boss" class="current">Блюдо от Шеф повара</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mobile-holder visible-xs">
+                <div class="breadcrumbs">
+                    <ul>
+                        <li><a href="index">Главная</a></li>
+                        <li><a href="cooking-boss" class="current">Блюдо от Шеф повара</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown drop-option">
+                    <h3>БЛЮДО ОТ ШЕФА</h3>
+                    <a data-toggle="dropdown" href="#"></a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                        <div class="menu-two">
+                            <li><a href="restaurants">РЕСТОРАНЫ</a></li>
+                            <li><a href="delivery">ДОСТАВКА ЕДЫ</a></li>
+                            <li><a href="complaints">КНИГА ЖАЛОБ И ПРЕДЛОЖЕНИЙ </a></li>
+                            <li><a href="dinner">ОБЕДЫ</a></li>
+                            <li><a href="special-proposal">СПЕЦПРЕДЛОЖЕНИЯ</a></li>
+                            <li><a href="cooking-boss">БЛЮДО ОТ ШЕФ ПОВАРА</a></li>
+                            <li><a href="top50">ТОП 50</a></li>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+            <div class="container">
+                <div class="wrapper">
+                    <h3 class="hidden-xs">БЛЮДО ОТ ШЕФ ПОВАРА</h3>
+                </div>
+            </div>
+            <div ng-repeat="dish in cook.data" emit-last-repeater-element class="container">
+                <div class="row top-content">
+                    <div class="col-md-4 col-sm-12 hidden-sm hidden-xs">
+                        <div class="profile-cook">
+                            <div class="wrapper">
+                                <img src="{{dish.CookFoto}}" alt="{{dish.dinnerName}}">
+                                <div class="information-cook">
+                                    <div class="name">{{dish.name}}</div>
+                                    <div class="position">Шеф-повар</div>
+                                    <div class="restaurant">Ресторан: {{dish.restaurant.name}}</div>
+                                </div>
+                            </div>
+                            <div class="cook-quote">
+                                <p>“{{dish.quote}}”</p>
+                                <span>{{dish.name}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8 col-sm-12">
+                        <div class="cook-dishes-slider">
+                            <div id="amazingslider-wrapper-1"
+                                 style="display:block;position:relative;max-width:100%;padding-left:0px; padding-right:150px;margin:0px auto 0px;">
+                                <div id="amazingslider-1"
+                                     style="display: block; position: relative; margin: 0px auto; width: 600px; height: 444px;">
+                                    <ul class="amazingslider-slides" style="display:none;">
+                                        <li ng-repeat="image in dish.images">
+                                            <img src="{{image}}" data-description="“Тартар из тунца”">
+                                        </li>
+
+                                    </ul>
+                                    <ul class="amazingslider-thumbnails" style="display:none;">
+                                        <li ng-repeat="image in dish.images">
+                                            <img src="{{image}}" data-description="“Тартар из тунца”">
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row visible-sm visible-xs">
+
+                    <div class="col-sm-6 hidden-xs">
+                        <div class="dishes-structure consist">
+                            <h4>Cостав</h4>
+                            <p>{{dish.consist}}</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="profile-cook">
+                            <div class="wrapper">
+                                <img src="{{dish.image}}" alt="cook-foto-1">
+                                <div class="information-cook">
+                                    <div class="name">{{dish.name}}</div>
+                                    <div class="position">Шеф-повар</div>
+                                    <div class="restaurant">Ресторан: {{dish.restaurant.name}}</div>
+                                </div>
+                            </div>
+                            <div class="cook-quote">
+                                <p>“{{dish.quote}}”</p>
+                                <span>{dish.name}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="dishes-structure">
+                    <div class="row">
+                        <div class="col-md-4 visible-xs">
+                            <h4>Cостав</h4>
+                            <p>{{dish.consist}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="dishes-structure">
+                    <div class="row">
+                        <div class="col-md-8 col-sm-12">
+                            <h4>Рецепт</h4>
+                            <p>{{dish.recipe}}</p>
+                        </div>
+                        <div class="col-md-4 hidden-sm hidden-xs">
+                            <h4>Cостав</h4>
+                            <p>{{dish.consist}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="dishes-structure description">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Описание</h4>
+                            <p>{{dish.dinnerDesc}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="complaints">
+                    <div class="complains-block">
+                        <button class="write-testimonial hidden-xs">НАПИСАТЬ ОТЗЫВ</button>
+                        <button class="write-comment">Комментарии (1)</button>
+                        <div class="networks other">
+                            <ul>
+                                <li><a href="#" class="facebook">facebook</a></li>
+                                <li><a href="#" class="twitter">twitter</a></li>
+                                <li><a href="#" class="vkontakte">vkontakte</a></li>
+                                <li><a href="#" class="google">google</a></li>
+                            </ul>
+                        </div>
+                        <div class="evaluation other hidden-xs">
+                            <a href="#" class="good">502</a>
+                            <a href="#" class="bad">32</a>
+                        </div>
+                    </div>
+                    <div class="complains-block visible-xs">
+                        <button class="write-testimonial">НАПИСАТЬ ОТЗЫВ</button>
+                        <div class="evaluation other">
+                            <a href="#" class="good">502</a>
+                            <a href="#" class="bad">32</a>
+                        </div>
+                    </div>
+                    <div class="write-recal" style="display: none;">
+                        <div class="answer-user-block ">
+                            <form action="">
+                                <textarea name="title" class="title">Заглавие</textarea>
+                                <textarea name="message" class="message-testimonial"></textarea>
+                                <div class="buttons">
+                                    <button type="button" class="add-foto" data-toggle="modal"
+                                            data-target=".download-photo-modal">
+                                        ДОБАВИТЬ ИЗОБРАЖЕНИЯ
+                                    </button>
+                                    <button type="submit">ДОБАВИТЬ</button>
+                                    <button type="reset" class="cansel">ОТМЕНА</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class=" item-topic-block">
+                        <div class="row row-eq-height item-topic">
+                            <div class="col-md-4 col-sm-5 col-lg-4 col-xs-12 hidden-xs">
+                                <div class="parameter">
+                                    <div class="row">
+                                        <div class="col-md-5 col-sm-6 col-xs-3">
+                                            <img src="img/user-photo1.jpg" alt="user-1" class="photo user">
+                                        </div>
+                                        <div class="col-md-7 col-sm-6 data-right">
+                                            <div class="number">2015-11-20 11:20:44</div>
+                                            <div class="name">Ирина <br>Константинова</div>
+                                            <div class="rate-user">Младший критик</div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-5 col-sm-6">
+                                            <a href="#" class="attendance">6 посещений</a>
+                                            <a href="#" class="order">2 заказа</a>
+                                        </div>
+                                        <div class="col-md-7 col-sm-6">
+                                            <a href="#" class="count-testimonial">4 отзыва</a>
+                                            <a href="#" class="thanks">1 благодарность</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8 col-sm-7 col-lg-8">
+                                <div class="wrapper-mobile-card">
+                                    <div class="mobile-profile visible-xs">
+                                        <img src="img/user-foto-1-xs.png" alt="user-foto-1">
+                                        <div class="parameter">
+                                            <div class="number">2015-11-20 11:20:44</div>
+                                            <div class="name">Ирина <br>Константинова</div>
+                                            <div class="rate-user">Младший критик</div>
+                                            <div class="features">
+                                                <a href="#" class="attendance">6 </a>
+                                                <a href="#" class="order">2 </a>
+                                                <a href="#" class="count-testimonial">4 </a>
+                                                <a href="#" class="thanks">1 </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="right-block">
+                                        <div class="text">
+                                            <a href="#">“Отзыв о оресторане Якитория”</a>
+                                            <div class="wrapper-text">
+                                                <p>При входе вам откроет двери калоритно одетый швейцар, где Вас сразу
+                                                    встретит приятной внешности хостесс, и любезно проводит к столу или
+                                                    же предложит подождать свободного места в "Зале ожидания". Более
+                                                    гостеприимного персонала,чем в кафе "Одесса"!</p>
+
+                                                <p>Вы не встретите ни в одном ресторане города! В этом я убедилась уже
+                                                    не единожды... </p>
+                                                <p>При входе вам откроет двери калоритно одетый швейцар, где Вас сразу
+                                                    встретит приятной внешности хостесс, и любезно проводит к столу или
+                                                    же предложит подождать свободного места в "Зале ожидания". Более
+                                                    гостеприимного персонала,чем в кафе "Одесса"!</p>
+                                            </div>
+                                            <button class="read-all hidden-lg">Читать далее...</button>
+                                            <button class="turn hidden-lg">Свернуть</button>
+                                        </div>
+                                        <div class="function-user-wrapper">
+                                            <div class="function-user desktop visible-sm visible-md">
+                                                <div class="networks">
+                                                    <ul>
+                                                        <li><a href="#" class="facebook">facebook</a></li>
+                                                        <li><a href="#" class="twitter">twitter</a></li>
+                                                        <li><a href="#" class="vkontakte">vkontakte</a></li>
+                                                        <li><a href="#" class="google">google</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="evaluation">
+                                                    <a href="#" class="good">502</a>
+                                                    <a href="#" class="bad">32</a>
+                                                </div>
+                                            </div>
+                                            <div class="function-user">
+                                                <button class="read-more hidden-xs">Читать полностью</button>
+                                                <button class="write-comment">Комментарии(1)</button>
+                                                <button class="ask">Ответить</button>
+                                                <div class="networks hidden-sm hidden-md">
+                                                    <ul>
+                                                        <li><a href="#" class="facebook">facebook</a></li>
+                                                        <li><a href="#" class="twitter">twitter</a></li>
+                                                        <li><a href="#" class="vkontakte">vkontakte</a></li>
+                                                        <li><a href="#" class="google">google</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="evaluation hidden-sm hidden-md">
+                                                    <a href="#" class="good">502</a>
+                                                    <a href="#" class="bad">32</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item-topic-block">
+                        <div class="row">
+                            <div class="col-md-11 col-md-offset-1 col-sm-11 col-sm-offset-1">
+                                <div class="item-topic answer">
+                                    <div class="row row-eq-height">
+                                        <div class="col-md-4 col-sm-5 col-lg-4 hidden-xs">
+                                            <div class="parameter">
+                                                <div class="row">
+                                                    <div class="col-md-5 col-sm-5">
+                                                        <img src="img/user-photo1.jpg" alt="user-1" class="photo user">
+                                                    </div>
+                                                    <div class="col-md-7 col-sm-7 ">
+                                                        <div class="wrapper">
+                                                            <div class="number">2015-11-20 11:20:44</div>
+                                                            <div class="name">Ирина <br>Константинова</div>
+                                                            <div class="rate-user">Младший критик</div>
+                                                        </div>
+                                                        <a href="#" class="attendance">6</a>
+                                                        <a href="#" class="order">2</a>
+                                                        <a href="#" class="count-testimonial">4</a>
+                                                        <a href="#" class="thanks">1</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8 col-sm-7 col-lg-8">
+                                            <div class="wrapper-mobile-card">
+                                                <div class="mobile-profile visible-xs">
+                                                    <img src="img/user-foto-1-xs.png" alt="user-foto-1">
+                                                    <div class="parameter">
+                                                        <div class="number">2015-11-20 11:20:44</div>
+                                                        <div class="name">Ирина <br>Константинова</div>
+                                                        <div class="rate-user">Младший критик</div>
+                                                        <div class="features">
+                                                            <a href="#" class="attendance">6 </a>
+                                                            <a href="#" class="order">2 </a>
+                                                            <a href="#" class="count-testimonial">4 </a>
+                                                            <a href="#" class="thanks">1 </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="right-block">
+                                                    <div class="text">
+                                                        <a href="#">Шеф-итальянец</a>
+                                                        <div class="wrapper-text-answer">
+                                                            <p>Anna Anna, При входе вам откроет двери калоритно одетый
+                                                                швейцар, где Вас сразу встретит приятной внешности
+                                                                хостесс, и любезно проводит к столу или же предложит
+                                                                подождать.</p>
+                                                            <p>Anna Anna, При входе вам откроет двери калоритно одетый
+                                                                швейцар, где Вас сразу встретит приятной внешности
+                                                                хостесс, и любезно проводит к столу или же предложит
+                                                                подождать.</p>
+                                                        </div>
+                                                        <button class="read-all">Читать далее...</button>
+                                                        <button class="turn hidden-lg">Свернуть</button>
+                                                    </div>
+                                                    <div class="function-user">
+                                                        <button class="ask">Ответить</button>
+                                                        <div class="networks">
+                                                            <ul>
+                                                                <li><a href="#" class="facebook">facebook</a></li>
+                                                                <li><a href="#" class="twitter">twitter</a></li>
+                                                                <li><a href="#" class="vkontakte">vkontakte</a></li>
+                                                                <li><a href="#" class="google">google</a></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="evaluation">
+                                                            <a href="#" class="good">502</a>
+                                                            <a href="#" class="bad">32</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" item-topic-block">
+                        <div class="row row-eq-height item-topic">
+                            <div class="col-md-4 col-sm-5 col-lg-4 col-xs-12 hidden-xs">
+                                <div class="parameter">
+                                    <div class="row">
+                                        <div class="col-md-5 col-sm-6 col-xs-3">
+                                            <img src="img/user-photo1.jpg" alt="user-1" class="photo user">
+                                        </div>
+                                        <div class="col-md-7 col-sm-6 data-right">
+                                            <div class="number">2015-11-20 11:20:44</div>
+                                            <div class="name">Ирина <br>Константинова</div>
+                                            <div class="rate-user">Младший критик</div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-5 col-sm-6">
+                                            <a href="#" class="attendance">6 посещений</a>
+                                            <a href="#" class="order">2 заказа</a>
+                                        </div>
+                                        <div class="col-md-7 col-sm-6">
+                                            <a href="#" class="count-testimonial">4 отзыва</a>
+                                            <a href="#" class="thanks">1 благодарность</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8 col-sm-7 col-lg-8">
+                                <div class="wrapper-mobile-card">
+                                    <div class="mobile-profile visible-xs">
+                                        <img src="img/user-foto-1-xs.png" alt="user-foto-1">
+                                        <div class="parameter">
+                                            <div class="number">2015-11-20 11:20:44</div>
+                                            <div class="name">Ирина <br>Константинова</div>
+                                            <div class="rate-user">Младший критик</div>
+                                            <div class="features">
+                                                <a href="#" class="attendance">6 </a>
+                                                <a href="#" class="order">2 </a>
+                                                <a href="#" class="count-testimonial">4 </a>
+                                                <a href="#" class="thanks">1 </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="right-block">
+                                        <div class="text">
+                                            <a href="#">“Отзыв о оресторане Якитория”</a>
+                                            <div class="wrapper-text">
+                                                <p>При входе вам откроет двери калоритно одетый швейцар, где Вас сразу
+                                                    встретит приятной внешности хостесс, и любезно проводит к столу или
+                                                    же предложит подождать свободного места в "Зале ожидания". Более
+                                                    гостеприимного персонала,чем в кафе "Одесса"!</p>
+
+                                                <p>Вы не встретите ни в одном ресторане города! В этом я убедилась уже
+                                                    не единожды... </p>
+                                                <p>При входе вам откроет двери калоритно одетый швейцар, где Вас сразу
+                                                    встретит приятной внешности хостесс, и любезно проводит к столу или
+                                                    же предложит подождать свободного места в "Зале ожидания". Более
+                                                    гостеприимного персонала,чем в кафе "Одесса"!</p>
+                                            </div>
+                                            <button class="read-all hidden-lg">Читать далее...</button>
+                                            <button class="turn hidden-lg">Свернуть</button>
+                                        </div>
+                                        <div class="function-user-wrapper">
+                                            <div class="function-user desktop visible-sm visible-md">
+                                                <div class="networks">
+                                                    <ul>
+                                                        <li><a href="#" class="facebook">facebook</a></li>
+                                                        <li><a href="#" class="twitter">twitter</a></li>
+                                                        <li><a href="#" class="vkontakte">vkontakte</a></li>
+                                                        <li><a href="#" class="google">google</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="evaluation">
+                                                    <a href="#" class="good">502</a>
+                                                    <a href="#" class="bad">32</a>
+                                                </div>
+                                            </div>
+                                            <div class="function-user">
+                                                <button class="read-more hidden-xs">Читать полностью</button>
+                                                <button class="write-comment">Комментарии(1)</button>
+                                                <button class="ask">Ответить</button>
+                                                <div class="networks hidden-sm hidden-md">
+                                                    <ul>
+                                                        <li><a href="#" class="facebook">facebook</a></li>
+                                                        <li><a href="#" class="twitter">twitter</a></li>
+                                                        <li><a href="#" class="vkontakte">vkontakte</a></li>
+                                                        <li><a href="#" class="google">google</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="evaluation hidden-sm hidden-md">
+                                                    <a href="#" class="good">502</a>
+                                                    <a href="#" class="bad">32</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item-topic-block">
+                        <div class="row">
+                            <div class="col-md-11 col-md-offset-1 col-sm-11 col-sm-offset-1">
+                                <div class="item-topic answer">
+                                    <div class="row row-eq-height">
+                                        <div class="col-md-4 col-sm-5 col-lg-4 hidden-xs">
+                                            <div class="parameter">
+                                                <div class="row">
+                                                    <div class="col-md-5 col-sm-5">
+                                                        <img src="img/user-photo1.jpg" alt="user-1" class="photo user">
+                                                    </div>
+                                                    <div class="col-md-7 col-sm-7 ">
+                                                        <div class="wrapper">
+                                                            <div class="number">2015-11-20 11:20:44</div>
+                                                            <div class="name">Ирина <br>Константинова</div>
+                                                            <div class="rate-user">Младший критик</div>
+                                                        </div>
+                                                        <a href="#" class="attendance">6</a>
+                                                        <a href="#" class="order">2</a>
+                                                        <a href="#" class="count-testimonial">4</a>
+                                                        <a href="#" class="thanks">1</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8 col-sm-7 col-lg-8">
+                                            <div class="wrapper-mobile-card">
+                                                <div class="mobile-profile visible-xs">
+                                                    <img src="img/user-foto-1-xs.png" alt="user-foto-1">
+                                                    <div class="parameter">
+                                                        <div class="number">2015-11-20 11:20:44</div>
+                                                        <div class="name">Ирина <br>Константинова</div>
+                                                        <div class="rate-user">Младший критик</div>
+                                                        <div class="features">
+                                                            <a href="#" class="attendance">6 </a>
+                                                            <a href="#" class="order">2 </a>
+                                                            <a href="#" class="count-testimonial">4 </a>
+                                                            <a href="#" class="thanks">1 </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="right-block">
+                                                    <div class="text">
+                                                        <a href="#">Шеф-итальянец</a>
+                                                        <div class="wrapper-text-answer">
+                                                            <p>Anna Anna, При входе вам откроет двери калоритно одетый
+                                                                швейцар, где Вас сразу встретит приятной внешности
+                                                                хостесс, и любезно проводит к столу или же предложит
+                                                                подождать.</p>
+                                                            <p>Anna Anna, При входе вам откроет двери калоритно одетый
+                                                                швейцар, где Вас сразу встретит приятной внешности
+                                                                хостесс, и любезно проводит к столу или же предложит
+                                                                подождать.</p>
+                                                        </div>
+                                                        <button class="read-all">Читать далее...</button>
+                                                        <button class="turn hidden-lg">Свернуть</button>
+                                                    </div>
+                                                    <div class="function-user">
+                                                        <button class="ask">Ответить</button>
+                                                        <div class="networks">
+                                                            <ul>
+                                                                <li><a href="#" class="facebook">facebook</a></li>
+                                                                <li><a href="#" class="twitter">twitter</a></li>
+                                                                <li><a href="#" class="vkontakte">vkontakte</a></li>
+                                                                <li><a href="#" class="google">google</a></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="evaluation">
+                                                            <a href="#" class="good">502</a>
+                                                            <a href="#" class="bad">32</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 text-center">
+            <button class="show-more"><i class="fa fa-chevron-down"></i>ПОКАЗАТЬ ВСЕ</button>
+        </div>
+    </div>
+    <div class="answer-user-block-show">
+        <div class="col-md-11 col-md-offset-1 answer-user-block">
+            <form action="">
+                <textarea name="title" class="title">Заглавие</textarea>
+                <textarea name="message" class="message" style="color: rgb(77, 104, 143);"></textarea>
+                <div class="buttons">
+                    <button class="add-foto">
+                        ДОБАВИТЬ ИЗОБРАЖЕНИЯ
+                    </button>
+                    <button type="submit">ДОБАВИТЬ</button>
+                    <button type="reset" class="cansel">ОТМЕНА</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade download-photo-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content filters">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+            <h3>Загрузка фотографии</h3>
+            <p>Вы можете загрузить изображение в формате JPG, GIF или PNG.</p>
+            <input type="file" id="fileInput"/>
+            <!--<button class="modal-change-foto" data-toggle="modal" data-dismiss="modal" aria-hidden="true" data-target=".download-photo-modal-2">Загрузить фото</button>-->
+        </div>
+    </div>
+</div>
+<div class="modal fade download-photo-modal-2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content filters">
+            <form ng-submit="cook.saveImage()">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h3>Фотография на Вашей странице</h3>
+                <p>Выбранная область будет показываться на Вашей странице. <br>
+                    Если изображение ориентировано неправильно, фотографию можно повернуть.
+                </p>
+                <div class="cropArea">
+                    <img-crop area-type="square" image="cook.myImage" result-image="cook.myCroppedImage"></img-crop>
+                </div>
+                <button type="submit">сохранить</button>
+                <button type="reset" class="cansel" data-dismiss="modal">отмена</button>
+            </form>
+        </div>
+    </div>
+</div>

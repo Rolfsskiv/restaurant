@@ -1,0 +1,60 @@
+<div class="personal-user" id="my-profile" ng-init="profile.init()">
+    <head-component></head-component>
+    <head-menu name="name"></head-menu>
+    <div id="home-page">
+        <head-profile image="2"></head-profile>
+        <div class="content-user">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="hidden-xs">Ваш профайл</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <profile profile="1" route-name="profile.routeName"></profile>
+                    <div class="right-content">
+                        <div class="order-food-holder">
+                            <div class="object-restaurant">
+                                <img src="img/logo-restaurant.png" alt="logo-restaurant">
+                                <a href="#" class="name">argentina GRILL</a>
+                                <button class="problem visible-lg">ПРОБЛЕМЫ</button>
+                                <button class="order-recieve visible-lg">ЗАКАЗ ПОЛУЧЕН</button>
+                                <div class="data-order hidden-lg">21.02.2016 в 19:00</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5 col-sm-12">
+                                    <div class="order-information">
+                                        <h5>заказ еды:</h5>
+                                        <p><span>Тел:</span>  3725107468</p>
+                                        <p><span>Адрес:</span>  Punane 81</p>
+                                        <p><span>Информация:</span>  123456789</p>
+                                        <p><span>Доставка ко времени:</span>  14 : 00</p>
+                                        <p><span>Доставка:</span>  Курьерская доставка (платно)</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-7 col-sm-12">
+                                    <div class="menu-content">
+                                        <h5>Содержание:</h5>
+                                        <p>1.  <span>2 шт  Авокадо рол </span><strong>Цена: 5 EUR</strong></p>
+                                        <p>2.  <span>1 шт  Авокадо рол </span><strong>Цена: 5 EUR</strong></p>
+                                        <p>3.  <span>2 шт  Авокадо рол </span><strong>Цена: 5 EUR</strong></p>
+                                        <p>4.  <span>1 шт  Авокадо рол </span><strong>Цена: 5 EUR</strong></p>
+                                        <div class="total-sum">
+                                            <p><span>ИТОГО:</span>  50 EUR</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="buttons-block">
+                                <button class="order-recieve hidden-lg">ЗАКАЗ ПОЛУЧЕН</button>
+                                <button class="problem hidden-lg">ПРОБЛЕМЫ</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer-component></footer-component>
+</div>

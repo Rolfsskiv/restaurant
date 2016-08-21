@@ -1,0 +1,125 @@
+<div id="special-proposal-card" class="features-block-wrapper" ng-init="special.init()">
+    <head-component></head-component>
+    <div class="bottom-menu">
+        <div class="collapse navbar-collapse menu-navigation">
+            <div class="close-menu"></div>
+            <button type="button" class="menu-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <ul class="nav navbar-nav">
+                <li><a href="restaurants">РЕСТОРАНЫ</a></li>
+                <li><a href="delivery">ДОСТАВКА ЕДЫ</a></li>
+                <li><a href="complaints">КНИГА ЖАЛОБ И ПРЕДЛОЖЕНИЙ </a></li>
+                <li><a href="dinner">ОБЕДЫ</a></li>
+                <li><a href="special-proposal">СПЕЦПРЕДЛОЖЕНИЯ</a></li>
+                <li class="hide-item"><a href="cooking-boss">БЛЮДО ОТ ШЕФ ПОВАРА</a></li>
+                <li class="hide-item"><a href="top50">ТОП 50</a></li>
+            </ul>
+            <ul class="navbar-nav mobile-show">
+                <li><a href="cooking-boss">БЛЮДО ОТ ШЕФ ПОВАРА</a></li>
+                <li><a href="top50">ТОП 50</a></li>
+            </ul>
+        </div>
+        <h2>Ресторан {{special.special.restaurant.name}}</h2>
+    </div>
+    <div id="home-page">
+        <div class="restaurants-block">
+            <div class="container hidden-xs">
+                <div class="breadcrumbs">
+                    <ul>
+                        <li><a href="index">Главная</a></li>
+                        <li><a href="special-proposal">Спецпредложения</a></li>
+                        <li><a href="special-proposal-card" class="current">Скидка 20% на итальянскую кухню</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mobile-holder visible-xs">
+                <div class="breadcrumbs">
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="special-proposal">Спецпредложения</a></li>
+                        <li><a href="special-proposal-card" class="current">Скидка 20% на итальянскую кухню</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown drop-option">
+                    <h3>СПЕЦПРЕДЛОЖЕНИЯ</h3>
+                    <a data-toggle="dropdown" href="#"></a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                        <div class="menu-two">
+                            <li><a href="restaurants">РЕСТОРАНЫ</a></li>
+                            <li><a href="delivery">ДОСТАВКА ЕДЫ</a></li>
+                            <li><a href="complaints">КНИГА ЖАЛОБ И ПРЕДЛОЖЕНИЙ </a></li>
+                            <li><a href="dinner">ОБЕДЫ</a></li>
+                            <li><a href="special-proposal">СПЕЦПРЕДЛОЖЕНИЯ</a></li>
+                            <li><a href="cooking-boss">БЛЮДО ОТ ШЕФ ПОВАРА</a></li>
+                            <li><a href="top50">ТОП 50</a></li>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+            <div class="special-proposal">
+                <div class="container">
+                    <strong class="action visible-xs">{{special.special.name}}</strong>
+                    <div class="wrapper">
+                        <h3 class="hidden-xs">{{special.special.name}}</h3>
+                        <span class="count-view visible-lg">Просмотрено: 56</span>
+                    </div>
+                    <div class="row-eq-height">
+                        <div class="foto-dishes" parse-style
+                             ng-style="{background: 'url({{special.special.restaurant.image}}) no-repeat center center', 'background-size': 'cover;'}">
+                            <div class=""></div>
+                        </div>
+
+                        <div class="features">
+                            <div class="sale">Акция действует: с {{special.special.time_start}} до
+                                {{special.special.time_end}}
+                            </div>
+                            <h5>{{special.special.restaurant.name}}</h5>
+                            <a href="#" class="address">{{special.special.restaurant.address}}</a>
+                            <p class="visible-lg">
+                                {{special.special.brief}}
+                            </p>
+                            <div class="networks other">
+                                <ul>
+                                    <li><a href="#" class="facebook">facebook</a></li>
+                                    <li><a href="#" class="twitter">twitter</a></li>
+                                    <li><a href="#" class="vkontakte">vkontakte</a></li>
+                                    <li><a href="#" class="google">google</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="additional-description">
+                                <h4>ДОПОЛНИТЕЛЬНОЕ ОПИСАНИЕ</h4>
+                                <p class="visible-lg">{{special.special.desc}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="photo-gallery ">
+                                <h2>ФОТОГАЛЕРЕЯ</h2>
+                                <div ng-if="special.special.images.length > 0" class="responsive slick-initialized slick-slider">
+                                    <slick slides-to-show="3" responsive="special.slickConfig.responsive"
+                                           settings="special.slickConfig">
+                                        <div ng-repeat="image in special.special.images track by $index" class="restaurant-menu-block slick-slide slick-active"
+                                             data-slick-index="{{$index}}" aria-hidden="false" style="width: 342px;">
+                                            <div class="restaurant-menu">
+                                                <img ng-src="{{image}}" alt="restaurants-menu">
+                                            </div>
+                                        </div>
+                                    </slick>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

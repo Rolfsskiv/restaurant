@@ -1,0 +1,91 @@
+<div id="delivery-card" class="features-block-wrapper modal-static" ng-init="dinner.getCurrent()">
+    <<head-component></head-component>
+    <div class="bottom-menu">
+        <div class="collapse navbar-collapse menu-navigation">
+            <div class="close-menu"></div>
+            <button type="button" class="menu-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <ul class="nav navbar-nav">
+                <li><a href="restaurants">РЕСТОРАНЫ</a></li>
+                <li><a href="delivery">ДОСТАВКА ЕДЫ</a></li>
+                <li><a href="complaints">КНИГА ЖАЛОБ И ПРЕДЛОЖЕНИЙ </a></li>
+                <li><a href="dinner">ОБЕДЫ</a></li>
+                <li><a href="special-proposal">СПЕЦПРЕДЛОЖЕНИЯ</a></li>
+                <li class="hide-item"><a href="cooking-boss">БЛЮДО ОТ ШЕФ ПОВАРА</a></li>
+                <li class="hide-item"><a href="top50">ТОП 50</a></li>
+            </ul>
+            <ul class="navbar-nav mobile-show">
+                <li><a href="cooking-boss">БЛЮДО ОТ ШЕФ ПОВАРА</a></li>
+                <li><a href="top50">ТОП 50</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="home-page">
+        <div class="restaurants-block">
+
+            <div class="mobile-holder visible-xs">
+                <div class="breadcrumbs">
+                    <ul>
+                        <li><a href="index">Главная</a></li>
+                        <li><a href="#" class="current"></a></li>
+                    </ul>
+                </div>
+                <div class="dropdown drop-option">
+                    <h3>ОБЕД ОТ РЕСТОРАНА</h3>
+                    <a data-toggle="dropdown" href="#" aria-expanded="false"></a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                        <div class="menu-two">
+                            <li><a href="restaurants">РЕСТОРАНЫ</a></li>
+                            <li><a href="delivery">ДОСТАВКА ЕДЫ</a></li>
+                            <li><a href="complaints">КНИГА ЖАЛОБ И ПРЕДЛОЖЕНИЙ </a></li>
+                            <li><a href="dinner">ОБЕДЫ</a></li>
+                            <li><a href="special-proposal">СПЕЦПРЕДЛОЖЕНИЯ</a></li>
+                            <li><a href="cooking-boss">БЛЮДО ОТ ШЕФ ПОВАРА</a></li>
+                            <li><a href="top50">ТОП 50</a></li>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="modal-restaurant-menu">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content filters">
+                        <div class="img-holder" style="background:url('img/restaurants-menu-3.jpg') no-repeat center center; background-size: cover;">
+                            <div class="price">{{dinner.dinner.restaurant.min_price}} - {{dinner.dinner.restaurant.max_price}} €</div>
+                            <div class="img-wrapper"></div>
+
+                        </div>
+                        <div class="text-holder">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                            <div class="wrapper">
+                                <h4>{{dinner.dinner.restaurant.name}}</h4>
+                                <div class="data">
+                                    <p>22 ЯНВ СБ</p>
+                                    <div class="time">Время: {{dinner.dinner.time_start}} - {{dinner.dinner.time_end}}</div>
+                                </div>
+                            </div>
+                            <div class="list-menu">
+                                <p>В меню</p>
+                                <ul>
+                                    <li ng-repeat="item in dinner.dinner.consist track by $index">{{$index + 1}}. {{item.name}}
+                                        <span>Цена: {{item.price}} €</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="price-block-common">
+                                <span>Цена за комплесный обед: <strong>{{dinner.dinner.price}} €</strong></span>
+                                <a ng-click="dinner.closeModal()" ng-href="dinner">ЗАКРЫТЬ</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer-component></footer-component>
+</div>

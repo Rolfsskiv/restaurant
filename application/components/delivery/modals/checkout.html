@@ -1,0 +1,145 @@
+<div class="modal-content filters">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+        <div class="title-filter">
+            <h5>Оформление заказа</h5>
+        </div>
+    </div>
+    <div class="modal-info">
+        <form ng-submit="false">
+            <div class="delivery-check">
+                <h4>Доставка</h4>
+                <label for="courier"><input type="radio" ng-model="order.order.type_delivery" ng-value="0" id="courier"
+                                            name="delivery" checked="checked">Курьерская доставка
+                    (платно)<span></span></label>
+                <label for="pickup"><input type="radio" ng-model="order.order.type_delivery" ng-value="1" id="pickup"
+                                           name="delivery">Самовывоз (бесплатно)<span></span></label>
+            </div>
+            <div class="contact">
+                <div class="left-column">
+                    <label for="name"><strong>Имя:</strong><input type="text" ng-model="order.order.name" id="name"
+                                                                  name="name"></label>
+                    <label for="phone"><strong>Контактный телефон:</strong><input type="text"
+                                                                                  ng-model="order.order.phone"
+                                                                                  id="phone" name="phone"></label>
+                    <label for="address"><strong>Адрес доставки:</strong><input type="text"
+                                                                                ng-model="order.order.address"
+                                                                                id="address" name="address"></label>
+                </div>
+                <div class="right-column">
+                    <label for="count-person">
+                        <strong>Количество персон:</strong>
+                        <div class="select-person">
+                            <select selectpicker ng-model="order.order.count_person" class="form-control bs-select-hidden">
+                                <option ng-repeat="countPerson in [2, 3, 4, 5, 6, 7, 8, 9]"
+                                        ng-selected="countPerson == order.order.count_person" value="{{countPerson}}">
+                                    {{countPerson}}
+                                </option>
+                            </select>
+                        </div>
+                    </label>
+                    <label for="address"><strong>Дополнительня <br> информация:</strong>
+                        <textarea
+                            ng-model="order.order.message" name="message" id="address"></textarea></label>
+                </div>
+            </div>
+            <div class="time-delivery hidden-xs">
+                <h4>Время доставки</h4>
+                <label for="fast" class="fast"><input type="radio" ng-model="order.order.speed" ng-value="0"
+                                                      name="time-delivery"
+                                                      id="fast" checked="checked">Как можно скорее<span></span></label>
+                <label for="bytime"><input type="radio" ng-model="order.order.speed" ng-value="1" name="time-delivery"
+                                           id="bytime">Доставка ко
+                    времени:<span></span></label>
+                <div class="select-oclock">
+                    <select selectpicker ng-model="order.order.time_from" class="oclock bs-select-hidden">
+                        <option value="11:00">11:00</option>
+                        <option value="11:30">11:30</option>
+                        <option value="12:00">12:00</option>
+                        <option value="12:30">12:30</option>
+                        <option value="13:00">13:00</option>
+                        <option value="13:30">13:30</option>
+                        <option value="13:30">14:00</option>
+                        <option value="13:30">14:30</option>
+                        <option value="13:30">15:00</option>
+                    </select>
+                </div>
+                <span class="dash">-</span>
+                <div class="select-oclock">
+                    <select selectpicker ng-model="order.order.time_to" class="oclock bs-select-hidden">
+                        <option value="11:00">11:00</option>
+                        <option value="11:30">11:30</option>
+                        <option value="12:00">12:00</option>
+                        <option value="12:30">12:30</option>
+                        <option value="13:00">13:00</option>
+                        <option value="13:30">13:30</option>
+                        <option value="13:30">14:00</option>
+                        <option value="13:30">14:30</option>
+                        <option value="13:30">15:00</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <div class="right-col visible-xs">
+            <span class="total">Сумма заказа: {{order.cart.getTotal(order.restaurantId)}} €</span>
+            <a ng-click="order.send()" href="confirm-number/{{order.restaurantId}}" class="checkout">ЗАКАЗАТЬ</a>
+        </div>
+        <div class="left-col">
+            <div class="gift">5</div>
+            <p>Стоимость без учета доставки</p>
+        </div>
+        <div class="right-col hidden-xs">
+            <span class="total hidden-sm"><span>ИТОГО:</span> {{order.cart.getTotal(order.restaurantId)}} eur</span>
+            <span class="total visible-sm">Сумма заказа: {{order.cart.getTotal(order.restaurantId)}} €</span>
+            <button ng-click="order.send()" class="checkout" data-dismiss="modal" aria-hidden="true" data-toggle="modal"
+                    data-target=".confirm-number">ЗАКАЗАТЬ
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modal-delivery uncorrect-number" tabindex="-3" role="dialog" aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content filters">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+            <div class="main-contant">
+                <div class="uncorrect-number-block">
+                    <h4>Введен неверный номер</h4>
+                    <button type="submit" class="agree" data-dismiss="modal" aria-hidden="true" data-toggle="modal"
+                            data-target=".successful-order">ok
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade modal-delivery successful-order2" tabindex="-3" role="dialog" aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content filters">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+            <div class="main-contant">
+                <div class="successful-order-block">
+                    <h3>вы успешно отправили заказ</h3>
+                    <p>В ближайшее время наш менеджер свяжеться с Вами по номеру:+7455655656 <a href="#"
+                                                                                                class="compose"></a> для
+                        подтверждения заказа. </p>
+                    <p class="bottom">Просмотреть заказ в <a href="my-profile" class="private-office">личном кабинете</a></p>
+                    <div class="modal-footer">
+                        <div class="left-column">
+                            <strong>получено бонусов</strong>
+                            <div class="gift">5</div>
+                        </div>
+                        <div class="right-column">
+                            <span>Обменять бонусы в</span>
+                            <a href="catalog-bonus" class="catalog-bonus">каталог бонусов</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

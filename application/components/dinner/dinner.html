@@ -1,0 +1,167 @@
+<div id="dinner" ng-init="dinner.init()">
+    <head-component></head-component>
+    <div class="bottom-menu">
+        <div class="collapse navbar-collapse menu-navigation">
+            <div class="close-menu"></div>
+            <button type="button" class="menu-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <ul class="nav navbar-nav">
+                <li><a href="dinners">РЕСТОРАНЫ</a></li>
+                <li><a href="delivery">ДОСТАВКА ЕДЫ</a></li>
+                <li><a href="complaints">КНИГА ЖАЛОБ И ПРЕДЛОЖЕНИЙ </a></li>
+                <li><a href="dinner">ОБЕДЫ</a></li>
+                <li><a href="special-proposal">СПЕЦПРЕДЛОЖЕНИЯ</a></li>
+                <li class="hide-item"><a href="cooking-boss">БЛЮДО ОТ ШЕФ ПОВАРА</a></li>
+                <li class="hide-item"><a href="top50">ТОП 50</a></li>
+            </ul>
+            <ul class="navbar-nav mobile-show">
+                <li><a href="cooking-boss">БЛЮДО ОТ ШЕФ ПОВАРА</a></li>
+                <li><a href="top50">ТОП 50</a></li>
+            </ul>
+        </div>
+        <h2>Комплексные обеды домой и в офис, быстро и удобно!</h2>
+    </div>
+    <div id="home-page">
+        <div class="dinners-block">
+            <div class="container hidden-xs">
+                <div class="breadcrumbs">
+                    <ul>
+                        <li><a href="index">Главная</a></li>
+                        <li><a href="dinner" class="current">Комплексные обеды</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mobile-holder visible-xs">
+                <div class="breadcrumbs">
+                    <ul>
+                        <li><a href="index">Главная</a></li>
+                        <li><a href="restaurants" class="current">Рестораны</a></li>
+
+                    </ul>
+                </div>
+                <div class="dropdown drop-option"><h3>ОБЕДЫ</h3>
+                    <a data-toggle="dropdown" href="#"></a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                        <div class="menu-two">
+                            <li><a href="dinners">РЕСТОРАНЫ</a></li>
+                            <li><a href="delivery">ДОСТАВКА ЕДЫ</a></li>
+                            <li><a href="complaints">КНИГА ЖАЛОБ И ПРЕДЛОЖЕНИЙ </a></li>
+                            <li><a href="dinner">ОБЕДЫ</a></li>
+                            <li><a href="special-proposal">СПЕЦПРЕДЛОЖЕНИЯ</a></li>
+                            <li><a href="cooking-boss">БЛЮДО ОТ ШЕФ ПОВАРА</a></li>
+                            <li><a href="top50">ТОП 50</a></li>
+                        </div>
+                    </ul>
+                </div>
+                <button class="search"></button>
+                <div class="search-block">
+                    <form action="">
+                        <input type="text" placeholder="Найти">
+                        <div class="close-menu"></div>
+                    </form>
+                </div>
+            </div>
+            <div class="container hidden-xs">
+                <h3>КОМПЛЕКСНЫЕ ОБЕДЫ</h3>
+                <div class="search-object">
+                    <a href="#" class="looking">
+                        <span>ПОКАЗАТЬ НА КАРТЕ</span>
+                    </a>
+                    <div class="search-content">
+                        <form action="">
+                            <input type="text" placeholder="Поиск ресторана">
+                        </form>
+                    </div>
+                </div>
+                <div class="choose-time ">
+                    <button class="onday">На день</button>
+                    <button class="onweek">На неделю</button>
+                    <input type="text" value="14-03-2016" id="datepicker"><label for="datepicker"></label>
+                </div>
+            </div>
+            <div class="food-in-office">
+                <div class="container">
+                    <div class="row">
+
+                        <div ng-repeat="din in dinner.dinners | startFrom:dinner.pagination.currentPage*dinner.pagination.pageSize | limitTo:dinner.pagination.pageSize track by $index" class="col-md-4 col-xs-12 col-md-lg-4 col-sm-6 ">
+                            <div class="restaurant-menu-block">
+                                <div class="restaurant-menu">
+                                    <div class="carousel-caption">
+                                        <div class="price">{{din.price}} €</div>
+                                        <div class="data">{{din.dinner_date | date}}</div>
+                                        <h4>{{din.restaurant.name}}</h4>
+                                        <div class="composed">
+                                            В меню: <span ng-repeat="item in din.consist track by $index">{{$index + 1}}. {{item.name}} </span>
+                                        </div>
+                                        <div class="time">Время: {{din.time_start}} - {{din.time_end}}</div>
+                                        <button class="see-more hidden-xs">Ознакомиться</button>
+                                        <a ng-href="modal-restaurant-menu" ng-click="dinner.goToModal($index)" class="see-more-mobile visible-xs">Ознакомиться</a>
+                                    </div>
+                                    <img src="{{din}}" alt="dinners-menu-3">
+                                </div>
+                            </div>
+                            <div class="modal fade modal-restaurant-menu">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content filters row row-eq-height">
+                                        <div class="col-md-6 col-sm-6 col-xc-12 img-holder" style="background:url('img/dinners-menu-3.jpg') no-repeat center center; background-size: cover;">
+                                            <div class="price">{{din.restaurant.min_price}} - {{din.restaurant.max_price}} €</div>
+                                            <div class="img-wrapper"></div>
+
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xc-12 text-holder">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                                            <div class="wrapper">
+                                                <h4>{{din.restaurant.name}}</h4>
+                                                <div class="data">
+                                                    <p>{{din.dinner_date | date}}</p>
+                                                    <div class="time">Время: {{din.time_start}} - {{din.time_end}}</div>
+                                                </div>
+                                            </div>
+                                            <div class="list-menu">
+                                                <p>В меню</p>
+                                                <ul>
+                                                    <li ng-repeat="item in din.consist track by $index">{{$index + 1}}. {{item.name}}
+                                                        <span>Цена: {{item.price}} €</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="price-block-common">
+                                                <span>Цена за комплесный обед: <strong>{{din.price}} €</strong></span>
+                                                <button type="button" data-dismiss="modal" aria-hidden="true">ЗАКРЫТЬ</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="page-block desctop">
+                    <ul>
+                        <li><button ng-disabled="dinner.pagination.currentPage == 0" ng-click="dinner.pagination.currentPage = dinner.pagination.currentPage-1" href="#" class="prev">НАЗАД</button></li>
+                        <li ng-repeat="page in dinner.pagination.na(dinner.pagination.numberOfPages()) | limitTo:4"><a href="#" ng-class="dinner.pagination.currentPage == page ? 'active-page' : 'sibling-page'" ng-click="dinner.pagination.currentPage=page">{{page + 1}}</a></li>
+                        <li><a href="#" class="other-page">...</a></li>
+                        <li><a href="#" class="last-page" ng-click="dinner.pagination.currentPage = dinner.pagination.getLastPage()">{{dinner.pagination.getLastPage() + 1}}</a></li>
+                        <li><button ng-disabled="dinner.pagination.currentPage >= dinner.dinners.length/dinner.pagination.pageSize - 1" ng-click="dinner.pagination.currentPage=dinner.pagination.currentPage+1" href="#" class="next">ВПЕРЕД</button></li>
+                    </ul>
+                </div>
+                <div class="page-block mobile">
+                    <ul>
+                        <li><a ng-disabled="dinner.pagination.currentPage == 0" ng-click="dinner.pagination.currentPage = dinner.pagination.currentPage-1" href="#" class="prev"></a></li>
+                        <li ng-repeat="page in dinner.pagination.na(dinner.pagination.numberOfPages()) | limitTo:4"><a href="#" ng-class="dinner.pagination.currentPage == page ? 'active-page' : 'sibling-page'" ng-click="dinner.pagination.currentPage = page">{{page + 1}}</a></li>
+                        <li><a href="#" class="other-page">...</a></li>
+                        <li><a href="#" class="last-page" ng-click="dinner.pagination.currentPage = dinner.pagination.getLastPage()">{{dinner.pagination.getLastPage() + 1}}</a></li>
+                        <li><button ng-disabled="dinner.pagination.currentPage >= dinner.dinners.length/dinner.pagination.pageSize - 1" ng-click="dinner.pagination.currentPage=dinner.pagination.currentPage+1" href="#" class="next"></button></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

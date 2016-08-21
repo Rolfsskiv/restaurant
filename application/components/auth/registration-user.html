@@ -1,0 +1,132 @@
+<div id="delivery-card" class="features-block-wrapper modal-static" ng-controller="RegistrationController as register">
+    <head-component></head-component>
+    <div class="bottom-menu">
+        <div class="collapse navbar-collapse menu-navigation">
+            <div class="close-menu"></div>
+            <button type="button" class="menu-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <ul class="nav navbar-nav">
+                <li><a href="restaurants">РЕСТОРАНЫ</a></li>
+                <li><a href="delivery">ДОСТАВКА ЕДЫ</a></li>
+                <li><a href="complaints">КНИГА ЖАЛОБ И ПРЕДЛОЖЕНИЙ </a></li>
+                <li><a href="dinner">ОБЕДЫ</a></li>
+                <li><a href="special-proposal">СПЕЦПРЕДЛОЖЕНИЯ</a></li>
+                <li class="hide-item"><a href="cooking-boss">БЛЮДО ОТ ШЕФ ПОВАРА</a></li>
+                <li class="hide-item"><a href="top50">ТОП 50</a></li>
+            </ul>
+            <ul class="navbar-nav mobile-show">
+                <li><a href="cooking-boss">БЛЮДО ОТ ШЕФ ПОВАРА</a></li>
+                <li><a href="top50">ТОП 50</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="home-page">
+        <div class="restaurants-block">
+
+            <div class="mobile-holder visible-xs">
+                <div class="breadcrumbs">
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="#" class="current"></a></li>
+                    </ul>
+                </div>
+                <div class="dropdown drop-option">
+                    <h3 class="registr-title">регистрация пользователя</h3>
+                    <a data-toggle="dropdown" href="#"></a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                        <div class="menu-two">
+                            <li><a href="restaurants">РЕСТОРАНЫ</a></li>
+                            <li><a href="delivery">ДОСТАВКА ЕДЫ</a></li>
+                            <li><a href="complaints">КНИГА ЖАЛОБ И ПРЕДЛОЖЕНИЙ </a></li>
+                            <li><a href="dinner">ОБЕДЫ</a></li>
+                            <li><a href="special-proposal">СПЕЦПРЕДЛОЖЕНИЯ</a></li>
+                            <li><a href="cooking-boss">БЛЮДО ОТ ШЕФ ПОВАРА</a></li>
+                            <li><a href="top50">ТОП 50</a></li>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="registration-modal">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content filters">
+                        <div class="networks">
+                            <span>Войти через:</span>
+                            <ul>
+                                <li><a href="#" class="facebook">facebook</a></li>
+                                <li><a href="#" class="twitter">twitter</a></li>
+                                <li><a href="#" class="vkontakte">vkontakte</a></li>
+                                <li><a href="#" class="google">google</a></li>
+                            </ul>
+                        </div>
+                        <form ng-init="register.init()" ng-submit="register.newUser()">
+                            <div class="item">
+                                <label for="login">Ваш логин:</label>
+                                <input id="login" type="text" ng-model="register.data.login" placeholder="Введите свой логин">
+                            </div>
+                            <input type="hidden" ng-model="register.data.user" ng-value="'user'">
+                            <div class="item">
+                                <label for="name">Ваше имя:</label>
+                                <input id="name" type="text" ng-model="register.data.name" placeholder="Введите свое имя">
+                            </div>
+                            <div class="item">
+                                <label for="password">Пароль:</label>
+                                <input id="password" type="password" ng-model="register.data.password" placeholder="************">
+                            </div>
+                            <div class="item">
+                                <label for="password-repeat">Повторите пароль:</label>
+                                <input id="password-repeat" type="password" ng-model="register.data.password_confirmation" placeholder="************">
+                            </div>
+                            <div class="item">
+                                <label for="email">E-Mail:</label>
+                                <input id="email" type="text" ng-model="register.data.email" placeholder="Введите свой e-mail">
+                            </div>
+                            <div class="item">
+                                <label for="country">Страна:</label>
+                                <select selectpicker data-change="{{register.countries}}" ng-model="register.data.country_id" class="form-control country selectpicker bs-select-hidden">
+                                    <option value="">Выберите страну</option>
+                                    <option ng-repeat="country in register.countries" value="{{country.id}}">
+                                        {{country.name}}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="item">
+                                <label for="city">Ваш город:</label>
+                                <select selectpicker data-change="{{register.cities}}" ng-model="register.data.city_id" class="form-control city selectpicker bs-select-hidden">
+                                    <option>Выберите город</option>
+                                    <option ng-repeat="city in register.cities" value="{{city.localization[0].id}}">
+                                        {{city.localization[0].value}}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="item">
+                                <label for="phone">Телефон:</label>
+                                <input id="phone" type="text" ng-model="register.data.email" placeholder="Введите свой телефон">
+                            </div>
+                            <div class="item">
+                                <label for="promo" class="promo">Промо-код:</label>
+                                <input id="promo" type="text" ng-model="register.data.promo" placeholder="">
+                            </div>
+                            <div class="conditions">
+                                <label for="conditions">Принимаю условия:
+                                    <input id="conditions" ng-model="register.data.uslovia" type="checkbox">
+                                    <span></span>
+                                </label>
+                                <a href="#">Пользовательского соглашения</a>
+                            </div>
+
+                            <button type="submit" class="find">ЗАРЕГИСТРИРОВАТЬСЯ </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <footer-component></footer-component>
+</div>

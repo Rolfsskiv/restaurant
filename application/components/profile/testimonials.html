@@ -1,0 +1,260 @@
+<div class="personal-user" id="my-profile" ng-init="profile.init()">
+    <head-component></head-component>
+    <head-menu name="name"></head-menu>
+    <div id="home-page">
+        <head-profile image="2"></head-profile>
+        <div class="content-user">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="hidden-xs">Ваш профайл</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <profile profile="1" route-name="profile.routeName"></profile>
+                    <div class="right-content">
+                        <h4>Оставьте отзывы:</h4>
+                        <div class="send-testimonial-block">
+                            <div class="testimonial-holder">
+                                <div class="wrapper-left">
+                                    <img src="img/restaruant-foto2.jpg" alt="restaruant-foto2">
+                                    <div class="info-restaurant">
+                                        <h5>Caravan Grill House</h5>
+                                        <div class="count-users hidden-xs">4 чел.</div>
+                                        <div class="day-visit hidden-xs">Дата: 10.02.2016</div>
+                                        <div class="time-visit hidden-xs">Время 17:00</div>
+                                        <div id="top50">
+                                            <div class="wrapper-block-star visible-xs">
+                                                <div class="block-stars">
+                                                    <div class="star active"></div>
+                                                    <div class="star active"></div>
+                                                    <div class="star active"></div>
+                                                    <div class="star"></div>
+                                                    <div class="star"></div>
+                                                </div>
+                                                <strong>- 5</strong>
+                                            </div>
+                                        </div>
+                                        <a href="#" class="visits visible-xs">5 отзывов</a>
+                                    </div>
+                                    <div class="features-restaurant hidden-xs" id="top50">
+                                        <div class="wrapper-block-star">
+                                            <div class="block-stars">
+                                                <div class="star active"></div>
+                                                <div class="star active"></div>
+                                                <div class="star active"></div>
+                                                <div class="star"></div>
+                                                <div class="star"></div>
+                                            </div>
+                                            <strong>- 5</strong>
+                                        </div>
+                                        <a href="#" class="visits hidden-xs">5 отзывов</a>
+                                    </div>
+
+                                </div>
+                                <div class="wrapper num1 visible-xs">
+                                    <div class="count-users pull-left">4 чел.</div>
+                                    <div class="day-visit pull-right">Дата: 10.02.2016</div>
+                                </div>
+                                <div class="wrapper visible-xs">
+                                    <div class="time-visit pull-left">Время 17:00</div>
+                                    <button class="my-complaints small pull-right">написать отзыв</button>
+                                </div>
+                                <button class="my-complaints small hidden-xs">написать отзыв</button>
+                            </div>
+                            <div id="restaurants-complaints">
+                                <div id="complaints">
+                                    <div class="answer-user-block ">
+                                        <form action="">
+                                            <div class="wrapper">
+                                                <div class="form-holder">
+                                                    <textarea ng-model="title" name="title" class="title"></textarea>
+                                                    <textarea ng-model="text" name="message" class="message-testimonial"></textarea>
+                                                </div>
+                                                <div class="common-rate">
+                                                    <div class="wrapper-block-star">
+                                                        <span>Общий</span>
+                                                        <div class="block-stars" ng-init="temp = 0">
+                                                            <div ng-repeat="star in [5, 4, 3, 2, 1]" class="star" ng-mouseenter="temp = star" ng-click="profile.rating.general = temp = star"
+                                                                 ng-class="star <= profile.rating.general ? 'active' : ''"></div>
+                                                        </div>
+                                                        <strong>- {{profile.rating.general}}</strong>
+                                                    </div>
+                                                    <div class="wrapper-block-star">
+                                                        <span>Интерьер</span>
+                                                        <div class="block-stars" ng-init="temp = 0">
+                                                            <div ng-repeat="star in [5, 4, 3, 2, 1]" class="star" ng-mouseenter="temp = star" ng-click="profile.rating.interior = temp = star"
+                                                                 ng-class="star <= profile.rating.interior ? 'active' : ''"></div>
+                                                        </div>
+                                                        <strong>- {{profile.rating.interior}}</strong>
+                                                    </div>
+                                                    <div class="wrapper-block-star">
+                                                        <span>Обслуживание</span>
+                                                        <div class="block-stars" ng-init="temp = 0">
+                                                            <div ng-repeat="star in [5, 4, 3, 2, 1]" class="star" ng-mouseenter="temp = star" ng-click="profile.rating.service = temp = star"
+                                                                 ng-class="star <= profile.rating.service ? 'active' : ''"></div>
+                                                        </div>
+                                                        <strong>- {{profile.rating.service}}</strong>
+                                                    </div>
+                                                    <div class="wrapper-block-star">
+                                                        <span>Блюда</span>
+                                                        <div class="block-stars" ng-init="temp = 0">
+                                                            <div ng-repeat="star in [5, 4, 3, 2, 1]" class="star" ng-mouseenter="temp = star" ng-click="profile.rating.dinner = temp = star"
+                                                                 ng-class="star <= profile.rating.dinner ? 'active' : ''"></div>
+                                                        </div>
+                                                        <strong>- {{profile.rating.dinner}}</strong>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="buttons">
+
+                                                <button type="submit" class="write-complaints">ОСТАВИТЬ ОТЗЫВ</button>
+
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h4>Ваши отзывы:</h4>
+                        <div class="send-testimonial-block">
+                            <div class="testimonial-holder">
+                                <div class="wrapper-left">
+                                    <img src="img/restaruant-foto2.jpg" alt="restaruant-foto2">
+                                    <div class="info-restaurant">
+                                        <h5>Caravan Grill House</h5>
+                                        <div class="count-users hidden-xs">4 чел.</div>
+                                        <div class="day-visit hidden-xs">Дата: 10.02.2016</div>
+                                        <div class="time-visit hidden-xs">Время 17:00</div>
+                                        <div id="top50">
+                                            <div class="wrapper-block-star visible-xs">
+                                                <div class="block-stars">
+                                                    <div class="star active"></div>
+                                                    <div class="star active"></div>
+                                                    <div class="star active"></div>
+                                                    <div class="star"></div>
+                                                    <div class="star"></div>
+                                                </div>
+                                                <strong>- 5</strong>
+                                            </div>
+                                        </div>
+                                        <a href="#" class="visits visible-xs">5 отзывов</a>
+                                    </div>
+                                    <div class="features-restaurant hidden-xs" id="top50">
+                                        <div class="wrapper-block-star">
+                                            <div class="block-stars">
+                                                <div class="star active"></div>
+                                                <div class="star active"></div>
+                                                <div class="star active"></div>
+                                                <div class="star"></div>
+                                                <div class="star"></div>
+                                            </div>
+                                            <strong>- 5</strong>
+                                        </div>
+                                        <a href="#" class="visits hidden-xs">5 отзывов</a>
+                                    </div>
+
+                                </div>
+                                <div class="wrapper num1 visible-xs">
+                                    <div class="count-users pull-left">4 чел.</div>
+                                    <div class="day-visit pull-right">Дата: 10.02.2016</div>
+                                </div>
+                                <div class="wrapper visible-xs">
+                                    <div class="time-visit pull-left">Время 17:00</div>
+                                    <button class="my-complaints pull-right">ваш отзыв</button>
+                                </div>
+                                <button class="my-complaints hidden-xs">ваш отзыв</button>
+                            </div>
+                            <div id="restaurants-complaints">
+                                <div id="complaints">
+                                    <div class="answer-user-block ">
+                                        <form action="">
+                                            <div class="wrapper">
+                                                <div class="form-holder">
+                                                    <textarea name="title" class="title"></textarea>
+                                                    <textarea name="message" class="message-testimonial"></textarea>
+                                                </div>
+                                                <div class="common-rate">
+                                                    <div class="wrapper-block-star">
+                                                        <span>Общий</span>
+                                                        <div class="block-stars">
+                                                            <div class="star"></div>
+                                                            <div class="star"></div>
+                                                            <div class="star"></div>
+                                                            <div class="star"></div>
+                                                            <div class="star"></div>
+                                                            <div class="star hide-stars"></div>
+                                                            <div class="star hide-stars"></div>
+                                                            <div class="star hide-stars"></div>
+                                                            <div class="star hide-stars"></div>
+                                                            <div class="star hide-stars"></div>
+                                                        </div>
+                                                        <strong>- 5</strong>
+                                                    </div>
+                                                    <div class="wrapper-block-star">
+                                                        <span>Интерьер</span>
+                                                        <div class="block-stars">
+                                                            <div class="star"></div>
+                                                            <div class="star"></div>
+                                                            <div class="star"></div>
+                                                            <div class="star"></div>
+                                                            <div class="star"></div>
+                                                            <div class="star hide-stars"></div>
+                                                            <div class="star hide-stars"></div>
+                                                            <div class="star hide-stars"></div>
+                                                            <div class="star hide-stars"></div>
+                                                            <div class="star hide-stars"></div>
+                                                        </div>
+                                                        <strong>- 5</strong>
+                                                    </div>
+                                                    <div class="wrapper-block-star">
+                                                        <span>Обслуживание</span>
+                                                        <div class="block-stars">
+                                                            <div class="star"></div>
+                                                            <div class="star"></div>
+                                                            <div class="star"></div>
+                                                            <div class="star"></div>
+                                                            <div class="star"></div>
+                                                            <div class="star hide-stars"></div>
+                                                            <div class="star hide-stars"></div>
+                                                            <div class="star hide-stars"></div>
+                                                            <div class="star hide-stars"></div>
+                                                            <div class="star hide-stars"></div>
+                                                        </div>
+                                                        <strong>- 5</strong>
+                                                    </div>
+                                                    <div class="wrapper-block-star">
+                                                        <span>Блюда</span>
+                                                        <div class="block-stars">
+                                                            <div class="star"></div>
+                                                            <div class="star"></div>
+                                                            <div class="star"></div>
+                                                            <div class="star"></div>
+                                                            <div class="star"></div>
+                                                            <div class="star hide-stars"></div>
+                                                            <div class="star hide-stars"></div>
+                                                            <div class="star hide-stars"></div>
+                                                            <div class="star hide-stars"></div>
+                                                            <div class="star hide-stars"></div>
+                                                        </div>
+                                                        <strong>- 5</strong>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="buttons">
+                                                <button class="editor">Редактировать</button>
+                                                <button type="submit" class="write-complaints">СОХРАНИТЬ</button>
+                                                <button type="reset" class="cansel">Удалить</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer-component></footer-component>
+</div>

@@ -1,0 +1,127 @@
+<div id="delivery-card" class="features-block-wrapper modal-static" ng-init="rest.inlineDatePicker()">
+    <head-component></head-component>
+    <div class="bottom-menu">
+        <div class="collapse navbar-collapse menu-navigation">
+            <div class="close-menu"></div>
+            <button type="button" class="menu-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <ul class="nav navbar-nav">
+                <li><a href="restaurants">РЕСТОРАНЫ</a></li>
+                <li><a href="delivery">ДОСТАВКА ЕДЫ</a></li>
+                <li><a href="complaints">КНИГА ЖАЛОБ И ПРЕДЛОЖЕНИЙ </a></li>
+                <li><a href="dinner">ОБЕДЫ</a></li>
+                <li><a href="special-proposal">СПЕЦПРЕДЛОЖЕНИЯ</a></li>
+                <li class="hide-item"><a href="cooking-boss">БЛЮДО ОТ ШЕФ ПОВАРА</a></li>
+                <li class="hide-item"><a href="top50">ТОП 50</a></li>
+            </ul>
+            <ul class="navbar-nav mobile-show">
+                <li><a href="cooking-boss">БЛЮДО ОТ ШЕФ ПОВАРА</a></li>
+                <li><a href="top50">ТОП 50</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="home-page">
+        <div class="restaurants-block">
+
+            <div class="mobile-holder visible-xs">
+                <div class="breadcrumbs">
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="#" class="current"></a></li>
+                    </ul>
+                </div>
+                <div class="dropdown drop-option">
+                    <h3>Бронирование столика</h3>
+                    <a data-toggle="dropdown" href="#"></a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                        <div class="menu-two">
+                            <li><a href="restaurants">РЕСТОРАНЫ</a></li>
+                            <li><a href="delivery">ДОСТАВКА ЕДЫ</a></li>
+                            <li><a href="complaints">КНИГА ЖАЛОБ И ПРЕДЛОЖЕНИЙ </a></li>
+                            <li><a href="dinner">ОБЕДЫ</a></li>
+                            <li><a href="special-proposal">СПЕЦПРЕДЛОЖЕНИЯ</a></li>
+                            <li><a href="cooking-boss">БЛЮДО ОТ ШЕФ ПОВАРА</a></li>
+                            <li><a href="top50">ТОП 50</a></li>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="modal-delivery order-table">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content filters">
+                        <div class="order-table-block">
+                            <form action="">
+                                <div class="left-column">
+                                    <div class="count-people">
+                                        <span class="pull-left">Количество человек:</span>
+                                        <div class="select-person pull-right">
+                                            <input type="text" class="form-control person" placeholder="4 человека">
+                                        </div>
+                                    </div>
+                                    <div class="count-people-table">
+                                        <table>
+                                            <tr>
+                                                <td ng-repeat="person in [1,2,3,4,5,6,7,8,9,10]" data-value="{{person}}"
+                                                    ng-click="rest.personChange(person)">{{person}}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td ng-repeat="person in [11,12,13,14,15,16,17,18,19,20]"
+                                                    ng-click="rest.personChange(person)" data-value="{{person}}">
+                                                    {{person}}
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="right-column">
+                                    <div class="select-data">
+                                        <span class="title">Дата</span>
+                                        <div class="form-group">
+                                            <input ng-model="rest.find.date" value="{{rest.find.date}}" type="text" id="datetimepicker2"
+                                                   class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="time-sale">
+                                    <span>Время:</span>
+                                    <div class="select-oclock">
+                                        <input class="oclock" placeholder="{{rest.find.time}}">
+                                    </div>
+                                    <strong>- скидка {{rest.find.discount}}%</strong>
+                                </div>
+                                <div ng-scrollbars ng-scrollbars-config="{setTop: 0}" class="shedule content-scrollable ">
+                                        <div class="row-sh">
+                                            <div ng-repeat="time in rest.restaurantTimes track by $index"
+                                                 ng-click="rest.setTime($event, $index)" class="cell-sh">
+                                                {{time.time}}<strong> - {{time.value}}%</strong></div>
+                                        </div>
+                                </div>
+
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="wrapper">
+                                <div class="count-users">{{rest.find.count_person}} чел.</div>
+                                <div class="discount ">Скидка {{rest.find.discount}}%</div>
+                            </div>
+                            <div class="wrapper">
+                                <div class="time-visit">Время {{rest.find.time}}</div>
+                                <div class="day-visit ">Дата: {{rest.find.date}}</div>
+                            </div>
+                            <a ng-click="rest.reserveRestaurant()" href="modal-order-table-success"
+                               class="order-table-but">забронировать столик</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer-component></footer-component>
+</div>

@@ -1,0 +1,22 @@
+<div class="modal-content filters">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+    <div class="main-contant">
+        <div class="confirm-block">
+            <h3>подтверждение номера телефона</h3>
+            <p>На Ваш номер телефона отпарвлено СМС с кодом, введите его для завершения регистрации</p>
+            <div>
+                <label for="code-phone"><span>Код для подтверждения:</span>
+                    <input type="text" ng-model="phoneCode" id="code-phone"
+                                                                                  placeholder="Введите полученный код"
+                                                                                  onfocus="this.placeholder = ''"
+                                                                                  onblur="this.placeholder = 'Введите полученный код'"></label>
+                <div class="modal-footer">
+                    <button ng-click="order.checkCode(phoneCode)" type="submit" data-dismiss="modal" aria-hidden="true" data-toggle="modal"
+                            data-target=".uncorrect-number">завершить
+                    </button>
+                    <button type="reset"><a href="modal-checkout/{{order.restaurantId}}">изменить данные</a></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

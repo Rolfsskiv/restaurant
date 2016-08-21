@@ -1,0 +1,139 @@
+<div id="top50" ng-init="top.init()">
+    <head-component></head-component>
+    <div class="bottom-menu">
+        <div class="collapse navbar-collapse menu-navigation">
+            <div class="close-menu"></div>
+            <button type="button" class="menu-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <ul class="nav navbar-nav">
+                <li><a href="restaurants">РЕСТОРАНЫ</a></li>
+                <li><a href="delivery">ДОСТАВКА ЕДЫ</a></li>
+                <li><a href="complaints">КНИГА ЖАЛОБ И ПРЕДЛОЖЕНИЙ </a></li>
+                <li><a href="dinner">ОБЕДЫ</a></li>
+                <li><a href="special-proposal">СПЕЦПРЕДЛОЖЕНИЯ</a></li>
+                <li class="hide-item"><a href="cooking-boss">БЛЮДО ОТ ШЕФ ПОВАРА</a></li>
+                <li class="hide-item"><a href="top50">ТОП 50</a></li>
+            </ul>
+            <ul class="navbar-nav mobile-show">
+                <li><a href="cooking-boss">БЛЮДО ОТ ШЕФ ПОВАРА</a></li>
+                <li><a href="top50">ТОП 50</a></li>
+            </ul>
+        </div>
+        <h2>ТОП 50 ресторанов и заведений вашего города!</h2>
+    </div>
+    <div id="home-page">
+        <div class="restaurants-block">
+            <div class="container hidden-xs">
+                <div class="row">
+                    <div class="breadcrumbs">
+                        <ul>
+                            <li><a href="/">Главная</a></li>
+                            <li><a href="top50" class="current">Топ 50</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="mobile-holder visible-xs">
+                <div class="breadcrumbs">
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="top50" class="current">Спецпредложение</a></li>
+
+                    </ul>
+                </div>
+                <div class="dropdown drop-option"><h3>ТОП 50</h3>
+                    <a data-toggle="dropdown" href="#"></a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                        <div class="menu-two">
+                            <li><a href="restaurants">РЕСТОРАНЫ</a></li>
+                            <li><a href="delivery">ДОСТАВКА ЕДЫ</a></li>
+                            <li><a href="complaints">КНИГА ЖАЛОБ И ПРЕДЛОЖЕНИЙ </a></li>
+                            <li><a href="dinner">ОБЕДЫ</a></li>
+                            <li><a href="special-proposal">СПЕЦПРЕДЛОЖЕНИЯ</a></li>
+                            <li><a href="cooking-boss">БЛЮДО ОТ ШЕФ ПОВАРА</a></li>
+                            <li><a href="top50">ТОП 50</a></li>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="book-hotel" ng-init="limit = 4">
+                        <h3 class="hidden-xs">ТОП РЕСТОРАНОВ</h3>
+                        <div ng-repeat="restaurant in top.restaurants | limitTo:limit track by $index" class="restaurant-name">
+                            <div class="photo" style="{{top.style(restaurant.image)}}">
+                                <a href="#" class="heart-icon"></a>
+                            </div>
+                            <div class="information">
+                                <div class="rate-restaurant"><span>{{$index + 1}}</span></div>
+                                <h4>{{restaurant.name}}</h4>
+                                <div class="option">
+                                    <div class="wrapper-block-star visible-xs">
+                                        <div class="block-stars">
+                                            <div ng-repeat="star in [1, 2, 3, 4, 5]" class="star"
+                                                 ng-class="star <= restaurant.ratingGeneral ? 'active' : ''"></div>
+                                        </div>
+                                        <strong>- {{restaurant.ratingGeneral}}</strong>
+                                    </div>
+                                    <a ng-if="restaurant.address" href="#" class="address visible-xs">{{restaurant.address}}</a>
+                                    <strong>Кухня: {{restaurant.food}}</strong>
+                                    <span>Описание:  {{restaurant.desc}}</span>
+                                    <p class="several-shop">Средний чек: {{(restaurant.max_price + restaurant.min_price) / 2}} <i class="fa fa-rub"></i></p>
+                                </div>
+                                <div class="activity">
+                                    <a href="restaurant/{{restaurant.slug}}/" class="book hidden-sm">ЗАБРОНИРОВАТЬ</a>
+                                    <a href="#" class="participants">{{restaurant.visit}}</a>
+                                    <a href="#" class="visits">{{restaurant.complaints_count}}</a>
+                                    <a href="restaurant/{{restaurant.slug}}" class="book visible-sm">ЗАБРОНИРОВАТЬ</a>
+
+                                </div>
+                            </div>
+                            <div class="common-rate hidden-xs">
+                                <a href="#" class="address">{{restaurant.address}}</a>
+                                <div class="wrapper-block-star">
+                                    <span>Общий</span>
+                                    <div class="block-stars">
+                                        <div ng-repeat="star in [1, 2, 3, 4, 5]" class="star"
+                                             ng-class="star <= restaurant.ratingGeneral ? 'active' : ''"></div>
+                                    </div>
+                                    <strong>- {{restaurant.ratingGeneral}}</strong>
+                                </div>
+                                <div class="wrapper-block-star">
+                                    <span>Интерьер</span>
+                                    <div class="block-stars">
+                                        <div ng-repeat="star in [1, 2, 3, 4, 5]" class="star"
+                                             ng-class="star <= restaurant.ratingInterior ? 'active' : ''"></div>
+                                    </div>
+                                    <strong>- {{restaurant.ratingInterior}}</strong>
+                                </div>
+                                <div class="wrapper-block-star">
+                                    <span>Обслуживание</span>
+                                    <div class="block-stars">
+                                        <div ng-repeat="star in [1, 2, 3, 4, 5]" class="star"
+                                             ng-class="star <= restaurant.ratingService ? 'active' : ''"></div>
+                                    </div>
+                                    <strong>- {{restaurant.ratingService}}</strong>
+                                </div>
+                                <div class="wrapper-block-star">
+                                    <span>Блюда</span>
+                                    <div class="block-stars">
+                                        <div ng-repeat="star in [1, 2, 3, 4, 5]" class="star"
+                                             ng-class="star <= restaurant.ratingDinner ? 'active' : ''"></div>
+                                    </div>
+                                    <strong>- {{restaurant.ratingDinner}}</strong>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 text-center">
+                            <button ng-click="limit = top.restaurants.length" class="show-more"><i class="fa fa-chevron-down"></i>ПОКАЗАТЬ ВСЕ</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

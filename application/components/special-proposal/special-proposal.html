@@ -1,0 +1,112 @@
+<div id="special-proposal" class="features-block-wrapper" ng-init="special.init()">
+    <head-component></head-component>
+    <div class="bottom-menu">
+        <div class="collapse navbar-collapse menu-navigation">
+            <div class="close-menu"></div>
+            <button type="button" class="menu-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <ul class="nav navbar-nav">
+                <li><a href="restaurants">РЕСТОРАНЫ</a></li>
+                <li><a href="delivery">ДОСТАВКА ЕДЫ</a></li>
+                <li><a href="complaints">КНИГА ЖАЛОБ И ПРЕДЛОЖЕНИЙ </a></li>
+                <li><a href="dinner">ОБЕДЫ</a></li>
+                <li><a href="special-proposal">СПЕЦПРЕДЛОЖЕНИЯ</a></li>
+                <li class="hide-item"><a href="cooking-boss">БЛЮДО ОТ ШЕФ ПОВАРА</a></li>
+                <li class="hide-item"><a href="top50">ТОП 50</a></li>
+            </ul>
+            <ul class="navbar-nav mobile-show">
+                <li><a href="cooking-boss">БЛЮДО ОТ ШЕФ ПОВАРА</a></li>
+                <li><a href="top50">ТОП 50</a></li>
+            </ul>
+        </div>
+        <h2>Акции, скидки и предложения специально для Вас!</h2>
+    </div>
+    <div id="home-page">
+        <div class="special.urants-block">
+            <div class="container hidden-xs">
+                <div class="breadcrumbs">
+                    <ul>
+                        <li><a href="">Главная</a></li>
+                        <li><a href="special-proposal" class="current">Спецпредложения</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mobile-holder visible-xs">
+                <div class="breadcrumbs">
+                    <ul>
+                        <li><a href="index">Главная</a></li>
+                        <li><a href="special-proposal" class="current">Спецпредложения</a></li>
+
+                    </ul>
+                </div>
+                <div class="dropdown drop-option"><h3>СПЕЦПРЕДЛОЖЕНИЯ</h3>
+                    <a data-toggle="dropdown" href="#"></a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                        <div class="menu-two">
+                            <li><a href="restaurants">РЕСТОРАНЫ</a></li>
+                            <li><a href="delivery">ДОСТАВКА ЕДЫ</a></li>
+                            <li><a href="complaints">КНИГА ЖАЛОБ И ПРЕДЛОЖЕНИЙ </a></li>
+                            <li><a href="dinner">ОБЕДЫ</a></li>
+                            <li><a href="special-proposal">СПЕЦПРЕДЛОЖЕНИЯ</a></li>
+                            <li><a href="cooking-boss">БЛЮДО ОТ ШЕФ ПОВАРА</a></li>
+                            <li><a href="top50">ТОП 50</a></li>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+            <div class="special-proposal">
+                <div class="container">
+                    <h3 class="hidden-xs">СПЕЦПРЕДЛОЖЕНИЯ</h3>
+                    <div class="row">
+
+                        <div ng-repeat="spec in special.specials | startFrom:special.pagination.currentPage*special.pagination.pageSize | limitTo:special.pagination.pageSize" class="col-md-6 col-lg-4 col-sm-6">
+                            <div class="special.urant-name">
+                                <div class="photo">
+                                    <img src="{{spec.restaurant.image}}" alt="{{spec.name}}">
+                                    <div class="name">
+                                        <span class="discount">{{spec.name}}</span>
+                                    </div>
+                                </div>
+                                <div class="information">
+                                    <div class="option">
+                                        <p class="conditions hidden-xs">{{spec.brief}}</p>
+                                    </div>
+                                    <div class="activity">
+                                        <h5>{{spec.restaurant.name}}</h5>
+                                        <a ng-href="special-proposal/{{spec.id}}/card" class="book">СМОТРЕТЬ</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="page-block desctop">
+                    <ul>
+                        <li><button ng-disabled="special.pagination.currentPage == 0" ng-click="special.pagination.currentPage = special.pagination.currentPage-1" href="#" class="prev">НАЗАД</button></li>
+                        <li ng-repeat="page in special.pagination.na(special.pagination.numberOfPages()) | limitTo:4"><a href="#" ng-class="special.pagination.currentPage == page ? 'active-page' : 'sibling-page'" ng-click="special.pagination.currentPage=page">{{page + 1}}</a></li>
+                        <li><a href="#" class="other-page">...</a></li>
+                        <li><a href="#" class="last-page" ng-click="special.pagination.currentPage = special.pagination.getLastPage()">{{special.pagination.getLastPage() + 1}}</a></li>
+                        <li><button ng-disabled="special.pagination.currentPage >= special.specials.length/special.pagination.pageSize - 1" ng-click="special.pagination.currentPage=special.pagination.currentPage+1" href="#" class="next">ВПЕРЕД</button></li>
+                    </ul>
+                </div>
+                <div class="page-block mobile">
+                    <ul>
+                        <li><a ng-disabled="special.pagination.currentPage == 0" ng-click="special.pagination.currentPage = special.pagination.currentPage-1" href="#" class="prev"></a></li>
+                        <li ng-repeat="page in special.pagination.na(special.pagination.numberOfPages()) | limitTo:4"><a href="#" ng-class="special.pagination.currentPage == page ? 'active-page' : 'sibling-page'" ng-click="special.pagination.currentPage = page">{{page + 1}}</a></li>
+                        <li><a href="#" class="other-page">...</a></li>
+                        <li><a href="#" class="last-page" ng-click="special.pagination.currentPage = special.pagination.getLastPage()">{{special.pagination.getLastPage() + 1}}</a></li>
+                        <li><button ng-disabled="special.pagination.currentPage >= special.specials.length/special.pagination.pageSize - 1" ng-click="special.pagination.currentPage=special.pagination.currentPage+1" href="#" class="next"></button></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer-component></footer-component>
+</div>

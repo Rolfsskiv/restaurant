@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Application">
+<head>
+    <base href="/">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bower_components/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="bower_components/bootstrap-multiselect/dist/css/bootstrap-multiselect.css"
+          type="text/css"/>
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/slick-carousel/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="bower_components/slick-carousel/slick/slick-theme.css"/>
+    <link rel="stylesheet" href="bower_components/bootstrap-timepicker/css/timepicker.css">
+    <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="bower_components/nouislider/distribute/nouislider.min.css">
+    <link rel="stylesheet" href="bower_components/angular-ui-notification/dist/angular-ui-notification.min.css">
+    <link rel="stylesheet" href="bower_components/angularjs-slider/dist/rzslider.min.css">
+    <link rel="stylesheet" href="bower_components/ng-img-crop/compile/minified/ng-img-crop.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        .rzslider .rz-pointer {
+            background-color: #546a89;
+            top: -10px;
+            z-index: 3;
+            width: 27px;
+            height: 27px;
+            cursor: pointer;
+            -webkit-border-radius: 16px;
+            -moz-border-radius: 16px;
+            border-radius: 25px;
+        }
+
+        .rzslider .rz-bar {
+            height: 7px;
+        }
+
+        .rzslider .rz-pointer:after {
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            width: 15px;
+            height: 15px;
+            background: #fff;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            border-radius: 15px;
+            content: '';
+        }
+
+        .rzslider .rz-bar.rz-selection {
+            background: #bdc3c7;
+        }
+
+        .mCSB_inside > .mCSB_container {
+            margin-right: 0 !important;
+        }
+
+        .mCSB_container_wrapper > .mCSB_container {
+            padding-right: 0 !important;
+        }
+
+        .active-cell-sh {
+            background-color: #799fc3 !important;
+        }
+
+        .cropArea {
+            background: #E4E4E4;
+            overflow: hidden;
+            width: 450px;
+            height: 350px;
+        }
+
+        .delivery > .container > .parametrs.two {
+            display: none;
+            background: url("/img/parametrs.png") no-repeat center center;
+            width: 45px;
+            height: 40px;
+            outline: none;
+            border: 1px solid #889eb0;
+            position: absolute;
+            cursor: pointer;
+            z-index: 9;
+            top: -8px;
+            right: 20px;
+        }
+
+        @media (max-width: 767px) {
+            .delivery > .container > .parametrs.two {
+                display: block;
+            }
+        }
+
+    </style>
+</head>
+<body>
+<div ng-view></div>
+
+<footer-component></footer-component>
+<div ng-controller="RegistrationController as register" ng-init="register.init()" class="modal fade registration-modal"
+     tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content filters">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <div class="title-filter">
+                    <p>Регистрация</p>
+                </div>
+            </div>
+            <div class="button-block">
+                <button ng-click="register.setType('user')" class="btn for-user active">Для пользователя</button>
+                <button ng-click="register.setType('rest')" class="btn for-restaurant">Для ресторана</button>
+            </div>
+            <div class="networks">
+                <span>Войти через:</span>
+                <ul>
+                    <li><a href="#" class="facebook">facebook</a></li>
+                    <li><a href="#" class="twitter">twitter</a></li>
+                    <li><a href="#" class="vkontakte">vkontakte</a></li>
+                    <li><a href="#" class="google">google</a></li>
+                </ul>
+            </div>
+            <form ng-submit="register.newData()">
+                <div class="item">
+                    <label for="login">Ваш логин:</label>
+                    <input id="login" type="text" ng-model="register.data.login" placeholder="Введите свой логин">
+                </div>
+                <div class="item">
+                    <label for="name">Ваше имя:</label>
+                    <input id="name" type="text" ng-model="register.data.name" placeholder="Введите свое имя">
+                </div>
+                <div class="item">
+                    <label for="password">Пароль:</label>
+                    <input id="password" type="password" ng-model="register.data.password" placeholder="************">
+                </div>
+                <div class="item">
+                    <label for="password-repeat">Повторите пароль:</label>
+                    <input id="password-repeat" type="password" ng-model="register.data.password_confirmation"
+                           placeholder="************">
+                </div>
+                <div class="item">
+                    <label for="email">E-Mail:</label>
+                    <input id="email" type="text" ng-model="register.data.email" placeholder="Введите свой e-mail">
+                </div>
+                <div class="item">
+                    <label for="country">Страна:</label>
+                    <select selectpicker data-change="{{register.countries}}" ng-model="register.data.country_id" class="form-control country selectpicker bs-select-hidden">
+                        <option value="">Выберите страну</option>
+                        <option ng-repeat="country in register.countries" value="{{country.id}}">
+                            {{country.name}}
+                        </option>
+                    </select>
+                </div>
+                <div class="item">
+                    <label for="city">Ваш город:</label>
+                    <select selectpicker data-change="{{register.cities}}" ng-model="register.data.city_id" class="form-control city selectpicker bs-select-hidden">
+                        <option value="">Выберите город</option>
+                        <option ng-repeat="city in register.cities" value="{{city.localization[0].id}}">
+                            {{city.localization[0].value}}
+                        </option>
+                    </select>
+                </div>
+                <div class="item">
+                    <label for="phone">Телефон:</label>
+                    <input id="phone" ng-model="register.data.phone" type="text" placeholder="Введите свой телефон">
+                </div>
+                <div class="item promo-item">
+                    <label for="promo" class="promo">Промо-код:
+                    </label>
+                    <div class="tootlip-block">
+                        <img src="img/promo-questions.png" alt="">
+                        <span class="tooltiptext"><span class="tooltiptext-inner">При наличии промо-кода введите его и получите бонусы! <br/>(Это поле не является обязательным для заполнения)</span>
+                            </span>
+                    </div>
+                    <input id="promo" type="text" ng-model="register.data.promo" placeholder="">
+                </div>
+                <div class="item registration-number">
+                    <label for="registration-number">Регистрационный №:</label>
+                    <input id="registration-number" ng-model="register.data.registr_number" type="text"
+                           name="registr-number">
+                </div>
+                <div class="conditions">
+                    <label for="conditions">Принимаю условия:
+                        <input id="conditions" ng-model="register.data.uslovia" type="checkbox">
+                        <span></span>
+                    </label>
+                    <a href="contract">Пользовательского соглашения</a>
+                </div>
+
+
+                <button type="submit" class="find">ЗАРЕГИСТРИРОВАТЬСЯ</button>
+            </form>
+        </div>
+    </div>
+</div>
+<div ng-controller="LoginController as login" class="modal fade enter-modal" tabindex="-1" role="dialog"
+     aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content filters">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <div class="title-filter">
+                    <p>Вход</p>
+                </div>
+            </div>
+            <form ng-submit="login.auth()">
+                <div class="item">
+                    <label for="login">Логин:</label>
+                    <input id="login" type="text" ng-model="login.user.email" placeholder="Введите свой логин">
+                </div>
+                <div class="item">
+                    <label for="name">Пароль:</label>
+                    <input id="name" type="text" ng-model="login.user.password" placeholder="Введите свой пароль">
+                </div>
+                <div class="item enter">
+                    <a href="#" class="forgot">Забыли пароль?</a>
+                    <button type="submit" class="enter">ВОЙТИ</button>
+                </div>
+            </form>
+            <div class="networks">
+                <span>Войти через:</span>
+                <ul>
+                    <li><a ng-click="login.auth('facebook')" href="#" class="facebook">facebook</a></li>
+                    <li><a ng-click="login.auth('twitter')" href="#" class="twitter">twitter</a></li>
+                    <li><a ng-click="login.auth('vk')" href="#" class="vkontakte">vkontakte</a></li>
+                    <li><a ng-click="login.auth('goole')" href="#" class="google">google</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+<script src="bower_components/bootstrap-multiselect/dist/js/bootstrap-multiselect.js"></script>
+<script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
+<script src="bower_components/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+<script src="bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="bower_components/wnumb/wNumb.js"></script>
+<script src="bower_components/nouislider/distribute/nouislider.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#datepicker").datepicker({
+            language: 'ru',
+            weekStart: 1,
+            format: "dd.mm.yyyy",
+            todayHighlight: true,
+            startDate: new Date(), // (new Date()).valueOf() + 1000*3600*24
+            beforeShowDay: function (date) {
+
+                var d = date;
+                var curr_date = d.getDate();
+                var curr_month = d.getMonth() + 1; //Months are zero based
+                var curr_year = d.getFullYear();
+                var formattedDate = curr_date + "-" + curr_month + "-" + curr_year
+
+                if ($.inArray(formattedDate, active_dates) != -1) {
+                    return {
+                        classes: 'active day'
+                    };
+                }
+                return;
+            }
+        }).datepicker();
+    });
+    function loadScript(url, callback) {
+        var head = document.getElementsByTagName('head')[0];
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = url;
+        script.onreadystatechange = callback;
+        script.onload = callback;
+
+        head.appendChild(script);
+    }
+
+    function loadCss(filename) {
+        var fileReference = document.createElement("link");
+        fileReference.setAttribute("rel", "stylesheet");
+        fileReference.setAttribute("type", "text/css");
+        fileReference.setAttribute("href", filename);
+        if (typeof fileReference != "undefined")
+            document.getElementsByTagName("head")[0].appendChild(fileReference)
+    }
+</script>
+
+<script src="js/scripts.js"></script>
+
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-route/angular-route.min.js"></script>
+
+<script src="bower_components/angular-ui-notification/dist/angular-ui-notification.min.js"></script>
+<script src="bower_components/angularjs-slider/dist/rzslider.min.js"></script>
+<script src="bower_components/slick-carousel/slick/slick.min.js"></script>
+<script src="bower_components/angular-slick/dist/slick.min.js"></script>
+<script src="bower_components/checklist-model/checklist-model.js"></script>
+<script src="bower_components/ng-scrollbars/dist/scrollbars.min.js"></script>
+<script src="bower_components/angular-socialshare/dist/angular-socialshare.min.js"></script>
+<script src="bower_components/satellizer/dist/satellizer.min.js"></script>
+<script src="bower_components/ng-img-crop/compile/minified/ng-img-crop.js"></script>
+
+<script src="application/local-storage.service.js"></script>
+
+<script src="application/components/index/index.controller.js"></script>
+<script src="application/components/index/countries.service.js"></script>
+<script src="application/components/index/lang.service.js"></script>
+
+<script src="application/select-picker.directive.js"></script>
+
+<script src="application/components/profile/profile.controller.js"></script>
+<script src="application/components/profile/profile.service.js"></script>
+
+<script src="application/components/auth/registration.controller.js"></script>
+<script src="application/components/auth/login.controller.js"></script>
+<script src="application/components/auth/auth.service.js"></script>
+
+<script src="application/components/complaint/complaint.controller.js"></script>
+<script src="application/components/complaint/complaint.service.js"></script>
+
+<script src="application/components/dinner/dinner.controller.js"></script>
+<script src="application/components/dinner/dinner.service.js"></script>
+
+<script src="application/components/top/top.controller.js"></script>
+
+<script src="application/components/cooking-boss/cooking-boss.controller.js"></script>
+<script src="application/components/cooking-boss/cooking-boss.service.js"></script>
+
+<script src="application/components/special-proposal/special-proposal.controller.js"></script>
+<script src="application/components/special-proposal/special-proposal.service.js"></script>
+
+<script src="application/components/delivery/delivery.controller.js"></script>
+<script src="application/components/delivery/cart.controller.js"></script>
+<script src="application/components/delivery/order.controller.js"></script>
+<script src="application/components/delivery/cart.service.js"></script>
+<script src="application/components/delivery/delivery.service.js"></script>
+<script src="application/components/delivery/delivery.filter.js"></script>
+
+<script src="application/components/restaurant/restaurant.controller.js"></script>
+<script src="application/components/restaurant/restaurants.service.js"></script>
+<script src="application/components/restaurant/filter.service.js"></script>
+<script src="application/components/restaurant/restaurant.filter.js"></script>
+<script src="application/components/restaurant/person.directive.js"></script>
+
+<script src="application/application.js"></script>
+
+<script>
+    setTimeout(function () {
+        $('[multiple]').each(function (indx, element) {
+            $(element).multiselect({nonSelectedText: $(element).attr('data-text')});
+            $(element).parent().find('ul li').each(function (index, elm) {
+                $(elm).find('label').append('<span></span>');
+            });
+        });
+        var active_dates = ["21-5-2014", "25-5-2014"];
+        $("#datepicker").datepicker({
+            language: 'ru',
+            weekStart: 1,
+            format: "dd.mm.yyyy",
+            todayHighlight: true,
+            startDate: new Date(), // (new Date()).valueOf() + 1000*3600*24
+            beforeShowDay: function (date) {
+
+                var d = date;
+                var curr_date = d.getDate();
+                var curr_month = d.getMonth() + 1; //Months are zero based
+                var curr_year = d.getFullYear();
+                var formattedDate = curr_date + "-" + curr_month + "-" + curr_year
+
+                if ($.inArray(formattedDate, active_dates) != -1) {
+                    return {
+                        classes: 'active day'
+                    };
+                }
+                return;
+            }
+        }).datepicker('rebuild');
+    }, 1000);
+</script>
+
+</body>
+
+</html>

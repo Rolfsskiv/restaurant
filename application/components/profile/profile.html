@@ -1,0 +1,239 @@
+<div class="personal-user" id="my-profile" ng-init="profile.init()">
+    <head-component></head-component>
+    <head-menu name="name"></head-menu>
+    <div id="home-page">
+        <head-profile image="2"></head-profile>
+        <div class="content-user">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="hidden-xs">Ваш профайл</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <profile profile="1" route-name="profile.routeName"></profile>
+                    <div class="right-content">
+                        <div class="reservtion-block-holder">
+                            <div class="rezervation-block row-eq-height">
+                                <div class="wrapper-img num1">
+                                    <img class="visible-lg" src="img/logo-restaurant2.png" alt="logo-restaurant">
+                                    <img class="hidden-lg" src="img/logo-restaurant.png" alt="logo-restaurant">
+                                </div>
+                                <div class="reservetion-table">
+                                    <div class="wrapper-text">
+                                        <img src="img/book-icon.png" alt="">
+                                        <span>У вас забронирован столик </span>
+                                        <span class="two-row">в<a href="#" class="name">Argentina Grill</a></span>
+                                    </div>
+                                    <div class="characteristic hidden-xs hidden-lg">
+                                        <div class="characteristic-inner  left">
+                                            <div class="count-users">4 чел.</div>
+                                            <div class="time-visit">Время 17:00</div>
+                                        </div>
+                                        <div class="characteristic-inner">
+                                            <div class="discount">Скидка 15%</div>
+                                            <div class="day-visit">Дата: 10.02.2016</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="characteristic visible-xs visible-lg">
+                                    <div class="characteristic-inner  left">
+                                        <div class="count-users">4 чел.</div>
+                                        <div class="time-visit">Время 17:00</div>
+                                    </div>
+                                    <div class="characteristic-inner">
+                                        <div class="discount">Скидка 15%</div>
+                                        <div class="day-visit">Дата: 10.02.2016</div>
+                                    </div>
+                                </div>
+                                <div class="wrapper-button">
+                                    <a href="my-reservation.html" class="cansel">ПОДРОБНЕЕ</a>
+                                </div>
+                            </div>
+                            <div class="rezervation-block order row-eq-height">
+                                <div class="wrapper-img">
+                                    <img class="visible-lg" src="img/logo-restaurant2.png" alt="logo-restaurant">
+                                    <img class="hidden-lg" src="img/logo-restaurant.png" alt="logo-restaurant">
+                                </div>
+                                <div class="reservetion-table vertical">
+                                            <span>
+                                                <span class="wrapper-img-inner"><img src="img/kitchen-appliance.png" alt="kitchen-appliance"></span>У вас заказана еда в
+                                            </span>
+                                    <a href="#" class="name">Argentina Grill</a>
+                                    <div class="payment-amount hidden-lg"><p>Сумма к оплате:<span>50 EUR</span></p></div>
+                                </div>
+                                <div class="payment-amount visible-lg"><p>Сумма к оплате:<span>50 EUR</span></p></div>
+                                <div class="wrapper-button">
+                                    <a href="my-order-food.html" class="cansel">ПОДРОБНЕЕ</a>
+                                </div>
+                            </div>
+                            <div class="rezervation-block row-eq-height">
+                                <div class="wrapper-img">
+                                    <img class="visible-lg" src="img/logo-restaurant2.png" alt="logo-restaurant">
+                                    <img class="hidden-lg" src="img/logo-restaurant.png" alt="logo-restaurant">
+                                </div>
+                                <div class="reservetion-table vertical">
+                                    <span><span class="wrapper-img-inner"><img src="img/coment-icon.png" alt="coment-icon"></span>Вы оставили комментарий о ресторане</span>
+                                    <a href="#" class="name">Argentina Grill</a>
+                                </div>
+                                <div class="wrapper-button">
+                                    <a href="" class="cansel">ПОДРОБНЕЕ</a>
+                                </div>
+                            </div>
+                            <div class="rezervation-block row-eq-height">
+                                <div class="wrapper-img">
+                                    <img class="visible-lg" src="img/logo-restaurant2.png" alt="logo-restaurant">
+                                    <img class="hidden-lg" src="img/logo-restaurant.png" alt="logo-restaurant">
+                                </div>
+                                <div class="reservetion-table vertical">
+                                    <span><span class="wrapper-img-inner"><img src="img/gift-1.png" alt="gift"></span>Вы заказали в подарок десерт в ресторане</span>
+                                    <a href="#" class="name"><i>Argentina</i> Grill</a>
+                                </div>
+                                <div class="wrapper-button">
+                                    <a href="" class="cansel">ПОДРОБНЕЕ</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="profile-restaurants">
+                            <h3>рестораны</h3>
+                            <div class="row">
+                                <div class="col-md-4 col-sm-6 col-xs-12">
+                                    <div class="restaurant-name">
+                                        <div class="photo">
+                                            <img src="img/restaurant-1.jpg" alt="restaurant-1">
+                                            <div class="sale">-40%</div>
+                                            <div class="name">
+                                                <a href="#" class="heart-icon"></a>
+                                                <span>Якитория</span>
+                                                <div class="block-stars">
+                                                    <div class="star active"></div>
+                                                    <div class="star active"></div>
+                                                    <div class="star active"></div>
+                                                    <div class="star"></div>
+                                                    <div class="star"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="information">
+                                            <a href="#" class="address">Ул. Карла маркса 144а</a>
+                                            <div class="option">
+                                                <p>Кухня: Бургеры / Американская / Русская / Европейская / Японская / Французская</p>
+                                                <p class="several-shop">Средний чек: 700 <i class="fa fa-rub"></i></p>
+                                            </div>
+                                            <div class="activity">
+                                                <a href="#" class="participants">565</a>
+                                                <a href="#" class="visits">165</a>
+                                                <a href="restaurants.html" class="book">ЗАБРОНИРОВАТЬ</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 col-sm-6 col-xs-12">
+                                    <button class="add-photo">
+                                        <div class="circle-plus">
+                                            <div class="circle">
+                                                <div class="horizontal"></div>
+                                                <div class="vertical"></div>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-12">
+                                    <button class="add-photo">
+                                        <div class="circle-plus">
+                                            <div class="circle">
+                                                <div class="horizontal"></div>
+                                                <div class="vertical"></div>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-12 visible-lg hidden-xs">
+                                    <button class="add-photo">
+                                        <div class="circle-plus">
+                                            <div class="circle">
+                                                <div class="horizontal"></div>
+                                                <div class="vertical"></div>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="profile-restaurants">
+                            <h3>доставка</h3>
+                            <div class="row">
+                                <div class="col-md-4 col-sm-6 col-xs-12">
+                                    <div class="restaurant-name">
+                                        <div class="photo">
+                                            <img src="img/restaurant-1.jpg" alt="restaurant-1">
+                                            <div class="sale">-40%</div>
+                                            <div class="name">
+                                                <a href="#" class="heart-icon"></a>
+                                                <span>Якитория</span>
+                                                <div class="block-stars">
+                                                    <div class="star active"></div>
+                                                    <div class="star active"></div>
+                                                    <div class="star active"></div>
+                                                    <div class="star"></div>
+                                                    <div class="star"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="information">
+                                            <a href="#" class="address">Ул. Карла маркса 144а</a>
+                                            <div class="option">
+                                                <p>Кухня: Бургеры / Американская / Русская / Европейская / Японская / Французская</p>
+                                                <p class="several-shop">Средний чек: 700 <i class="fa fa-rub"></i></p>
+                                            </div>
+                                            <div class="activity">
+                                                <a href="#" class="participants">565</a>
+                                                <a href="#" class="visits">165</a>
+                                                <a href="restaurants.html" class="book">ЗАБРОНИРОВАТЬ</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 col-sm-6 col-xs-12">
+                                    <button class="add-photo">
+                                        <div class="circle-plus">
+                                            <div class="circle">
+                                                <div class="horizontal"></div>
+                                                <div class="vertical"></div>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-12">
+                                    <button class="add-photo">
+                                        <div class="circle-plus">
+                                            <div class="circle">
+                                                <div class="horizontal"></div>
+                                                <div class="vertical"></div>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-xs-12 visible-lg hidden-xs">
+                                    <button class="add-photo">
+                                        <div class="circle-plus">
+                                            <div class="circle">
+                                                <div class="horizontal"></div>
+                                                <div class="vertical"></div>
+                                            </div>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer-component></footer-component>
+</div>

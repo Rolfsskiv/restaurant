@@ -1,0 +1,532 @@
+<div id="restaurants">
+    <head-component></head-component>
+    <div class="bottom-menu">
+        <div class="collapse navbar-collapse menu-navigation">
+            <div class="close-menu"></div>
+            <button type="button" class="menu-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <ul class="nav navbar-nav">
+                <li><a href="restaurants">РЕСТОРАНЫ</a></li>
+                <li><a href="delivery">ДОСТАВКА ЕДЫ</a></li>
+                <li><a href="complaints">КНИГА ЖАЛОБ И ПРЕДЛОЖЕНИЙ </a></li>
+                <li><a href="dinner">ОБЕДЫ</a></li>
+                <li><a href="special-proposal">СПЕЦПРЕДЛОЖЕНИЯ</a></li>
+                <li class="hide-item"><a href="cooking-boss">БЛЮДО ОТ ШЕФ ПОВАРА</a></li>
+                <li class="hide-item"><a href="top50">ТОП 50</a></li>
+            </ul>
+            <ul class="navbar-nav mobile-show">
+                <li><a href="cooking-boss">БЛЮДО ОТ ШЕФ ПОВАРА</a></li>
+                <li><a href="top50">ТОП 50</a></li>
+            </ul>
+        </div>
+        <h2>Забронировать столик в лучших ресторанах города!</h2>
+    </div>
+    <div id="home-page">
+        <div class="restaurants-block">
+            <div class="step-block hidden-xs">
+                <div class="container">
+                    <div class="row">
+                        <div class="step first visible-lg">
+                            <strong>Как это работает?</strong>
+                        </div>
+                        <div class="step-number">
+                            <div class="col-md-4 col-sm-4">
+                                <div class="step">
+                                    <div class="number">1</div>
+                                    <div class="text">
+                                        <span>Выберите ресторан</span>
+                                        <p>в котором Вы хотите провести время</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4">
+                                <div class="step">
+                                    <div class="number">2</div>
+                                    <div class="text">
+                                        <span>Забронируйте</span>
+                                        <p>онлайн за пару кликов</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4">
+                                <div class="step last">
+                                    <div class="number">3</div>
+                                    <div class="text">
+                                        <span>Получите скидку</span>
+                                        <p>от общего счета в ресторане</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container hidden-xs">
+                <div class="breadcrumbs">
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="restaurants" class="current">Рестораны</a></li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="mobile-holder visible-xs">
+                <div class="breadcrumbs">
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="restaurants" class="current">Рестораны</a></li>
+
+                    </ul>
+                </div>
+                <button class="search"></button>
+                <button class="parametrs one"></button>
+                <div class="search-block">
+                    <form action="">
+                        <input type="text" placeholder="Найти">
+                        <div class="close-menu"></div>
+                    </form>
+                </div>
+                <div class="search-block">
+                    <form action="">
+                        <input type="text" placeholder="Найти">
+                        <div class="close-menu"></div>
+                    </form>
+                </div>
+                <div class="select-mobile one">
+                    <form action="">
+                        <div class="change-item">
+                            <h4>Кухня</h4>
+
+                            <div ng-repeat="food in rest.filters.foods | limitTo:7" class="block-checkbox">
+                                <label class="checkbox">
+                                    <input type="checkbox" checklist-model="rest.currentFilters.foods"
+                                           checklist-value="food.id"> {{food.name}}
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div ng-if="rest.filters.foods.length > 7" class="dropdown">
+                                <button type="button" class="show-content">
+                                    Показать все
+                                    <span class="caret"></span>
+                                </button>
+                                <div class="collapse see-more">
+                                    <div ng-repeat="food in rest.filters.foods | startFrom:8" class="block-checkbox">
+                                        <label class="checkbox">
+                                            <input type="checkbox" checklist-model="rest.currentFilters.foods"
+                                                   checklist-value="food.id" > {{food.name}}
+                                            <span></span>
+                                        </label>
+                                    </div>
+                                    <button type="button" class="hide-content">Скрыть</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="change-item">
+                            <h4>Тип и тематика</h4>
+
+                            <div ng-repeat="type in rest.filters.types | limitTo:6" class="block-checkbox">
+                                <label class="checkbox">
+                                    <input type="checkbox" checklist-model="rest.currentFilters.types"
+                                           checklist-value="type.id"> {{type.name}}
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div ng-if="rest.filters.types.length > 6" class="dropdown">
+                                <button type="button" class="show-content">
+                                    Показать все
+                                    <span class="caret"></span>
+                                </button>
+                                <div class="collapse see-more">
+                                    <div ng-repeat="type in rest.filters.types | startFrom:8" class="block-checkbox">
+                                        <label class="checkbox">
+                                            <input type="checkbox" checklist-model="rest.currentFilters.types"
+                                                   checklist-value="type.id">>{{type.name}}
+                                            <span></span>
+                                        </label>
+                                    </div>
+
+                                    <button type="button" class="hide-content">Скрыть</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="change-item">
+                            <h4>Особенности ресторана</h4>
+                            <div ng-repeat="feature in rest.filters.features | limitTo:6" class="block-checkbox">
+                                <label class="checkbox">
+                                    <input type="checkbox" checklist-model="rest.currentFilters.features"
+                                           checklist-value="feature.id"> {{feature.name}}
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div ng-if="rest.filters.types.length > 6" class="dropdown">
+                                <button type="button" class="show-content">
+                                    Показать все
+                                    <span class="caret"></span>
+                                </button>
+                                <div class="collapse see-more">
+                                    <div ng-repeat="feature in rest.filters.features | startFrom:7"
+                                         class="block-checkbox">
+                                        <label class="checkbox">
+                                            <input type="checkbox" checklist-model="rest.currentFilters.features"
+                                                   checklist-value="feature.id">{{feature.name}}
+                                            <span></span>
+                                        </label>
+                                    </div>
+                                    <button type="button" class="hide-content">Скрыть</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="change-item">
+                            <h4>Средний чек</h4>
+                            <rzslider
+                                    rz-slider-model="rest.sliderRestaurant.minValue"
+                                    rz-slider-high="rest.sliderRestaurant.maxValue"
+                                    rz-slider-options="rest.sliderRestaurant.options"></rzslider>
+                        </div>
+                        <button class="find">НАЙТИ</button>
+                        <div class="close-menu"></div>
+                    </form>
+                </div>
+            </div>
+            <div class="container">
+                <h3 class="hide-320">РЕСТОРАНЫ</h3>
+                <div class="dropdown drop-option"><h3>РЕСТОРАНЫ</h3>
+                    <a data-toggle="dropdown" href="#"></a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                        <div class="menu-two">
+                            <li><a href="restaurants">РЕСТОРАНЫ</a></li>
+                            <li><a href="delivery">ДОСТАВКА ЕДЫ</a></li>
+                            <li><a href="complaints">КНИГА ЖАЛОБ И ПРЕДЛОЖЕНИЙ </a></li>
+                            <li><a href="dinner">ОБЕДЫ</a></li>
+                            <li><a href="special-proposal">СПЕЦПРЕДЛОЖЕНИЯ</a></li>
+                            <li><a href="cooking-boss">БЛЮДО ОТ ШЕФ ПОВАРА</a></li>
+                            <li><a href="top50">ТОП 50</a></li>
+                        </div>
+                    </ul>
+                </div>
+                <div class="select-time hidden-xs ">
+                    <form role="form">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="select-person">
+                                    <span class="title">Кол-во персон</span>
+                                    <select ng-model="rest.filterDatePerson.countPersons" selectpicker
+                                            class="form-control person selectpicker">
+                                        <option value="">Выберите</option>
+                                        <option ng-repeat="countPerson in [2, 3, 4, 5, 6, 7, 8, 9]"
+                                                ng-selected="countPerson == rest.countPerson" value="{{countPerson}}">
+                                            {{countPerson}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="select-data">
+                                    <span class="title">Дата</span>
+                                    <input title="Выберите" ng-model="rest.filterDatePerson.date" type="text"
+                                           class="form-control" id="datepicker">
+                                </div>
+                                <div class="select-oclock">
+                                    <span class="title">Время</span>
+                                    <select ng-model="rest.filterDatePerson.time" selectpicker
+                                            class="oclock selectpicker">
+                                        <option selected value="11:00">11:00</option>
+                                        <option value="11:30">11:30</option>
+                                        <option value="12:00">12:00</option>
+                                        <option value="12:30">12:30</option>
+                                        <option value="13:00">13:00</option>
+                                        <option value="13:30">13:30</option>
+                                        <option value="13:30">14:00</option>
+                                        <option value="13:30">14:30</option>
+                                        <option value="13:30">15:00</option>
+                                    </select>
+                                </div>
+                                <button ng-init="rest.hideFilter = true; text = 'Свернуть фильтр'" ng-click="rest.hideFilter = !rest.hideFilter; (text == 'Свернуть фильтр') ? 'Показать фильтр' : 'Свернуть фильтр'"
+                                        class="filter-hide">{{text}}</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div ng-show="rest.hideFilter" class="select-component first-list hidden-xs">
+                    <form role="form">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="select-type">
+                                    <p>Кухня</p>
+                                    <select ng-model="rest.currentFilters.foods" id="type-restaraunt" class="type"
+                                            multiple="multiple" data-target="#main-modal">
+                                        <option value="">Выберите</option>
+                                        <option ng-repeat="food in rest.filters.foods" value="{{food.id}}">
+                                            {{food.name}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="select-subject">
+                                    <p>Тип и тематика</p>
+                                    <select ng-model="rest.currentFilters.types" id="subjects-restaraunt"
+                                            multiple="multiple" class="subjects">
+                                        <option value="">Выберите</option>
+                                        <option ng-repeat="type in rest.filters.types" value="{{type.id}}">
+                                            {{type.name}}
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <div class="select-features">
+                                    <p>Особенности ресторана</p>
+                                    <select ng-model="rest.currentFilters.features" id="features-restaraunt"
+                                            multiple="multiple" class="features">
+                                        <option value="">Выберите</option>
+                                        <option ng-repeat="feature in rest.filters.features" value="{{feature.id}}">
+                                            {{feature.name}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="select-check">
+                                    <p>Средний чек</p>
+                                    <div class="wrapper">
+                                        <button type="button" class="dropdown check-price">
+                                            <a data-toggle="dropdown" href="#">
+                                                <span class="check-val" id="slider-price-value-min">{{rest.sliderRestaurant.minValue}}-</span>
+                                                <span class="check-val" id="slider-price-value-max">{{rest.sliderRestaurant.maxValue}}</span>
+                                            </a>
+                                            <span class="caret"></span>
+                                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                                <rzslider
+                                                        rz-slider-model="rest.sliderRestaurant.minValue"
+                                                        rz-slider-high="rest.sliderRestaurant.maxValue"
+                                                        rz-slider-options="rest.sliderRestaurant.options"></rzslider>
+                                            </ul>
+                                        </button>
+                                        <button class="find">НАЙТИ</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="search-object">
+                    <a href="#" class="looking">
+                        <span>ПОКАЗАТЬ НА КАРТЕ</span>
+                    </a>
+                    <div class="search-content">
+                        <form action="">
+                            <input type="text" placeholder="Поиск ресторана">
+                        </form>
+                    </div>
+
+                </div>
+                <div class="book-hotel">
+                    <div class="row">
+                        <div ng-repeat="restaurant in rest.backRestaurants | startFrom:rest.pagination.currentPage*rest.pagination.pageSize | limitTo:rest.pagination.pageSize"
+                             class="col-md-6 col-lg-4 col-sm-6">
+                            <div class="restaurant-name">
+                                <div class="photo">
+                                    <img src="{{restaurant.image}}" alt="{{restaurant.name}}">
+                                    <!--<div class="sale">-{{restaurant.discount}}%</div>-->
+                                    <div ng-if="restaurant.get_resto" class="recommendations">GETRESTO РЕКОМЕНДУЕТ<i
+                                            class="fa fa-thumbs-o-up"></i></div>
+                                    <div class="name">
+                                        <a href="#" class="heart-icon"></a>
+                                        <span>{{restaurant.name}}</span>
+                                        <div class="block-stars">
+                                            <div ng-repeat="star in [1, 2, 3, 4, 5]" class="star"
+                                                 ng-class="star <= restaurant.rating ? 'active' : ''"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="information">
+                                    <a href="#" class="address">{{restaurant.address}}</a>
+                                    <div ng-if="restaurant.new" class="new">NEW</div>
+                                    <div class="option">
+                                        <p>Кухня: {{restaurant.desc}}</p>
+                                        <p class="several-shop">Средний чек: 700 <i class="fa fa-rub"></i></p>
+                                    </div>
+                                    <div class="activity">
+                                        <a href="#" class="participants">{{restaurant.visit}}</a>
+                                        <a href="#" class="visits">{{restaurant.complaints_count}}</a>
+                                        <a href="/restaurant/{{restaurant.slug}}" class="book">ЗАБРОНИРОВАТЬ</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="page-block desctop">
+            <ul>
+                <li>
+                    <button ng-disabled="rest.pagination.currentPage == 0"
+                            ng-click="rest.pagination.currentPage = rest.pagination.currentPage-1" href="#"
+                            class="prev">НАЗАД
+                    </button>
+                </li>
+                <li ng-repeat="page in rest.pagination.na(rest.pagination.numberOfPages()) | limitTo:4"><a href="#"
+                                                                                                ng-class="rest.pagination.currentPage == page ? 'active-page' : 'sibling-page'"
+                                                                                                ng-click="rest.pagination.currentPage=page">{{page
+                    + 1}}</a></li>
+                <li><a href="#" class="other-page">...</a></li>
+                <li><a href="#" class="last-page" ng-click="rest.pagination.currentPage = rest.pagination.getLastPage()">{{rest.pagination.getLastPage() + 1}}</a>
+                </li>
+                <li>
+                    <button ng-disabled="rest.pagination.currentPage >= rest.restaurants.length/rest.pagination.pageSize - 1"
+                            ng-click="rest.pagination.currentPage=rest.pagination.currentPage+1" href="#" class="next">
+                        ВПЕРЕД
+                    </button>
+                </li>
+            </ul>
+        </div>
+        <div class="page-block mobile">
+            <ul>
+                <li><a ng-disabled="rest.pagination.currentPage == 0"
+                       ng-click="rest.pagination.currentPage = rest.pagination.currentPage-1" href="#" class="prev"></a>
+                </li>
+                <li ng-repeat="page in rest.pagination.na(rest.pagination.numberOfPages()) | limitTo:4"><a href="#"
+                                                                                                ng-class="rest.pagination.currentPage == page ? 'active-page' : 'sibling-page'"
+                                                                                                ng-click="rest.pagination.currentPage = page">{{page
+                    + 1}}</a></li>
+                <li><a href="#" class="other-page">...</a></li>
+                <li><a href="#" class="last-page" ng-click="rest.pagination.currentPage = rest.pagination.getLastPage()">{{rest.pagination.getLastPage() + 1}}</a>
+                </li>
+                <li>
+                    <button ng-disabled="rest.pagination.currentPage >= rest.restaurants.length/rest.pagination.pageSize - 1"
+                            ng-click="rest.pagination.currentPage=rest.pagination.currentPage+1" href="#"
+                            class="next"></button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade bs-example-modal-lg" id="main-modal" tabctrl="-1" role="dialog"
+     aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content filters">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <div class="title-filter">
+                    <p>Фильтр ресторанов</p>
+                </div>
+            </div>
+            <div class="filters-block content-scrollable">
+                <div class="wrapper">
+                    <div class="change-item">
+                        <h4>Кухня</h4>
+                        <div ng-repeat="food in rest.filters.foods | limitTo:7" class="block-checkbox">
+                            <label class="checkbox">
+                                <input type="checkbox" checklist-model="rest.currentFilters.foods"
+                                       checklist-value="food.id"> {{food.name}}
+                                <span></span>
+                            </label>
+                        </div>
+                        <div ng-if="rest.filters.foods.length > 7" class="dropdown">
+                            <button type="button" class="show-content">
+                                Показать все
+                                <span class="caret"></span>
+                            </button>
+                            <div class="collapse see-more">
+                                <div ng-repeat="food in rest.filters.foods | startFrom:8" class="block-checkbox">
+                                    <label class="checkbox">
+                                        <input type="checkbox" checklist-model="rest.currentFilters.foods"
+                                               checklist-value="food.id"> {{food.name}}
+                                        <span></span>
+                                    </label>
+                                </div>
+
+                                <button type="button" class="hide-content">Скрыть</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="change-item">
+                        <h4>Тип и тематика</h4>
+
+                        <div ng-repeat="type in rest.filters.types | limitTo:6" class="block-checkbox">
+                            <label class="checkbox">
+                                <input type="checkbox" checklist-model="rest.currentFilters.types"
+                                       checklist-value="type.id"> {{type.name}}
+                                <span></span>
+                            </label>
+                        </div>
+                        <div ng-if="rest.filters.types.length > 6" class="dropdown">
+                            <button type="button" class="show-content">
+                                Показать все
+                                <span class="caret"></span>
+                            </button>
+                            <div class="collapse see-more">
+                                <div ng-repeat="type in rest.filters.types | startFrom:7" class="block-checkbox">
+                                    <label class="checkbox">
+                                        <input type="checkbox" checklist-model="rest.currentFilters.types"
+                                               checklist-value="type.id">>{{type.name}}
+                                        <span></span>
+                                    </label>
+                                </div>
+
+                                <button type="button" class="hide-content">Скрыть</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wrapper">
+                    <div class="change-item">
+                        <h4>Особенности ресторана</h4>
+                        <div ng-repeat="feature in rest.filters.features | limitTo:6" class="block-checkbox">
+                            <label class="checkbox">
+                                <input type="checkbox" checklist-model="rest.currentFilters.features"
+                                       checklist-value="feature.id"> {{feature.name}}
+                                <span></span>
+                            </label>
+                        </div>
+                        <div ng-if="rest.filters.types.length > 6" class="dropdown">
+                            <button type="button" class="show-content">
+                                Показать все
+                                <span class="caret"></span>
+                            </button>
+                            <div class="collapse see-more">
+                                <div ng-repeat="feature in rest.filters.features | startFrom:7" class="block-checkbox">
+                                    <label class="checkbox">
+                                        <input type="checkbox" checklist-model="rest.currentFilters.features"
+                                               checklist-value="feature.id">{{feature.name}}
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <button type="button" class="hide-content">Скрыть</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="change-item">
+                        <p>Средний чек</p>
+                        <div class="wrapper">
+                            <button type="button" class="dropdown check-price">
+                                <a data-toggle="dropdown" href="#">
+                                    <span class="check-val" id="slider-food-min">{{rest.sliderFood.minValue}}-</span>
+                                    <span class="check-val" id="slider-food-max">{{rest.sliderFood.maxValue}}</span>
+                                </a>
+                                <span class="caret"></span>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                    <rzslider
+                                            rz-slider-model="rest.sliderRestaurant.minValue"
+                                            rz-slider-high="rest.sliderRestaurant.maxValue"
+                                            rz-slider-options="rest.sliderRestaurant.options"></rzslider>
+
+                                </ul>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <button class="find">НАЙТИ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
