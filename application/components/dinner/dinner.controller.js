@@ -1,6 +1,6 @@
 
-DinnerController.$inject = ['DinnerService', 'ls', '$location', '$filter'];
-function DinnerController(DinnerService, ls, $location, $filter) {
+DinnerController.$inject = ['DinnerService', 'ls', '$location', '$filter', '$scope'];
+function DinnerController(DinnerService, ls, $location, $filter, $scope) {
     var vm = this;
 
     vm.dinner = ls.get('currentDinner');
@@ -34,8 +34,16 @@ function DinnerController(DinnerService, ls, $location, $filter) {
     vm.closeModal = closeModal;
     vm.filter = filter;
 
-    function filter(type) {
+    $scope.$on('LastRepeaterElement', function () {
+        initDinnerModal();
+    });
 
+    function filter(type) {
+        if (type.length != '') {
+            vm.backDinners = $filter('DinnerFilter')(type, vm.dinners);
+        } else {
+            vm.backDinners = vm.dinners;
+        }
     }
 
     function closeModal() {
@@ -58,7 +66,6 @@ function DinnerController(DinnerService, ls, $location, $filter) {
     function init() {
         DinnerService.getDinners().then(function (dinners) {
             vm.dinners = vm.backDinners = dinners;
-            initDinnerModal();
         });
     }
 }
