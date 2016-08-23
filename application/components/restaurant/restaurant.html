@@ -72,7 +72,7 @@
                     <div class="restaurant-name-card-block hidden-lg">
                         <img ng-src="{{rest.restaurant.image}}" class="main-img" alt="{{rest.restaurant.name}}">
                         <!--<div ng-if="rest.restaurant.discount" class="sale">-{{rest.restaurant.discount}}%</div>-->
-                        <a href="#" class="heart-icon"></a>
+                        <a  ng-init="liked = false" ng-click="rest.like(rest.restaurant.id, 0); liked = true" href="#" ng-class="liked == true ? 'liked' : ''" href="#" class="heart-icon"></a>
                         <div class="wrapper-content row-eq-height">
                             <div class="restaurant-name-card">
                                 <div class="wrapper">
@@ -518,7 +518,7 @@
                                     <div class="select-oclock">
                                         <select selectpicker ng-model="rest.find.time" ng-value="rest.find.time" class="oclock selectpicker">
                                             <option value="">Время</option>
-                                            <option ng-repeat="time in rest.restaurantTimes track by $index" value="{{time.time}}">{{time.time}}</option>
+                                            <option ng-repeat="time in rest.restaurantTimes track by $index" emit-last-repeater-element value="{{time.time}}">{{time.time}}</option>
                                         </select>
                                     </div>
                                     <strong>- скидка {{rest.find.discount}}%</strong>

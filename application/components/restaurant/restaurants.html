@@ -329,7 +329,7 @@
                                     <div ng-if="restaurant.get_resto" class="recommendations">GETRESTO РЕКОМЕНДУЕТ<i
                                             class="fa fa-thumbs-o-up"></i></div>
                                     <div class="name">
-                                        <a href="#" class="heart-icon"></a>
+                                        <a href="#" ng-init="liked = false" ng-click="rest.like(restaurant.id, 0); liked = true" href="#" ng-class="liked == true ? 'liked' : ''" class="heart-icon"></a>
                                         <span>{{restaurant.name}}</span>
                                         <div class="block-stars">
                                             <div ng-repeat="star in [1, 2, 3, 4, 5]" class="star"
