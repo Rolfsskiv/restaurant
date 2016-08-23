@@ -40,7 +40,8 @@ function LoginController($auth, ls, AuthService) {
             }*/
 
             $auth.authenticate(provider)
-                .then(function () {
+                .then(function (response) {
+                    console.log(response);
                     console.log('You have successfully signed in with ' + provider + '!');
                 })
                 .catch(function (error) {

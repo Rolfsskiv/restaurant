@@ -30,9 +30,9 @@ function RestaurantController($controller, ComplaintService, $routeParams, Resta
     vm.daysName = [1470042010000,1470128410000,1470214810000,1470301210000,1470387610000,1470474010000,1470560410000];
     vm.find = {
         time: ls.get('find') == null ? null : ls.get('find').time,
-        date: ls.get('find') == null ? null : ls.get('find').date,
+        date: ls.get('find') == null ? null : ls.get('find').date.replaceAll('/', '.'),
         count_person: ls.get('find') == null ? null : ls.get('find').count_person,
-        discount: null,
+        discount: ls.get('find') == null ? null : ls.get('find').discount,
         restaurantId: null
     };
     vm.pagination = {
@@ -56,6 +56,7 @@ function RestaurantController($controller, ComplaintService, $routeParams, Resta
             return Math.ceil(vm.restaurants.length / vm.pagination.pageSize) - 1;
         }
     };
+    vm.timeInit = false;
 
     vm.reserveRestaurant = reserveRestaurant;
     vm.personChange = personChange;
@@ -67,6 +68,7 @@ function RestaurantController($controller, ComplaintService, $routeParams, Resta
     init();
 
     $scope.$on('LastRepeaterElement', function () {
+        vm.timeInit = true;
         initRestaurantCard();
     });
 
@@ -97,11 +99,18 @@ function RestaurantController($controller, ComplaintService, $routeParams, Resta
     });
 
     $scope.$watch(function () {
-        return vm.find
+        return {find: vm.find, time: vm.restaurantTimes, timeInit: vm.timeInit};
     }, function (newValue) {
-        vm.find.time = newValue.time;
+        if (newValue.find.time != '' && vm.restaurantTimes.length > 0 && vm.timeInit) {
+            angular.forEach(vm.restaurantTimes, function (time, index) {
+                if (newValue.find.time == time.time) {
+                   vm.setTime(null, index);
+                }
+            });
+        }
+        vm.find.time = newValue.find.time;
         ls.set('find', vm.find);
-        vm.personChange(newValue.count_person);
+        vm.personChange(newValue.find.count_person);
     }, true);
 
     function inlineDatePicker() {
@@ -126,7 +135,15 @@ function RestaurantController($controller, ComplaintService, $routeParams, Resta
         angular.forEach(document.querySelectorAll('.row-sh > .cell-sh'), function (value, index) {
             value.classList.remove('active-cell-sh')
         });
-        event.currentTarget.classList.add('active-cell-sh');
+        if (event) {
+            event.currentTarget.classList.add('active-cell-sh');
+        } else {
+            if (document.querySelector('.active-cell-sh')) {
+                document.querySelector('.active-cell-sh').classList.remove('active-cell-sh')
+            } else {
+                document.querySelector('[data-time="' + ind + '"]').classList.add('active-cell-sh');
+            }
+        }
         vm.find.time = vm.restaurantTimes[ind].time;
         vm.find.discount = vm.restaurantTimes[ind].value;
     }
@@ -152,6 +169,7 @@ function RestaurantController($controller, ComplaintService, $routeParams, Resta
 
         RestaurantsService.reserveRestaurant(ls.get('find'), vm.restaurant.id).then(function (message) {
             Notification.success(message);
+            ls.rm('find');
         });
     }
 

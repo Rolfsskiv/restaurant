@@ -4,6 +4,7 @@ function ProfileService($http, ls) {
 
     service.getBonusData = function () {
         return $http.get(API_URL + '/user/bonus').then(function (response) {
+            ls.set('bonus', response.data);
             return response.data;
         });
     };

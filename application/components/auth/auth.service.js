@@ -10,6 +10,14 @@ function AuthService($auth, $location, ls, $http, $q) {
         USER: 4
     };
 
+    service.getUserSocial = function (provider, token) {
+        switch (provider) {
+            case 'facebook':
+
+                break;
+        }
+    };
+
     service.getUser = function () {
         return ls.get('user');
     };
@@ -23,7 +31,7 @@ function AuthService($auth, $location, ls, $http, $q) {
         var link = 'my-profile';
 
         switch (ls.get('user').role.id) {
-            case service.ROLES.ADMIN:
+            case service.ROLES.RESTAURANT:
                 link = 'rest-reservation';
                 break;
             case service.ROLES.USER:

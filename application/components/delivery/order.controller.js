@@ -1,15 +1,25 @@
 
-OrderController.$inject = ['ls', '$scope', '$routeParams', 'CartService', '$http'];
-function OrderController(ls, $scope, $routeParams, CartService, $http) {
+OrderController.$inject = ['ls', '$scope', '$routeParams', 'CartService', '$http', 'ProfileService'];
+function OrderController(ls, $scope, $routeParams, CartService, $http, ProfileService) {
     var vm = this;
 
     vm.order = ls.get('order');
     vm.restaurantId = $routeParams.restaurantId;
     vm.cart = CartService;
     vm.phoneCode = '';
+    vm.gifts = null;
     
     vm.send = send;
     vm.checkCode = checkCode;
+    vm.init = init;
+
+    vm.init();
+
+    function init() {
+        ProfileService.getBonusData().then(function (gifts) {
+            vm.gifts = gifts;
+        });
+    }
 
     function checkCode(phoneCode) {
         if (vm.phoneCode == phoneCode) {
@@ -22,14 +32,16 @@ function OrderController(ls, $scope, $routeParams, CartService, $http) {
     function send() {
         var cart = vm.cart.getCart(vm.restaurantId);
 
-        $http.post(API_URL + '/delivery/' + vm.restaurantId + '/order', {
+        console.log(cart);
+
+        /*$http.post(API_URL + '/delivery/' + vm.restaurantId + '/order', {
             cart: cart,
             order: vm.order
         }).then(function (response) {
             if (response.status == 200) {
                 console.log(response);
             }
-        });
+        });*/
     }
 
     $scope.$watch(function () {

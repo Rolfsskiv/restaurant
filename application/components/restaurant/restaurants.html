@@ -214,7 +214,7 @@
                             <div class="col-md-12">
                                 <div class="select-person">
                                     <span class="title">Кол-во персон</span>
-                                    <select ng-model="rest.filterDatePerson.countPersons" selectpicker
+                                    <select ng-model="rest.find.countPersons" selectpicker
                                             class="form-control person selectpicker">
                                         <option value="">Выберите</option>
                                         <option ng-repeat="countPerson in [2, 3, 4, 5, 6, 7, 8, 9]"
@@ -225,12 +225,12 @@
                                 </div>
                                 <div class="select-data">
                                     <span class="title">Дата</span>
-                                    <input title="Выберите" ng-model="rest.filterDatePerson.date" type="text"
+                                    <input title="Выберите" ng-model="rest.find.date" type="text"
                                            class="form-control" id="datepicker">
                                 </div>
                                 <div class="select-oclock">
                                     <span class="title">Время</span>
-                                    <select ng-model="rest.filterDatePerson.time" selectpicker
+                                    <select ng-model="rest.find.time" selectpicker
                                             class="oclock selectpicker">
                                         <option selected value="11:00">11:00</option>
                                         <option value="11:30">11:30</option>

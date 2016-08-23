@@ -43,7 +43,8 @@ angular.module('Auth', ['Location'])
         $authProvider.signupUrl = API_URL + '/signup';
 
         $authProvider.facebook({
-            clientId: 'Facebook App ID'
+            url: '/',
+            clientId: '856355484495202'
         });
         $authProvider.google({
             clientId: 'Google Client ID'
@@ -247,6 +248,7 @@ angular.module('Delivery', [])
 angular.module('Dinner', [])
     .controller('DinnerController', DinnerController)
     .service('DinnerService', DinnerService)
+    .filter('DinnerFilter', DinnerFilter)
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider
             .when('/dinner', {
@@ -328,6 +330,16 @@ angular.module('Index', [])
     .directive('navbar', function () {
         return {
             templateUrl: 'application/directives/navbar.html'
+        }
+    })
+    .directive('links', function () {
+        return {
+            templateUrl: 'application/directives/links.html'
+        };
+    })
+    .directive('bottomMenu', function () {
+        return {
+            templateUrl: 'application/directives/bottom-menu.html'
         }
     })
     .config(['$routeProvider', function ($routeProvider) {

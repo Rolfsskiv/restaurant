@@ -520,7 +520,7 @@
                                 <img ng-src="{{delivery.image}}" alt="{{delivery.name}}">
                                 <!--<div class="sale">-40%</div>-->
                                 <div class="name">
-                                    <a ng-init="liked = false" ng-click="ctr.like(delivery.id, 1); liked = true" href="#" ng-class="liked == true ? 'liked' : ''" class="heart-icon"></a>
+                                    <a ng-init="liked = false" ng-click="ctrl.like(delivery.id, 1); liked = true" href="#" ng-class="liked == true ? 'liked' : ''" class="heart-icon"></a>
                                     <span>{{delivery.name}}</span>
                                     <div class="block-stars">
                                         <div ng-repeat="star in [1, 2, 3, 4, 5]" class="star"

@@ -7,3 +7,5 @@ fonts
 css
 .idea
 /templates
+!css/styles.css
+!css/rest.css

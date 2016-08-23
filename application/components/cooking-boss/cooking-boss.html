@@ -1,66 +1,39 @@
 <div id="cooking-boss" class="features-block-wrapper" ng-init="cook.init()" ng-cloak>
     <head-component></head-component>
     <div class="bottom-menu">
-        <div class="collapse navbar-collapse menu-navigation">
-            <div class="close-menu"></div>
-            <button type="button" class="menu-toggle">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <ul class="nav navbar-nav">
-                <li><a href="restaurants">РЕСТОРАНЫ</a></li>
-                <li><a href="delivery">ДОСТАВКА ЕДЫ</a></li>
-                <li><a href="complaints">КНИГА ЖАЛОБ И ПРЕДЛОЖЕНИЙ </a></li>
-                <li><a href="dinner">ОБЕДЫ</a></li>
-                <li><a href="special-proposal">СПЕЦПРЕДЛОЖЕНИЯ</a></li>
-                <li class="hide-item"><a href="cooking-boss">БЛЮДО ОТ ШЕФ ПОВАРА</a></li>
-                <li class="hide-item"><a href="top50">ТОП 50</a></li>
-            </ul>
-            <ul class="navbar-nav mobile-show">
-                <li><a href="cooking-boss">БЛЮДО ОТ ШЕФ ПОВАРА</a></li>
-                <li><a href="top50">ТОП 50</a></li>
-            </ul>
-        </div>
-        <h2>Лучшие рецепты от шеф-поваров, специально для Вас!</h2>
+        <bottom-menu></bottom-menu>
+        <h2>{{::cook.lc.title}}!</h2>
     </div>
     <div id="home-page">
         <div class="restaurants-block">
             <div class="container hidden-xs">
                 <div class="breadcrumbs">
                     <ul>
-                        <li><a href="/">Главная</a></li>
-                        <li><a href="cooking-boss" class="current">Блюдо от Шеф повара</a></li>
+                        <li><a href="/">{{::cook.lc.main}}</a></li>
+                        <li><a href="cooking-boss" class="current">{{::cook.lc.currentPage}}</a></li>
                     </ul>
                 </div>
             </div>
             <div class="mobile-holder visible-xs">
                 <div class="breadcrumbs">
                     <ul>
-                        <li><a href="index">Главная</a></li>
-                        <li><a href="cooking-boss" class="current">Блюдо от Шеф повара</a></li>
+                        <li><a href="index">{{::cook.lc.main}}</a></li>
+                        <li><a href="cooking-boss" class="current">{{::cook.lc.currentPage}}</a></li>
                     </ul>
                 </div>
                 <div class="dropdown drop-option">
-                    <h3>БЛЮДО ОТ ШЕФА</h3>
+                    <h3>{{::cook.lc.h3}}</h3>
                     <a data-toggle="dropdown" href="#"></a>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                         <div class="menu-two">
-                            <li><a href="restaurants">РЕСТОРАНЫ</a></li>
-                            <li><a href="delivery">ДОСТАВКА ЕДЫ</a></li>
-                            <li><a href="complaints">КНИГА ЖАЛОБ И ПРЕДЛОЖЕНИЙ </a></li>
-                            <li><a href="dinner">ОБЕДЫ</a></li>
-                            <li><a href="special-proposal">СПЕЦПРЕДЛОЖЕНИЯ</a></li>
-                            <li><a href="cooking-boss">БЛЮДО ОТ ШЕФ ПОВАРА</a></li>
-                            <li><a href="top50">ТОП 50</a></li>
+                            <links></links>
                         </div>
                     </ul>
                 </div>
             </div>
             <div class="container">
                 <div class="wrapper">
-                    <h3 class="hidden-xs">БЛЮДО ОТ ШЕФ ПОВАРА</h3>
+                    <h3 class="hidden-xs">{{::cook.lc.h3x}}</h3>
                 </div>
             </div>
             <div ng-init="limit = 5" ng-repeat="dish in cook.data | limitTo:limit" emit-last-repeater-element class="container">

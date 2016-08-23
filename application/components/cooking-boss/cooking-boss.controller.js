@@ -8,6 +8,7 @@ function CookingBossController(CookingBossService, $scope, ComplaintService, Not
     vm.myImage = '';
     vm.myCroppedImages = [];
     vm.myImages = [];
+    vm.lc = Loc.get('cook');
 
     vm.init = init;
 

@@ -61,7 +61,7 @@
                                     <div class="count-people">
                                         <span class="pull-left">Количество человек:</span>
                                         <div class="select-person pull-right">
-                                            <input type="text" class="form-control person" placeholder="4 человека">
+                                            <input person ng-model="rest.find.count_person"  type="text" class="form-control person">
                                         </div>
                                     </div>
                                     <div class="count-people-table">
@@ -92,14 +92,14 @@
                                 <div class="time-sale">
                                     <span>Время:</span>
                                     <div class="select-oclock">
-                                        <input class="oclock" placeholder="{{rest.find.time}}">
+                                        <input class="oclock" value="{{rest.find.time}}" placeholder="{{rest.find.time}}">
                                     </div>
                                     <strong>- скидка {{rest.find.discount}}%</strong>
                                 </div>
                                 <div ng-scrollbars ng-scrollbars-config="{setTop: 0}" class="shedule content-scrollable ">
                                         <div class="row-sh">
-                                            <div ng-repeat="time in rest.restaurantTimes track by $index"
-                                                 ng-click="rest.setTime($event, $index)" class="cell-sh">
+                                            <div ng-repeat="time in rest.restaurantTimes track by $index" emit-last-repeater-element
+                                                 ng-click="rest.setTime($event, $index)" data-time="{{$index}}" class="cell-sh">
                                                 {{time.time}}<strong> - {{time.value}}%</strong></div>
                                         </div>
                                 </div>

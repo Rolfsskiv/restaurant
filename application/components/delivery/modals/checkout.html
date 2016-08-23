@@ -87,7 +87,7 @@
             <a ng-click="order.send()" href="confirm-number/{{order.restaurantId}}" class="checkout">ЗАКАЗАТЬ</a>
         </div>
         <div class="left-col">
-            <div class="gift">5</div>
+            <div class="gift">{{order.gifts || 0}}</div>
             <p>Стоимость без учета доставки</p>
         </div>
         <div class="right-col hidden-xs">
