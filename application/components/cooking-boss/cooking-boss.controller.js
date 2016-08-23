@@ -1,5 +1,5 @@
-CookingBossController.$inject = ['CookingBossService', '$scope'];
-function CookingBossController(CookingBossService, $scope) {
+CookingBossController.$inject = ['CookingBossService', '$scope', 'ComplaintService', 'Notification'];
+function CookingBossController(CookingBossService, $scope, ComplaintService, Notification) {
     var vm = this;
 
     vm.data = [];
@@ -17,22 +17,27 @@ function CookingBossController(CookingBossService, $scope) {
 
     init();
 
-    function addComment(title, message, parentId, restaurantId) {
+    function addComment(title, message, parentId, id) {
         ComplaintService.addComplaintCookBoss({
             title: title,
             text: message,
             parent_id: parentId,
-            restaurant_id: restaurantId,
-            image: vm.myCroppedImage
-        }).then(function () {
+            image: vm.myCroppedImages
+        }, id).then(function (complaint) {
             vm.myCroppedImages = [];
             vm.myCroppedImages = [];
             vm.myImage = '';
             vm.myCroppedImage = '';
             if (parentId) {
-                Notification.success('Ваш комментарий учтен');
+                angular.forEach(vm.complaints, function (obj, key) {
+                    if (obj.id == parentId) {
+                        obj.children.push(complaint);
+                    }
+                });
+                Notification.success(' Вы успешно оставили отзыв');
             } else {
-                Notification.success(' Вы успешно оставили отзыв')
+                vm.complaints.push(complaint);
+                Notification.success('Ваш комментарий учтен');
             }
         });
     }
