@@ -1,6 +1,8 @@
 
-IndexController.$inject = ['DinnerService', 'DeliveryService', 'ls', '$filter', 'FilterService', 'RestaurantsService', 'CountriesService', '$scope', 'ComplaintService', 'SpecialProposalService'];
-function IndexController(DinnerService, DeliveryService, ls, $filter, FilterService, RestaurantsService, CountriesService, $scope, ComplaintService, SpecialProposalService) {
+IndexController.$inject = ['$controller', 'DinnerService', 'DeliveryService', 'ls', '$filter', 'FilterService', 'RestaurantsService', 'CountriesService', '$scope', 'ComplaintService', 'SpecialProposalService'];
+function IndexController($controller, DinnerService, DeliveryService, ls, $filter, FilterService, RestaurantsService, CountriesService, $scope, ComplaintService, SpecialProposalService) {
+
+    angular.extend(this, $controller('BaseController', {$scope: $scope}));
     var vm = this;
 
     vm.countries = [];
@@ -121,20 +123,31 @@ function IndexController(DinnerService, DeliveryService, ls, $filter, FilterServ
     }, true);
 
     $scope.$watch(function () {
-        return vm.currentFiltersDinner;
-    }, function (newValues) {
-        if (vm.currentFiltersDinner.foods.length > 0 || vm.currentFiltersDinner.type_dinners.length > 0) {
-            vm.backDeliveries = $filter('deliveryFilter')(vm.currentFiltersDinner, vm.deliveries);
+        return {rest: vm.currentFiltersDinner, slider: vm.sliderFood};
+    }, function () {
+        if (vm.currentFiltersDinner.foods.length > 0 || vm.currentFiltersDinner.type_dinners.length > 0 || vm.sliderFood) {
+            vm.backDeliveries = $filter('deliveryFilter')(
+                vm.currentFiltersDinner, vm.deliveries,
+                {
+                    min: vm.sliderFood.minValue,
+                    max: vm.sliderFood.maxValue
+                });
         } else {
             vm.backDeliveries = vm.deliveries;
         }
     }, true);
 
     $scope.$watch(function () {
-        return vm.currentFilters;
-    }, function (newFilters) {
-        if (newFilters.foods.length !== 0 || newFilters.features.length !== 0 || newFilters.types.length !== 0 ) {
-            vm.backRestaurants = $filter('restaurantFilter')(newFilters, vm.restaurants);
+        return {rest: vm.sliderRestaurant, slider: vm.currentFilters};
+    }, function () {
+        if (vm.currentFilters.foods.length !== 0 || vm.currentFilters.features.length !== 0 || vm.currentFilters.types.length !== 0 || vm.sliderRestaurant ) {
+            vm.backRestaurants = $filter('restaurantFilter')(
+                vm.currentFilters, vm.restaurants,
+                {
+                    min: vm.sliderRestaurant.minValue,
+                    max: vm.sliderRestaurant.maxValue
+                }
+            );
         } else {
             vm.backRestaurants = vm.restaurants;
         }

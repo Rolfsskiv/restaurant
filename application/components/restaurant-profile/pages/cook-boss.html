@@ -1,0 +1,110 @@
+<div class="personal-restaurant">
+    <rest-head></rest-head>
+    <div id="home-page">
+        <rest-menu></rest-menu>
+        <div class="content-rest">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4 class="hidden-xs">Шеф-повар</h4>
+                        <h5>Список добавленных блюд:</h5>
+                    </div>
+                </div>
+                <div class="dishes-boss">
+                    <div class="name-cook">иван Иванов</div>
+                    <div class="line-border hidden-xs"></div>
+                    <div class="name-dish">Пицца Итальяни</div>
+                    <div class="line-border hidden-xs"></div>
+                    <div class="name-kitchen">Язык: Русский, Естонский</div>
+                    <div class="line-border visible-lg"></div>
+                    <div class="button-wrapper">
+                        <button class="edit blue">редактировать</button>
+                        <button class="cancel white">удалить</button>
+                    </div>
+                </div>
+                <button class="add-dish blue">Добавить блюдо от шеф-повара</button>
+                <div class="add-dish-holder">
+                    <h4>Добавить блюдо от шеф-повара</h4>
+                    <div class="add-dish-holder-inner">
+                        <form action="">
+                            <div class="row">
+                                <div class="col-md-12 col-lg-6">
+                                    <h5>Фото повара:</h5>
+                                    <div class="img-wrapper">
+                                        <div class="wrapper-img">
+                                            <img src="img/cook-foto-1.jpg" alt="">
+                                            <button class="close"></button>
+                                        </div>
+                                        <button type="button" data-toggle="modal" data-target=".download-photo-modal" class="change-foto-cook hidden-xs">добавить фото</button>
+                                        <a href="modal-download-photo.html" class="visible-xs change-foto-cook">добавить фото</a>
+                                        <br><br><br>
+
+                                        <button type="button" data-toggle="modal" data-target=".download-photo-modal" class="change-foto-item hidden-xs">изменить фото</button>
+                                        <a href="modal-download-photo.html" class="visible-xs change-foto-item">изменить фото</a>
+                                    </div>
+                                    <label for=""><span>Имя повара:</span>
+                                        <input type="text">
+                                    </label>
+                                    <label for=""><span>Название блюда:</span>
+                                        <input type="text">
+                                    </label>
+                                    <label for="">
+                                        <span>Цитата:</span>
+                                        <textarea name="" id="quote"></textarea>
+                                    </label>
+                                    <label for="download-photo" class="visible-lg">
+                                        <span>Фото блюда:</span>
+                                        <button type="button" data-toggle="modal" data-target=".download-photo-modal" class="change-foto download-photo ">загрузить фото</button>
+                                        <a href="modal-download-photo.html" class="visible-xs change-foto download-photo">загрузить фото</a>
+                                    </label>
+                                </div>
+                                <div class="col-md-12 col-lg-6">
+                                    <label for="">
+                                        <span>Описание блюда:</span>
+                                        <textarea name="" id="description-dish"></textarea>
+                                    </label>
+                                    <label for="">
+                                        <span>Рецепт:</span>
+                                        <textarea name="" id="recipe"></textarea>
+                                    </label>
+                                    <label for="">
+                                        <span>Состав:</span>
+                                        <textarea name="" id="composition"></textarea>
+                                    </label>
+                                    <label for="download-photo" class="hidden-lg">
+                                        <span>Фото блюда:</span>
+                                        <button type="button" data-toggle="modal" data-target=".download-photo-modal" class="change-foto download-photo hidden-xs">загрузить фото</button>
+                                        <a href="modal-download-photo.html" class="visible-xs change-foto download-photo">загрузить фото</a>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="gallery-dishes">
+                                <div class="gallery-wrapper">
+                                    <img src="img/rest-photo-2.jpg" alt="restaurant-photo">
+                                    <button class="close" data-toggle="tooltip" data-placement="top" title="Удалить"></button>
+                                    <button class="checkmark" data-toggle="tooltip" data-placement="top" title="Сделать главной"></button>
+                                </div>
+                                <div class="gallery-wrapper">
+                                    <img src="img/rest-photo-2.jpg" alt="restaurant-photo">
+                                    <button class="close" data-toggle="tooltip" data-placement="top" title="Удалить"></button>
+                                    <button class="checkmark" data-toggle="tooltip" data-placement="top" title="Сделать главной"></button>
+                                </div>
+                                <div class="gallery-wrapper hidden-xs">
+                                    <img src="img/rest-photo-2.jpg" alt="restaurant-photo">
+                                    <button class="close" data-toggle="tooltip" data-placement="top" title="Удалить"></button>
+                                    <button class="checkmark" data-toggle="tooltip" data-placement="top" title="Сделать главной"></button>
+                                </div>
+                            </div>
+                            <div class="main-button">
+                                <button type="submit" class="blue">сохранить</button>
+                                <button type="reset" class="white">отмена</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer-component></footer-component>
+</div>

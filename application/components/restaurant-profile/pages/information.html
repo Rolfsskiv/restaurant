@@ -1,0 +1,772 @@
+<div class="personal-restaurant">
+    <rest-head></rest-head>
+    <div id="home-page">
+        <rest-menu></rest-menu>
+        <div class="content-rest">
+            <div class="container">
+                <div class="row hidden-xs">
+                    <div class="col-md-12">
+                        <h4>информация</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="information-restaurant-block">
+                        <form ng-submit="information.save()">
+                            <div class="title row">
+                                <div class="col-md-6 col-lg-6">
+                                    <label for="name" class="name-restaraunt">
+                                        <span>Название:</span>
+                                        <input ng-model="informartion.data.name" type="text" class="info-input">
+                                    </label>
+                                </div>
+                                <div class="col-md-6 col-lg-6">
+                                    <label for="conditions-1" class="img-check">
+                                        <input id="conditions-1" name="option-1" ng-model="information.data.delivery_food" type="checkbox">
+                                        <span></span>
+                                        Услуги по доставке еды
+                                    </label>
+                                    <label for="conditions-2" class="img-check">
+                                        <input id="conditions-2" name="option-2" ng-model="information.data.restaurant_place" type="checkbox">
+                                        <span></span>
+                                        Ресторан (посадочные места)
+                                    </label>
+                                </div>
+                            </div>
+                            <a href="#" class="change-password blue">Изменить пароль</a>
+                            <div class="row description-block">
+                                <div class="col-md-6 col-lg-6">
+                                    <div class="item">
+                                        <span>О ресторане:</span>
+                                        <textarea name="description-1" ng-model="information.data.restaurant" class="info-input"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-6">
+                                    <div class="item">
+                                        <span>Кухня:</span>
+                                        <textarea name="description-2" ng-model="information.data.food" class="info-input"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-6">
+                                    <div class="item">
+                                        <span>Интерьер:</span>
+                                        <textarea name="description-3" ng-model="information.data.interior" class="info-input"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-6">
+                                    <div class="item">
+                                        <span>Детали:</span>
+                                        <textarea name="description-4" ng-model="information.data.details" class="info-input"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-lg-6">
+                                    <div class="min-max-check">
+                                        <label for="mincheck">
+                                            <span>Минимальный чек:</span>
+                                            <input type="text" name="mincheck" ng-model="information.data.min_price" class="info-input" id="mincheck">
+                                        </label>
+                                        <label for="maxcheck">
+                                            <span>Максимальный чек:</span>
+                                            <input type="text" name="maxcheck" ng-model="information.data.max_price" class="info-input" id="maxcheck">
+                                        </label>
+                                    </div>
+                                    <div class="main-type">
+                                        <div class="item">
+                                            <label for="currency">Валюта</label>
+                                            <select selectpicker ng-model="information.data.currency" class="form-control currency selectpicker bs-select-hidden">
+                                                <option>Выберите валюту</option>
+                                                <option>Россия</option>
+                                                <option>Украина</option>
+                                                <option>Беларусь</option>
+                                                <option>Чехия</option>
+                                                <option>Венгрия</option>
+                                                <option>Словакия</option>
+                                                <option>Турция</option>
+                                                <option>Грузия</option>
+                                            </select>
+                                        </div>
+                                        <div class="item">
+                                            <label for="country">Страна:</label>
+                                            <select selectpicker ng-model="information.data.country_id" class="form-control country selectpicker hidden-xs bs-select-hidden">
+                                                <option>Выберите страну</option>
+                                                <option>Россия</option>
+                                                <option>Украина</option>
+                                                <option>Беларусь</option>
+                                                <option>Чехия</option>
+                                                <option>Венгрия</option>
+                                                <option>Словакия</option>
+                                                <option>Турция</option>
+                                                <option>Грузия</option>
+                                            </select>
+                                        </div>
+                                        <div class="item">
+                                            <label for="city">Ваш город:</label>
+                                            <select selectpicker ng-model="information.data.city_id" class="form-control city selectpicker hidden-xs bs-select-hidden">
+                                                <option>Выберите город</option>
+                                                <option>Киев</option>
+                                                <option>Одесса</option>
+                                                <option>Харьков</option>
+                                                <option>Донецк</option>
+                                                <option>Минск</option>
+                                                <option>Москва</option>
+                                                <option>Санкт-Петербург</option>
+                                            </select>
+                                        </div>
+                                        <div class="item">
+                                            <label for="address">Адрес:</label>
+                                            <input type="text" ng-model="information.data.address" id="address" class="info-input" placeholder="Kentmani 1" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Kentmani 1'">
+                                        </div>
+                                        <div class="item">
+                                            <label for="web-site">Сайт:</label>
+                                            <input type="text" id="web-site" ng-model="information.data.site" class="info-input" placeholder="www.google.ru" onfocus="this.placeholder = ''" onblur="this.placeholder = 'www.google.ru'">
+                                        </div>
+                                        <div class="item">
+                                            <label for="web-site" style="padding-top: 2px;">Номер телефона для оповещений:</label>
+                                            <input type="text" id="web-site" ng-model="information.data.notification_phone" class="info-input" placeholder="+1234" onfocus="this.placeholder = ''" onblur="this.placeholder = '+1234'">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-6 time-work">
+                                    <h5>Часы работы:</h5>
+                                    <div class="item">
+                                        <label class="hidden-xs" for="monday">Понедельник:</label>
+                                        <label class="visible-xs" for="monday">ПН:</label>
+                                        <div class="wrapper-select">
+                                            <select selectpicker ng-model="information.data.time_work.monday.from" class="form-control monday selectpicker bs-select-hidden">
+                                                <option>09:00</option>
+                                                <option>09:00</option>
+                                                <option>10:00</option>
+                                                <option>11:00</option>
+                                                <option>12:00</option>
+                                                <option>13:00</option>
+                                                <option>14:00</option>
+                                                <option>15:00</option>
+                                                <option>16:00</option>
+                                                <option>17:00</option>
+                                                <option>18:00</option>
+                                            </select>
+                                            <strong>-</strong>
+                                            <select selectpicker ng-model="information.data.time_work.monday.to" class="form-control selectpicker bs-select-hidden">
+                                                <option>09:00</option>
+                                                <option>09:00</option>
+                                                <option>10:00</option>
+                                                <option>11:00</option>
+                                                <option>12:00</option>
+                                                <option>13:00</option>
+                                                <option>14:00</option>
+                                                <option>15:00</option>
+                                                <option>16:00</option>
+                                                <option>17:00</option>
+                                                <option>18:00</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <label class="hidden-xs" for="tuesday">Вторник:</label>
+                                        <label class="visible-xs" for="tuesday">ВТ:</label>
+                                        <div class="wrapper-select">
+                                            <select selectpicker ng-model="information.data.time_work.tuesday.from" class="form-control tuesday selectpicker bs-select-hidden">
+                                                <option>09:00</option>
+                                                <option>09:00</option>
+                                                <option>10:00</option>
+                                                <option>11:00</option>
+                                                <option>12:00</option>
+                                                <option>13:00</option>
+                                                <option>14:00</option>
+                                                <option>15:00</option>
+                                                <option>16:00</option>
+                                                <option>17:00</option>
+                                                <option>18:00</option>
+                                            </select>
+                                            <strong>-</strong>
+                                            <select selectpicker ng-model="information.data.time_work.tuesday.to" class="form-control selectpicker bs-select-hidden">
+                                                <option>09:00</option>
+                                                <option>09:00</option>
+                                                <option>10:00</option>
+                                                <option>11:00</option>
+                                                <option>12:00</option>
+                                                <option>13:00</option>
+                                                <option>14:00</option>
+                                                <option>15:00</option>
+                                                <option>16:00</option>
+                                                <option>17:00</option>
+                                                <option>18:00</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <label class="hidden-xs" for="wednesday">Среда:</label>
+                                        <label class="visible-xs" for="wednesday">СР:</label>
+                                        <div class="wrapper-select">
+                                            <select selectpicker ng-model="information.data.time_work.wednesday.from" class="form-control wednesday selectpicker bs-select-hidden">
+                                                <option>09:00</option>
+                                                <option>09:00</option>
+                                                <option>10:00</option>
+                                                <option>11:00</option>
+                                                <option>12:00</option>
+                                                <option>13:00</option>
+                                                <option>14:00</option>
+                                                <option>15:00</option>
+                                                <option>16:00</option>
+                                                <option>17:00</option>
+                                                <option>18:00</option>
+                                            </select>
+                                            <strong>-</strong>
+                                            <select selectpicker ng-model="information.data.time_work.wednesday.to" class="form-control selectpicker bs-select-hidden">
+                                                <option>09:00</option>
+                                                <option>09:00</option>
+                                                <option>10:00</option>
+                                                <option>11:00</option>
+                                                <option>12:00</option>
+                                                <option>13:00</option>
+                                                <option>14:00</option>
+                                                <option>15:00</option>
+                                                <option>16:00</option>
+                                                <option>17:00</option>
+                                                <option>18:00</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <label class="hidden-xs" for="thursday">Четверг:</label>
+                                        <label class="visible-xs" for="thursday">ЧТ:</label>
+                                        <div class="wrapper-select">
+                                            <select selectpicker ng-model="information.data.time_work.thursday.from" class="form-control thursday selectpicker bs-select-hidden">
+                                                <option>09:00</option>
+                                                <option>09:00</option>
+                                                <option>10:00</option>
+                                                <option>11:00</option>
+                                                <option>12:00</option>
+                                                <option>13:00</option>
+                                                <option>14:00</option>
+                                                <option>15:00</option>
+                                                <option>16:00</option>
+                                                <option>17:00</option>
+                                                <option>18:00</option>
+                                            </select>
+                                            <strong>-</strong>
+                                            <select selectpicker ng-model="information.data.time_work.thursday.to" class="form-control selectpicker bs-select-hidden">
+                                                <option>09:00</option>
+                                                <option>09:00</option>
+                                                <option>10:00</option>
+                                                <option>11:00</option>
+                                                <option>12:00</option>
+                                                <option>13:00</option>
+                                                <option>14:00</option>
+                                                <option>15:00</option>
+                                                <option>16:00</option>
+                                                <option>17:00</option>
+                                                <option>18:00</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <label class="hidden-xs" for="friday">Пятница:</label>
+                                        <label class="visible-xs" for="friday">ПТ:</label>
+                                        <div class="wrapper-select">
+                                            <select selectpicker ng-model="information.data.time_work.friday.from" class="form-control friday selectpicker bs-select-hidden">
+                                                <option>09:00</option>
+                                                <option>09:00</option>
+                                                <option>10:00</option>
+                                                <option>11:00</option>
+                                                <option>12:00</option>
+                                                <option>13:00</option>
+                                                <option>14:00</option>
+                                                <option>15:00</option>
+                                                <option>16:00</option>
+                                                <option>17:00</option>
+                                                <option>18:00</option>
+                                            </select>
+                                            <strong>-</strong>
+                                            <select selectpicker ng-model="information.data.time_work.friday.to" class="form-control selectpicker bs-select-hidden">
+                                                <option>09:00</option>
+                                                <option>09:00</option>
+                                                <option>10:00</option>
+                                                <option>11:00</option>
+                                                <option>12:00</option>
+                                                <option>13:00</option>
+                                                <option>14:00</option>
+                                                <option>15:00</option>
+                                                <option>16:00</option>
+                                                <option>17:00</option>
+                                                <option>18:00</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <label class="hidden-xs" for="saturday">Суббота:</label>
+                                        <label class="visible-xs" for="saturday">СБ:</label>
+                                        <div class="wrapper-select">
+                                            <select selectpicker ng-model="information.data.time_work.saturday.from" class="form-control saturday selectpicker bs-select-hidden">
+                                                <option>09:00</option>
+                                                <option>09:00</option>
+                                                <option>10:00</option>
+                                                <option>11:00</option>
+                                                <option>12:00</option>
+                                                <option>13:00</option>
+                                                <option>14:00</option>
+                                                <option>15:00</option>
+                                                <option>16:00</option>
+                                                <option>17:00</option>
+                                                <option>18:00</option>
+                                            </select>
+                                            <strong>-</strong>
+                                            <select selectpicker ng-model="information.data.time_work.saturday.to" class="form-control selectpicker bs-select-hidden">
+                                                <option>09:00</option>
+                                                <option>09:00</option>
+                                                <option>10:00</option>
+                                                <option>11:00</option>
+                                                <option>12:00</option>
+                                                <option>13:00</option>
+                                                <option>14:00</option>
+                                                <option>15:00</option>
+                                                <option>16:00</option>
+                                                <option>17:00</option>
+                                                <option>18:00</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <label class="hidden-xs" for="sunday">Воскресенье:</label>
+                                        <label class="visible-xs" for="sunday">ВС:</label>
+                                        <div class="wrapper-select">
+                                            <select selectpicker ng-model="information.data.time_work.sunday.from" class="form-control sunday selectpicker bs-select-hidden">
+                                                <option>09:00</option>
+                                                <option>09:00</option>
+                                                <option>10:00</option>
+                                                <option>11:00</option>
+                                                <option>12:00</option>
+                                                <option>13:00</option>
+                                                <option>14:00</option>
+                                                <option>15:00</option>
+                                                <option>16:00</option>
+                                                <option>17:00</option>
+                                                <option>18:00</option>
+                                            </select>
+                                            <strong>-</strong>
+                                            <select selectpicker ng-model="information.data.time_work.sunday.to" class="form-control selectpicker bs-select-hidden">
+                                                <option>09:00</option>
+                                                <option>09:00</option>
+                                                <option>10:00</option>
+                                                <option>11:00</option>
+                                                <option>12:00</option>
+                                                <option>13:00</option>
+                                                <option>14:00</option>
+                                                <option>15:00</option>
+                                                <option>16:00</option>
+                                                <option>17:00</option>
+                                                <option>18:00</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="choose-type">
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-12 col-xs-12 three-column">
+                                        <div class="left-col">
+                                            <h5>Кухня:</h5>
+                                        </div>
+                                        <div class="right-col">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="change-item">
+                                                        <div class="block-checkbox">
+                                                            <label class="checkbox img-check">
+                                                                <input type="checkbox"> Европейская
+                                                                <span></span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="block-checkbox">
+                                                            <label class="checkbox img-check">
+                                                                <input type="checkbox"> Венгерская
+                                                                <span></span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="block-checkbox">
+                                                            <label class="checkbox img-check">
+                                                                <input type="checkbox"> Эстонская
+                                                                <span></span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="block-checkbox">
+                                                            <label class="checkbox img-check">
+                                                                <input type="checkbox"> Французская
+                                                                <span></span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="block-checkbox">
+                                                            <label class="checkbox img-check">
+                                                                <input type="checkbox"> Русская
+                                                                <span></span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="block-checkbox">
+                                                            <label class="checkbox img-check">
+                                                                <input type="checkbox"> Украинская
+                                                                <span></span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="block-checkbox hidden-xs">
+                                                            <label class="checkbox img-check">
+                                                                <input type="checkbox"> Итальянская
+                                                                <span></span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="block-checkbox hidden-xs">
+                                                            <label class="checkbox img-check">
+                                                                <input type="checkbox"> Азиатская
+                                                                <span></span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="block-checkbox hidden-xs">
+                                                            <label class="checkbox img-check">
+                                                                <input type="checkbox"> Японская
+                                                                <span></span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="block-checkbox hidden-xs">
+                                                            <label class="checkbox img-check">
+                                                                <input type="checkbox"> Тайская
+                                                                <span></span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="block-checkbox hidden-xs">
+                                                            <label class="checkbox img-check">
+                                                                <input type="checkbox"> Китайская
+                                                                <span></span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="block-checkbox hidden-xs">
+                                                            <label class="checkbox img-check">
+                                                                <input type="checkbox"> Американская
+                                                                <span></span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="change-item hidden-text">
+                                                        <div class="dropdown">
+                                                            <button type="button" class="show-content">
+                                                                Показать все
+                                                            </button>
+                                                            <div class="collapse see-more">
+                                                                <div class="block-checkbox visible-xs">
+                                                                    <label class="checkbox img-check">
+                                                                        <input type="checkbox"> Итальянская
+                                                                        <span></span>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="block-checkbox visible-xs">
+                                                                    <label class="checkbox img-check">
+                                                                        <input type="checkbox"> Азиатская
+                                                                        <span></span>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="block-checkbox visible-xs">
+                                                                    <label class="checkbox img-check">
+                                                                        <input type="checkbox"> Японская
+                                                                        <span></span>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="block-checkbox visible-xs">
+                                                                    <label class="checkbox img-check">
+                                                                        <input type="checkbox"> Тайская
+                                                                        <span></span>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="block-checkbox visible-xs">
+                                                                    <label class="checkbox img-check">
+                                                                        <input type="checkbox"> Китайская
+                                                                        <span></span>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="block-checkbox visible-xs">
+                                                                    <label class="checkbox img-check">
+                                                                        <input type="checkbox"> Американская
+                                                                        <span></span>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="block-checkbox">
+                                                                    <label class="checkbox img-check">
+                                                                        <input type="checkbox">Греческая
+                                                                        <span></span>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="block-checkbox">
+                                                                    <label class="checkbox img-check">
+                                                                        <input type="checkbox">Мексиканская
+                                                                        <span></span>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="block-checkbox">
+                                                                    <label class="checkbox img-check">
+                                                                        <input type="checkbox"> Индийская
+                                                                        <span></span>
+                                                                    </label>
+                                                                </div>
+                                                                <button type="button" class="hide-content">Скрыть</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12 col-xs-12">
+                                        <div class="left-col">
+                                            <h5>Тип и тематика:</h5>
+                                        </div>
+                                        <div class="right-col">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="change-item">
+                                                        <div class="block-checkbox">
+                                                            <label class="checkbox img-check">
+                                                                <input type="checkbox"> Рестораны
+                                                                <span></span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="block-checkbox">
+                                                            <label class="checkbox img-check">
+                                                                <input type="checkbox"> Караоке клуб
+                                                                <span></span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="block-checkbox">
+                                                            <label class="checkbox img-check">
+                                                                <input type="checkbox"> Бары и пабы
+                                                                <span></span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="block-checkbox">
+                                                            <label class="checkbox img-check">
+                                                                <input type="checkbox"> Кальянная
+                                                                <span></span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="block-checkbox" style="display: block;">
+                                                            <label class="checkbox img-check">
+                                                                <input type="checkbox"> Винный клуб
+                                                                <span></span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="block-checkbox" style="display: block;">
+                                                            <label class="checkbox img-check">
+                                                                <input type="checkbox"> Lounge cafe
+                                                                <span></span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="block-checkbox hidden-xs" style="display: block;">
+                                                            <label class="checkbox img-check">
+                                                                <input type="checkbox"> Фастфуд
+                                                                <span></span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="block-checkbox hidden-xs" style="display: block;">
+                                                            <label class="checkbox img-check">
+                                                                <input type="checkbox"> Трактир
+                                                                <span></span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row visible-xs">
+                                                <div class="col-md-12">
+                                                    <div class="change-item hidden-text">
+                                                        <div class="dropdown">
+                                                            <button type="button" class="show-content">
+                                                                Показать все
+                                                            </button>
+                                                            <div class="collapse see-more">
+                                                                <div class="block-checkbox" style="display: block;">
+                                                                    <label class="checkbox img-check">
+                                                                        <input type="checkbox"> Фастфуд
+                                                                        <span></span>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="block-checkbox" style="display: block;">
+                                                                    <label class="checkbox img-check">
+                                                                        <input type="checkbox"> Трактир
+                                                                        <span></span>
+                                                                    </label>
+                                                                </div>
+                                                                <button type="button" class="hide-content">Скрыть</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-12 col-xs-12 three-column">
+                                        <div class="left-col">
+                                            <h5>Особенности:</h5>
+                                        </div>
+                                        <div class="right-col">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="change-item">
+                                                        <div class="block-checkbox">
+                                                            <label class="checkbox img-check">
+                                                                <input type="checkbox"> Детская комната
+                                                                <span></span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="block-checkbox">
+                                                            <label class="checkbox img-check">
+                                                                <input type="checkbox"> VIP-зал
+                                                                <span></span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="block-checkbox">
+                                                            <label class="checkbox img-check">
+                                                                <input type="checkbox"> Детское питание
+                                                                <span></span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="block-checkbox">
+                                                            <label class="checkbox img-check">
+                                                                <input type="checkbox"> Банкетный зал
+                                                                <span></span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="block-checkbox">
+                                                            <label class="checkbox img-check">
+                                                                <input type="checkbox"> Панорамный вид
+                                                                <span></span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="block-checkbox">
+                                                            <label class="checkbox img-check">
+                                                                <input type="checkbox"> Бильярд
+                                                                <span></span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="block-checkbox hidden-xs">
+                                                            <label class="checkbox img-check">
+                                                                <input type="checkbox">Диетическое меню
+                                                                <span></span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="block-checkbox hidden-xs">
+                                                            <label class="checkbox img-check">
+                                                                <input type="checkbox"> При отеле
+                                                                <span></span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="block-checkbox hidden-xs">
+                                                            <label class="checkbox img-check">
+                                                                <input type="checkbox"> Романтика
+                                                                <span></span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="block-checkbox hidden-xs">
+                                                            <label class="checkbox img-check">
+                                                                <input type="checkbox"> Чайная церемония
+                                                                <span></span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="block-checkbox hidden-xs">
+                                                            <label class="checkbox img-check">
+                                                                <input type="checkbox"> Караоке
+                                                                <span></span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="block-checkbox hidden-xs">
+                                                            <label class="checkbox img-check">
+                                                                <input type="checkbox"> TV-спорт
+                                                                <span></span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="change-item hidden-text">
+                                                        <div class="dropdown">
+                                                            <button type="button" class="show-content">
+                                                                Показать все
+                                                            </button>
+                                                            <div class="collapse see-more">
+                                                                <div class="block-checkbox visible-xs">
+                                                                    <label class="checkbox img-check">
+                                                                        <input type="checkbox">Диетическое меню
+                                                                        <span></span>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="block-checkbox visible-xs">
+                                                                    <label class="checkbox img-check">
+                                                                        <input type="checkbox"> При отеле
+                                                                        <span></span>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="block-checkbox visible-xs">
+                                                                    <label class="checkbox img-check">
+                                                                        <input type="checkbox"> Романтика
+                                                                        <span></span>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="block-checkbox visible-xs">
+                                                                    <label class="checkbox img-check">
+                                                                        <input type="checkbox"> Чайная церемония
+                                                                        <span></span>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="block-checkbox visible-xs">
+                                                                    <label class="checkbox img-check">
+                                                                        <input type="checkbox"> Караоке
+                                                                        <span></span>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="block-checkbox hidden-xs">
+                                                                    <label class="checkbox img-check">
+                                                                        <input type="checkbox"> TV-спорт
+                                                                        <span></span>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="block-checkbox">
+                                                                    <label class="checkbox img-check">
+                                                                        <input type="checkbox">TV-спорт
+                                                                        <span></span>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="block-checkbox">
+                                                                    <label class="checkbox img-check">
+                                                                        <input type="checkbox">Вегетарианские блюда
+                                                                        <span></span>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="block-checkbox">
+                                                                    <label class="checkbox img-check">
+                                                                        <input type="checkbox">Шоу программа
+                                                                        <span></span>
+                                                                    </label>
+                                                                </div>
+                                                                <button type="button" class="hide-content">Скрыть</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="save blue">Сохранить</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer-component></footer-component>
+</div>

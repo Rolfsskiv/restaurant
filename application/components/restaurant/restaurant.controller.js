@@ -1,5 +1,7 @@
-RestaurantController.$inject = ['ComplaintService', '$routeParams', 'RestaurantsService', 'ls', '$scope', '$filter', 'FilterService', 'Notification'];
-function RestaurantController(ComplaintService, $routeParams, RestaurantsService, ls, $scope, $filter, FilterService, Notification) {
+RestaurantController.$inject = ['$controller', 'ComplaintService', '$routeParams', 'RestaurantsService', 'ls', '$scope', '$filter', 'FilterService', 'Notification'];
+function RestaurantController($controller, ComplaintService, $routeParams, RestaurantsService, ls, $scope, $filter, FilterService, Notification) {
+
+    angular.extend(this, $controller('BaseController', {$scope: $scope}));
 
     var vm = this;
 
@@ -69,10 +71,16 @@ function RestaurantController(ComplaintService, $routeParams, RestaurantsService
     });
 
     $scope.$watch(function () {
-        return vm.currentFilters;
-    }, function (newFilters) {
-        if (newFilters.foods.length !== 0 || newFilters.features.length !== 0 || newFilters.types.length !== 0 ) {
-            vm.backRestaurants = $filter('restaurantFilter')(newFilters, vm.restaurants);
+        return {rest: vm.sliderRestaurant, slider: vm.currentFilters};
+    }, function () {
+        if (vm.currentFilters.foods.length !== 0 || vm.currentFilters.features.length !== 0 || vm.currentFilters.types.length !== 0 || vm.sliderRestaurant ) {
+            vm.backRestaurants = $filter('restaurantFilter')(
+                vm.currentFilters, vm.restaurants,
+                {
+                    min: vm.sliderRestaurant.minValue,
+                    max: vm.sliderRestaurant.maxValue
+                }
+            );
         } else {
             vm.backRestaurants = vm.restaurants;
         }

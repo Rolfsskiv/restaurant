@@ -490,7 +490,7 @@ $(function() {
         console.log(notCheck);
         $(this).closest('.add-time-block').removeClass('active');
     });
-    
+
     $('.personal-restaurant .add-section').click(function(event) {
        $(this).next('.make-section-block').show();
     });
@@ -529,7 +529,7 @@ $(function() {
 
 
 
-       
+
     }).children().click(function(e) {
       return false;
     });
@@ -547,7 +547,7 @@ $(function() {
        console.log('.add-dish-holder-inner');
     }).children().click(function(e) {
       return false;
-    }); 
+    });
     $('.personal-restaurant .description-holder .cancel').click(function(event) {
         event.preventDefault();
        $(this).closest('.description-holder').hide();
@@ -836,7 +836,12 @@ function initIndexPage() {
         });
 
         $('button.parametrs.two').click(function () {
-            $('div.select-mobile.two').show(200);
+            $('button.parametrs.two').toggleClass('active-block');
+            $('.select-mobile.two').toggleClass('active-block');
+        });
+        $('.two .close-menu').click(function () {
+            $('.parametrs .two').removeClass('active-block');
+            $('.select-mobile .two').removeClass('active-block');
         });
 
         $('.restaurants-block .parametrs.two').click(function() {

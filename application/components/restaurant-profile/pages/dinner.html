@@ -1,0 +1,118 @@
+<div class="personal-restaurant" ng-init="dinner.init()" ng-cloak>
+    <rest-head></rest-head>
+    <div id="home-page">
+        <rest-menu></rest-menu>
+        <div class="content-rest">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4 class="hidden-xs">Комплексные обеды</h4>
+                        <h5>Список добавленных обедов:</h5>
+                    </div>
+                </div>
+                <div class="dishes-boss">
+                    <div class="name-cook">Название обеда</div>
+                    <div class="line-border hidden-xs"></div>
+                    <div class="name-dish">Описание короткое</div>
+                    <div class="line-border hidden-xs"></div>
+                    <div class="name-kitchen">Язык: Русский, Естонский</div>
+                    <div class="line-border visible-lg"></div>
+                    <div class="button-wrapper">
+                        <button ng-click="dinner.editDinner(din.id)" class="edit blue">редактировать</button>
+                        <button ng-click="dinner.removeDinner(din.id)" class="cancel white">удалить</button>
+                    </div>
+                </div>
+                <button class="add-dish blue">Добавить комплесный обед</button>
+                <div class="add-dish-holder">
+                    <h4>Добавить комплесный обед</h4>
+                    <div class="add-dish-holder-inner">
+                        <form ng-submit="dinner.add()">
+                            <div class="row">
+                                <div class="col-md-12 col-lg-6">
+                                    <div class="select-data">
+                                        <label for="">
+                                            <span class="title">Дата комплексного обеда:</span>
+                                            <input ng-model="dinner.data.date" type="text" class="form-control" id="datepicker">
+                                        </label>
+                                    </div>
+                                    <label for=""><span>Название комплексного обеда:</span>
+                                        <input ng-model="dinner.data.name" type="text">
+                                    </label>
+                                    <label for=""><span>Стоимость комлпексного обеда:</span>
+                                        <input ng-model="dinner.data.complex_price" type="text">
+                                    </label>
+                                    <label for="download-photo" class="visible-lg">
+                                        <span>Фото блюда:</span>
+                                        <button type="button" data-toggle="modal" data-target=".download-photo-modal" class="change-foto download-photo hidden-xs">загрузить фото</button>
+                                        <!--<a href="modal-download-photo.html" class="visible-xs change-foto download-photo">загрузить фото</a>-->
+                                    </label>
+                                </div>
+                                <div class="col-md-12 col-lg-6">
+                                    <label for="">
+                                        <span class="hidden-xs">Стоимость доставки комлпексного обеда:</span>
+                                        <span class="visible-xs">Стоимость доставки обеда:</span>
+
+                                        <input ng-model="dinner.data.price" type="text">
+                                    </label>
+                                    <label for="">
+                                        <span>Состав комплексного обеда:</span>
+                                        <textarea ng-model="dinner.data.consist" name="" id="complex-dinner"></textarea>
+                                    </label>
+                                    <label for="download-photo" class="hidden-lg">
+                                        <span>Фото блюда:</span>
+                                        <button type="button" data-toggle="modal" data-target=".download-photo-modal" class="change-foto download-photo hidden-xs">загрузить фото</button>
+                                        <!--<a href="modal-download-photo.html" class="visible-xs change-foto download-photo">загрузить фото</a>-->
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="gallery-dishes">
+                                <div ng-repeat="img in dinner.data.images track by $index" class="gallery-wrapper">
+                                    <img ng-src="{{img}}">
+                                    <button ng-click="dinner.removeImage($index)" class="close" data-toggle="tooltip" data-placement="top" title="Удалить"></button>
+                                </div>
+
+                            </div>
+                            <div class="main-button">
+                                <button type="submit" class="blue">сохранить</button>
+                                <button type="reset" class="white">отмена</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade download-photo-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content filters">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+            <h3>Загрузка фотографии</h3>
+            <p>Вы можете загрузить изображение в формате JPG, GIF или PNG.</p>
+            <input type="file" id="fileInput"/>
+            <!--<button class="modal-change-foto" data-toggle="modal" data-dismiss="modal" aria-hidden="true" data-target=".download-photo-modal-2">Загрузить фото</button>-->
+        </div>
+    </div>
+</div>
+<div class="modal fade download-photo-modal-2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content filters">
+            <form ng-submit="dinner.saveImage()">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h3>Фотография на Вашей странице</h3>
+                <p>Выбранная область будет показываться на Вашей странице. <br>
+                    Если изображение ориентировано неправильно, фотографию можно повернуть.
+                </p>
+                <div class="cropArea">
+                    <img-crop area-type="square" image="dinner.myImage" result-image="dinner.myCroppedImage"></img-crop>
+                </div>
+                <button type="submit">сохранить</button>
+                <button type="reset" class="cansel" data-dismiss="modal">отмена</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,9 +1,9 @@
 node_modules
 bower_components
 build
-img
+/img
 application.zip
 fonts
 css
 .idea
-templates
+/templates

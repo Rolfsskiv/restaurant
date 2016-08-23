@@ -1,6 +1,6 @@
 
-ProfileController.$inject = ['ProfileService', '$route', 'ComplaintService'];
-function ProfileController(ProfileService, $route, ComplaintService) {
+ProfileController.$inject = ['ProfileService', '$route', 'ComplaintService', 'AuthService'];
+function ProfileController(ProfileService, $route, ComplaintService, AuthService) {
     var vm = this;
     
     vm.ps = ProfileService;
@@ -9,6 +9,8 @@ function ProfileController(ProfileService, $route, ComplaintService) {
     vm.myImage = '';
     vm.routeName = null;
     vm.bonus = {};
+    vm.events = [];
+    vm.information = null;
     vm.reservations = [];
     vm.orderFoods = [];
     vm.testimonials = [];
@@ -64,32 +66,42 @@ function ProfileController(ProfileService, $route, ComplaintService) {
 
     function init() {
         vm.routeName = $route.current.name;
-        /*vm.ps.getUser().then(function (user) {
+        AuthService.getUser().then(function (user) {
             vm.user = user;
-        });*/
+        });
 
         switch ($route.current.name) {
             case 'profile':
-
+                ProfileService.getProfile().then(function (events) {
+                    vm.events = events;
+                });
                 break;
 
             case 'information':
-
                 break;
 
             case 'bonus':
-
+                ProfileService.getBonusData().then(function (bonus) {
+                    vm.bonus = bonus;
+                });
                 break;
 
             case 'reservation':
-
+                ProfileService.getReservations().then(function (reservations) {
+                    vm.reservations = reservations;
+                });
                 break;
 
             case 'order-food':
-
+                ProfileService.getOrderFoods().then(function (orderFoods) {
+                    vm.orderFoods = orderFoods;
+                });
                 break;
 
             case 'testimonials':
+                ProfileService.getTestimonials().then(function (testimonials) {
+                    vm.testimonials = testimonials;
+                });
                 userProfileInitComplaints();
                 break;
         }

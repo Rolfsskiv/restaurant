@@ -78,8 +78,8 @@
                     </div>
                 </div>
                 <div class="choose-time ">
-                    <button class="onday">На день</button>
-                    <button class="onweek">На неделю</button>
+                    <button ng-click="dinner.filter('day')" class="onday">На день</button>
+                    <button ng-click="dinner.filter('week')" class="onweek">На неделю</button>
                     <input type="text" value="14-03-2016" id="datepicker"><label for="datepicker"></label>
                 </div>
             </div>
@@ -87,7 +87,7 @@
                 <div class="container">
                     <div class="row">
 
-                        <div ng-repeat="din in dinner.dinners | startFrom:dinner.pagination.currentPage*dinner.pagination.pageSize | limitTo:dinner.pagination.pageSize track by $index" class="col-md-4 col-xs-12 col-md-lg-4 col-sm-6 ">
+                        <div ng-repeat="din in dinner.backDinners | startFrom:dinner.pagination.currentPage*dinner.pagination.pageSize | limitTo:dinner.pagination.pageSize track by $index" class="col-md-4 col-xs-12 col-md-lg-4 col-sm-6 ">
                             <div class="restaurant-menu-block">
                                 <div class="restaurant-menu">
                                     <div class="carousel-caption">

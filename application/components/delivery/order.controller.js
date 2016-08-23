@@ -22,9 +22,12 @@ function OrderController(ls, $scope, $routeParams, CartService, $http) {
     function send() {
         var cart = vm.cart.getCart(vm.restaurantId);
 
-        $http.post(API_URL + '/delivery/' + vm.restaurantId + '/order' ).then(function (response) {
+        $http.post(API_URL + '/delivery/' + vm.restaurantId + '/order', {
+            cart: cart,
+            order: vm.order
+        }).then(function (response) {
             if (response.status == 200) {
-
+                console.log(response);
             }
         });
     }

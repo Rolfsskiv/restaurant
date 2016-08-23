@@ -421,23 +421,14 @@
             <div class="page-block desctop">
                 <ul>
                     <li>
-                        <button ng-disabled="ctrl.pagination.currentPage == 0"
-                                ng-click="ctrl.pagination.currentPage = ctrl.pagination.currentPage-1" href="#"
-                                class="prev">НАЗАД
-                        </button>
+                        <button ng-disabled="ctrl.pagination.currentPage == 0" ng-click="ctrl.pagination.currentPage = ctrl.pagination.currentPage-1" href="#" class="prev">НАЗАД</button>
                     </li>
-                    <li ng-repeat="page in ctrl.pagination.na(ctrl.pagination.numberOfPages()) | limitTo:4"><a href="#"
-                                                                                                               ng-class="ctrl.pagination.currentPage == page ? 'active-page' : 'sibling-page'"
-                                                                                                               ng-click="ctrl.pagination.currentPage=page">{{page
-                        + 1}}</a></li>
+                    <li ng-repeat="page in ctrl.pagination.na(ctrl.pagination.numberOfPages()) | limitTo:4">
+                        <a href="#" ng-class="ctrl.pagination.currentPage == page ? 'active-page' : 'sibling-page'" ng-click="ctrl.pagination.currentPage=page">{{page + 1}}</a></li>
                     <li><a href="#" class="other-page">...</a></li>
-                    <li><a href="#" class="last-page"
-                           ng-click="ctrl.pagination.currentPage = ctrl.pagination.getLastPage()">{{ctrl.pagination.getLastPage()
-                        + 1}}</a></li>
+                    <li><a href="#" class="last-page" ng-click="ctrl.pagination.currentPage = ctrl.pagination.getLastPage()">{{ctrl.pagination.getLastPage() + 1}}</a></li>
                     <li>
-                        <button ng-disabled="ctrl.pagination.currentPage >= ctrl.complaints.length/ctrl.pagination.pageSize - 1"
-                                ng-click="ctrl.pagination.currentPage=ctrl.pagination.currentPage+1" href="#"
-                                class="next">ВПЕРЕД
+                        <button ng-disabled="ctrl.pagination.currentPage >= ctrl.complaints.length/ctrl.pagination.pageSize - 1" ng-click="ctrl.pagination.currentPage=ctrl.pagination.currentPage+1" href="#" class="next">ВПЕРЕД
                         </button>
                     </li>
                 </ul>
@@ -445,22 +436,16 @@
             <div class="page-block mobile">
                 <ul>
                     <li>
-                        <button ng-disabled="ctrl.pagination.currentPage == 0"
-                                ng-click="ctrl.pagination.currentPage = ctrl.pagination.currentPage-1" href="#"
-                                class="prev"></button>
+                        <button ng-disabled="ctrl.pagination.currentPage == 0" ng-click="ctrl.pagination.currentPage = ctrl.pagination.currentPage-1" href="#" class="prev"></button>
                     </li>
-                    <li ng-repeat="page in ctrl.pagination.na(ctrl.pagination.numberOfPages()) | limitTo:4"><a href="#"
-                                                                                                               ng-class="ctrl.pagination.currentPage == page ? 'active-page' : 'sibling-page'"
-                                                                                                               ng-click="ctrl.pagination.currentPage=page">{{page
-                        + 1}}</a></li>
+                    <li ng-repeat="page in ctrl.pagination.na(ctrl.pagination.numberOfPages()) | limitTo:4">
+                        <a href="#" ng-class="ctrl.pagination.currentPage == page ? 'active-page' : 'sibling-page'" ng-click="ctrl.pagination.currentPage=page">{{page + 1}}</a>
+                    </li>
                     <li><a href="#" class="other-page">...</a></li>
-                    <li><a href="#" class="last-page"
-                           ng-click="ctrl.pagination.currentPage = ctrl.pagination.getLastPage()">{{ctrl.pagination.getLastPage()
-                        + 1}}</a></li>
                     <li>
-                        <button ng-disabled="ctrl.pagination.currentPage >= ctrl.complaints.length/ctrl.pagination.pageSize - 1"
-                                ng-click="ctrl.pagination.currentPage=ctrl.pagination.currentPage+1" href="#"
-                                class="next"></button>
+                        <a href="#" class="last-page" ng-click="ctrl.pagination.currentPage = ctrl.pagination.getLastPage()">{{ctrl.pagination.getLastPage() + 1}}</a></li>
+                    <li>
+                        <button ng-disabled="ctrl.pagination.currentPage >= ctrl.complaints.length/ctrl.pagination.pageSize - 1" ng-click="ctrl.pagination.currentPage=ctrl.pagination.currentPage+1" href="#" class="next"></button>
                     </li>
                 </ul>
             </div>

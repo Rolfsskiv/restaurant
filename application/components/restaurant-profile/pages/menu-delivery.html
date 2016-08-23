@@ -1,0 +1,133 @@
+<div class="personal-restaurant">
+    <rest-head></rest-head>
+    <div id="home-page">
+        <rest-menu></rest-menu>
+        <div class="content-rest">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4 class="hidden-xs">Меню доставки</h4>
+                        <h4 class="visible-xs">добавить подраздел</h4>
+                        <button class="add-section blue">Добавить раздел</button>
+                        <div class="make-section-block">
+                            <h6>Добавить раздел</h6>
+                            <input type="text" placeholder="Название раздела" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Название раздела'">
+                            <button type="submit" class="edit blue">сохранить</button>
+                            <button class="cancel white">отмена</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="make-section">
+                            <span>test 2</span>
+                            <div class="buttons-block">
+                                <button class="add-subsection blue">Добавить подраздел</button>
+                                <button class="edit blue">редактировать</button>
+                                <button class="cancel white">удалить</button>
+                            </div>
+                        </div>
+                        <div class="form-fill add-dish-holder-inner">
+                            <form action="">
+                                <div class="make-subsection">
+                                    <h6>Добавить подраздел</h6> <br>
+                                    <input type="text" placeholder="Название раздела" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Название раздела'">
+                                    <button type="submit" class="edit blue">сохранить</button>
+                                    <button class="cancel-ser white">отмена</button>
+                                </div>
+                                <div class="make-subsection">
+                                    <h6>Добавить подраздел</h6> <br>
+                                    <input type="text" placeholder="Название раздела" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Название раздела'">
+                                    <button type="submit" class="edit blue">сохранить</button>
+                                    <button class="cancel-ser white">отмена</button>
+                                </div>
+                                <div class="fon-border-block">
+                                    <div class="make-dish">
+                                        <h6>test</h6> <br>
+                                        <button class="add-dish-subcategory blue">добавить блюдо</button>
+                                        <button type="submit" class="blue">редактировать</button>
+                                        <button class="cancel white">удалить</button>
+                                    </div>
+
+                                </div>
+                                <div class="fon-border-block-inner">
+                                    <div class="description-dish">
+                                        <input type="text" class="name-dish" placeholder="Название блюда" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Название блюда'">
+                                        <div class="price-determine">
+                                            <input type="text" placeholder="Цена" class="price" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Цена'">
+                                            <strong>€</strong>
+                                            <input type="text" placeholder="Цена со скидой" class="price-discount" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Цена со скидой'">
+                                            <input type="text" class="form-control datepicker-sale" placeholder="Начало скидки">
+                                            <input type="text" class="form-control datepicker-sale-2" placeholder="Конец скидки">
+                                        </div>
+                                        <textarea name="" id="description-dish"></textarea>
+                                        <label for="download-photo">
+                                            <span>Фото блюда:</span>
+                                            <button type="button" data-toggle="modal" data-target=".download-photo-modal" class="change-foto download-photo hidden-xs">загрузить фото</button>
+                                            <a href="modal-download-photo.html" class="visible-xs change-foto download-photo">загрузить фото</a>
+                                        </label>
+                                        <button type="submit" class="blue">сохранить</button>
+                                        <button class="cancel white">отмена</button>
+                                    </div>
+
+                                </div>
+                                <div class="description-holder">
+                                    <div class="main-information">
+                                        <h6>test 2</h6>
+                                        <div class="wrapper">
+                                            <img src="img/dishes-foto-category.jpg" alt="dishes-foto-category">
+                                            <div class="features visible-xs">
+                                                <p>Цена: 18 €</p>
+                                                <p>Скидка: 15 € <br> (от 2015-10-26 до 2015-10-27)</p>
+                                            </div>
+                                            <div class="text">
+                                                Описание: Блюдо описание подробное возможно в две или три строки. Блюдо описание подробное возможно в две или три строки. Блюдо описание подробное возможно в две или три строки. Блюдо описание подробное возможно в две строки.
+                                            </div>
+                                            <div class="wrapper-inner">
+                                                <div class="features hidden-xs">
+                                                    <p>Цена: 18 €</p>
+                                                    <p>Скидка: 15 € (от 2015-10-26 до 2015-10-27)</p>
+                                                </div>
+                                                <div class="button-holder">
+                                                    <button class="blue">редактировать</button>
+                                                    <button class="cancel white">удалить</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="description-dish">
+                                        <input type="text" class="name-dish" placeholder="Название блюда" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Название блюда'">
+                                        <div class="price-determine">
+                                            <input type="text" placeholder="Цена" class="price" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Цена'">
+                                            <strong>€</strong>
+                                            <input type="text" placeholder="Цена со скидой" class="price-discount" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Цена со скидой'">
+                                            <input type="text" class="form-control datepicker-sale" placeholder="Начало скидки">
+                                            <input type="text" class="form-control datepicker-sale-2" placeholder="Конец скидки">
+                                        </div>
+                                        <textarea name="" id="description-dish"></textarea>
+                                        <label for="download-photo">
+                                            <span>Фото блюда:</span>
+                                            <button type="button" data-toggle="modal" data-target=".download-photo-modal" class="change-foto download-photo hidden-xs">изменить фото</button>
+                                            <a href="modal-download-photo.html" class="visible-xs change-foto download-photo">изменить фото</a>
+                                        </label>
+                                        <button type="submit" class="blue">сохранить</button>
+                                        <button class="cancel white">отмена</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="make-section">
+                            <span>test 2</span>
+                            <div class="buttons-block">
+                                <button class="add-subsection blue">Добавить подраздел</button>
+                                <button class="edit blue">редактировать</button>
+                                <button class="cancel white">удалить</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer-component></footer-component>
+</div>

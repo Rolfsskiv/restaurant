@@ -1,6 +1,9 @@
 
-DeliveryController.$inject = ['Notification', '$scope', 'DeliveryService', 'FilterService', '$routeParams', 'CartService', 'ComplaintService'];
-function DeliveryController(Notification, $scope, DeliveryService, FilterService, $routeParams, CartService, ComplaintService) {
+DeliveryController.$inject = ['$controller', '$filter', 'Notification', '$scope', 'DeliveryService', 'FilterService', '$routeParams', 'CartService', 'ComplaintService'];
+function DeliveryController($controller, $filter, Notification, $scope, DeliveryService, FilterService, $routeParams, CartService, ComplaintService) {
+
+    angular.extend(this, $controller('BaseController', {$scope: $scope}));
+
     var vm = this;
 
     vm.menus = [];
@@ -23,8 +26,7 @@ function DeliveryController(Notification, $scope, DeliveryService, FilterService
     };
     vm.currentFilters = {
         foods: [],
-        features: [],
-        types: []
+        type_dinners: []
     };
     vm.pagination = {
         currentPage: 0,
@@ -57,6 +59,21 @@ function DeliveryController(Notification, $scope, DeliveryService, FilterService
     vm.init = init;
     vm.isArray = angular.isArray;
     vm.addComment = addComment;
+
+    $scope.$watch(function () {
+        return {rest: vm.currentFilters, slider: vm.sliderFood};
+    }, function () {
+        if (vm.currentFilters.foods.length > 0 || vm.currentFilters.type_dinners.length > 0 || vm.sliderRestaurant) {
+            vm.backDeliveries = $filter('deliveryFilter')(
+                vm.currentFilters, vm.deliveries,
+                {
+                    min: vm.sliderRestaurant.minValue,
+                    max: vm.sliderRestaurant.maxValue
+                });
+        } else {
+            vm.backDeliveries = vm.deliveries;
+        }
+    }, true);
 
     $scope.$on('LastRepeaterElement', function () {
         readMoreComments();

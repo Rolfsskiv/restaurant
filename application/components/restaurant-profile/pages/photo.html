@@ -1,0 +1,136 @@
+<div class="personal-restaurant" ng-init="photo.init()">
+    <rest-head></rest-head>
+    <div id="home-page">
+        <rest-menu></rest-menu>
+        <div class="content-rest">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Логотип ресторана</h4>
+                        <img ng-src="{{photo.imagesRestaurant.mainPhotoCropped}}" class="main-logo" alt="logo-restaurant">
+                        <button type="button" data-toggle="modal" data-target=".download-photo-modal" class="change-foto change-logo hidden-xs">изменить логотип</button>
+                        <!--<a href="modal-download-photo.html" class="visible-xs change-foto change-foto change-logo">изменить логотип</a>-->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Фотографии ресторана</h4>
+                        <button type="button" data-toggle="modal" data-target=".download-photo-modal" class="change-foto hidden-xs download-photo">загрузить фото</button>
+                        <!--<a href="modal-download-photo.html" class="visible-xs change-foto download-photo">загрузить фото </a>-->
+                    </div>
+                </div>
+                <div class="gallery-block">
+                    <div class="row hidden-xs row-eq-height">
+                        <div class="col-md-8 col-sm-8 nopadding-right">
+                            <div class="img-wrapper main">
+                                <img src="img/rest-photo-1.jpg" alt="restaurant-photo">
+                                <button class="close" data-toggle="tooltip" data-placement="top" title="Удалить"></button>
+                                <button class="checkmark" data-toggle="tooltip" data-placement="top" title="Сделать главной"></button>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 nopadding-right right-content">
+                            <div class="img-wrapper">
+                                <img src="img/rest-photo-2.jpg" alt="restaurant-photo">
+                                <button class="close" data-toggle="tooltip" data-placement="top" title="Удалить"></button>
+                                <button class="checkmark" data-toggle="tooltip" data-placement="top" title="Сделать главной"></button>
+                            </div>
+                            <div class="img-wrapper position-bottom">
+                                <img src="img/rest-photo-2.jpg" alt="restaurant-photo">
+                                <button class="close" data-toggle="tooltip" data-placement="top" title="Удалить"></button>
+                                <button class="checkmark" data-toggle="tooltip" data-placement="top" title="Сделать главной"></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 col-sm-4 nopadding-right">
+                            <div class="img-wrapper">
+                                <img src="img/rest-photo-2.jpg" alt="restaurant-photo">
+                                <button class="close" data-toggle="tooltip" data-placement="top" title="Удалить"></button>
+                                <button class="checkmark" data-toggle="tooltip" data-placement="top" title="Сделать главной"></button>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 nopadding-right">
+                            <div class="img-wrapper">
+                                <img src="img/rest-photo-2.jpg" alt="restaurant-photo">
+                                <button class="close" data-toggle="tooltip" data-placement="top" title="Удалить"></button>
+                                <button class="checkmark" data-toggle="tooltip" data-placement="top" title="Сделать главной"></button>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 nopadding-right">
+                            <div class="img-wrapper">
+                                <img src="img/rest-photo-2.jpg" alt="restaurant-photo">
+                                <button class="close" data-toggle="tooltip" data-placement="top" title="Удалить"></button>
+                                <button class="checkmark" data-toggle="tooltip" data-placement="top" title="Сделать главной"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade download-photo-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content filters">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+            <h3>Загрузка фотографии</h3>
+            <p>Вы можете загрузить изображение в формате JPG, GIF или PNG.</p>
+            <input type="file" id="fileInput"/>
+            <!--<button class="modal-change-foto" data-toggle="modal" data-dismiss="modal" aria-hidden="true" data-target=".download-photo-modal-2">Загрузить фото</button>-->
+        </div>
+    </div>
+</div>
+<div class="modal fade download-photo-modal-2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content filters">
+            <form ng-submit="photo.saveRestaurantImage()">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h3>Фотография на Вашей странице</h3>
+                <p>Выбранная область будет показываться на Вашей странице. <br>
+                    Если изображение ориентировано неправильно, фотографию можно повернуть.
+                </p>
+                <div class="cropArea">
+                    <img-crop area-type="square" image="photo.mainPhoto" result-image="photo.mainPhotoCropped"></img-crop>
+                </div>
+                <button type="submit">сохранить</button>
+                <button type="reset" class="cansel" data-dismiss="modal">отмена</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade download-photo-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content filters">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+            <h3>Загрузка фотографии</h3>
+            <p>Вы можете загрузить изображение в формате JPG, GIF или PNG.</p>
+            <input type="file" id="fileInput1"/>
+            <!--<button class="modal-change-foto" data-toggle="modal" data-dismiss="modal" aria-hidden="true" data-target=".download-photo-modal-2">Загрузить фото</button>-->
+        </div>
+    </div>
+</div>
+<div class="modal fade download-photo-modal-2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content filters">
+            <form ng-submit="photo.saveImage()">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h3>Фотография на Вашей странице</h3>
+                <p>Выбранная область будет показываться на Вашей странице. <br>
+                    Если изображение ориентировано неправильно, фотографию можно повернуть.
+                </p>
+                <div class="cropArea">
+                    <img-crop area-type="square" image="photo.myImage" result-image="photo.myCroppedImage"></img-crop>
+                </div>
+                <button type="submit">сохранить</button>
+                <button type="reset" class="cansel" data-dismiss="modal">отмена</button>
+            </form>
+        </div>
+    </div>
+</div>

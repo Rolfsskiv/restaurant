@@ -89,6 +89,35 @@
             right: 20px;
         }
 
+        #fileInput::-webkit-file-upload-button {
+            visibility: hidden;
+        }
+
+        #fileInput::before {
+            content: 'Загрузить фото';
+            background: #789fc3;
+            border-radius: 2px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            color: #fff;
+            margin: 0 auto !important;
+            width: 188px;
+            border: none;
+            padding: 11px 10px 9px 10px;
+            text-transform: uppercase;
+            box-shadow: 0px 1px 0px 1px #f5f5f5;
+            -webkit-box-shadow: 0px 1px 0px 1px #f5f5f5;
+            margin-bottom: 47px;
+            display: block;
+            text-align: center;
+            position: relative;
+        }
+
+        .liked {
+            background: url("/img/heart-hover.png") no-repeat !important;
+        }
+
         @media (max-width: 767px) {
             .delivery > .container > .parametrs.two {
                 display: block;
@@ -340,6 +369,20 @@
 <script src="application/components/delivery/cart.service.js"></script>
 <script src="application/components/delivery/delivery.service.js"></script>
 <script src="application/components/delivery/delivery.filter.js"></script>
+
+<script src="application/components/restaurant-profile/reservation.controller.js"></script>
+<script src="application/components/restaurant-profile/delivery-food.controller.js"></script>
+<script src="application/components/restaurant-profile/discount.controller.js"></script>
+<script src="application/components/restaurant-profile/filter-delivery.controller.js"></script>
+<script src="application/components/restaurant-profile/information.controller.js"></script>
+<script src="application/components/restaurant-profile/map.controller.js"></script>
+<script src="application/components/restaurant-profile/menu-delivery.controller.js"></script>
+<script src="application/components/restaurant-profile/organizer.controller.js"></script>
+<script src="application/components/restaurant-profile/photo.controller.js"></script>
+<script src="application/components/restaurant-profile/rest-cook-boss.controller.js"></script>
+<script src="application/components/restaurant-profile/rest-dinner.controller.js"></script>
+<script src="application/components/restaurant-profile/rest-special-proposal.controller.js"></script>
+<script src="application/components/restaurant-profile/restaurant-profile.service.js"></script>
 
 <script src="application/components/restaurant/restaurant.controller.js"></script>
 <script src="application/components/restaurant/restaurants.service.js"></script>

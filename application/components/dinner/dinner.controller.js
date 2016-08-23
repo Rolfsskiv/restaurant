@@ -1,10 +1,11 @@
 
-DinnerController.$inject = ['DinnerService', 'ls', '$location'];
-function DinnerController(DinnerService, ls, $location) {
+DinnerController.$inject = ['DinnerService', 'ls', '$location', '$filter'];
+function DinnerController(DinnerService, ls, $location, $filter) {
     var vm = this;
 
     vm.dinner = ls.get('currentDinner');
     vm.dinners = [];
+    vm.backDinners = [];
     vm.pagination = {
         currentPage: 0,
         pageSize: 10,
@@ -31,6 +32,11 @@ function DinnerController(DinnerService, ls, $location) {
     vm.goToModal = goToModal;
     vm.getCurrent = getCurrent;
     vm.closeModal = closeModal;
+    vm.filter = filter;
+
+    function filter(type) {
+
+    }
 
     function closeModal() {
         ls.rm('currentDinner');
@@ -51,7 +57,7 @@ function DinnerController(DinnerService, ls, $location) {
     
     function init() {
         DinnerService.getDinners().then(function (dinners) {
-            vm.dinners = dinners;
+            vm.dinners = vm.backDinners = dinners;
             initDinnerModal();
         });
     }

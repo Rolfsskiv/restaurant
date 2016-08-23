@@ -1,31 +1,31 @@
 <div class="left-content">
     <div class="photo-user hidden-xs">
-        <img src="img/personal-photo.jpg" alt="photo-user">
-        <div class="rate-user">Младший критик</div>
+        <img src="{{profile.image}}" alt="photo-user">
+        <div class="rate-user">{{profile.user_status}}</div>
     </div>
     <div class="personal-info">
-        <div class="name">Ирина Константинова
-            <span>id45464545</span>
+        <div class="name">{{profile.name}}
+            <span>id{{profile.id}}</span>
         </div>
     </div>
     <div class="parameter hidden-xs">
         <div class="row">
             <div class="col-md-5 col-sm-12 nopadding-right">
-                <a href="#" class="attendance icon-holder">6 посещений</a>
-                <a href="#" class="order icon-holder">2 заказа</a>
+                <a href="#" class="attendance icon-holder">{{profile.count_visit}} посещений</a>
+                <a href="#" class="order icon-holder">{{profile.count_order}} заказа</a>
             </div>
             <div class="col-md-7 col-sm-12">
-                <a href="#" class="count-testimonial icon-holder">4 отзыва</a>
-                <a href="#" class="thanks icon-holder">1 благодарность</a>
+                <a href="#" class="count-testimonial icon-holder">{{profile.count_recall}} отзыва</a>
+                <a href="#" class="thanks icon-holder">{{profile.thanks}} благодарность</a>
             </div>
         </div>
     </div>
     <div class="parameter visible-xs">
-        <div class="rate-user">Младший критик</div>
-        <a href="#" class="attendance icon-holder">6</a>
-        <a href="#" class="order icon-holder">2</a>
-        <a href="#" class="count-testimonial icon-holder">4</a>
-        <a href="#" class="thanks icon-holder">1</a>
+        <div class="rate-user">{{profile.user_status}}</div>
+        <a href="#" class="attendance icon-holder">{{profile.count_visit}}</a>
+        <a href="#" class="order icon-holder">{{profile.count_order}}</a>
+        <a href="#" class="count-testimonial icon-holder">{{profile.count_recall}}</a>
+        <a href="#" class="thanks icon-holder">{{profile.thanks}}</a>
     </div>
     <ul class="menu-profile hidden-xs">
         <li><a ng-class="routeName == 'profile' ? 'active' : ''" href="my-profile">ваш профайл</a></li>

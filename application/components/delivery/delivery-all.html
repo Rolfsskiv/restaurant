@@ -272,290 +272,32 @@
             <div class="page-block desctop">
                 <ul>
                     <li>
-                        <button ng-disabled="ctrl.pagination.currentPage == 0"
-                                ng-click="ctrl.pagination.currentPage = ctrl.pagination.currentPage-1" href="#"
-                                class="prev">НАЗАД
+                        <button ng-disabled="ctrl.pagination.currentPage == 0" ng-click="ctrl.pagination.currentPage = ctrl.pagination.currentPage-1" href="#" class="prev">НАЗАД
                         </button>
                     </li>
-                    <li ng-repeat="page in ctrl.pagination.na(ctrl.pagination.numberOfPages()) | limitTo:4"><a href="#"
-                                                                                                               ng-class="ctrl.pagination.currentPage == page ? 'active-page' : 'sibling-page'"
-                                                                                                               ng-click="ctrl.pagination.currentPage=page">{{page
+                    <li ng-repeat="page in ctrl.pagination.na(ctrl.pagination.numberOfPages()) | limitTo:4">
+                        <a href="#" ng-class="ctrl.pagination.currentPage == page ? 'active-page' : 'sibling-page'" ng-click="ctrl.pagination.currentPage=page">{{page
                         + 1}}</a></li>
                     <li><a href="#" class="other-page">...</a></li>
-                    <li><a href="#" class="last-page"
-                           ng-click="ctrl.pagination.currentPage = ctrl.pagination.getLastPage()">{{ctrl.pagination.getLastPage()
-                        + 1}}</a></li>
+                    <li><a href="#" class="last-page" ng-click="ctrl.pagination.currentPage = ctrl.pagination.getLastPage()">{{ctrl.pagination.getLastPage() + 1}}</a></li>
                     <li>
-                        <button ng-disabled="ctrl.pagination.currentPage >= ctrl.restaurants.length/ctrl.pagination.pageSize - 1"
-                                ng-click="ctrl.pagination.currentPage=ctrl.pagination.currentPage+1" href="#"
-                                class="next">ВПЕРЕД
+                        <button ng-disabled="ctrl.pagination.currentPage >= ctrl.deliveries.length/ctrl.pagination.pageSize - 1" ng-click="ctrl.pagination.currentPage=ctrl.pagination.currentPage+1" href="#" class="next">ВПЕРЕД
                         </button>
                     </li>
                 </ul>
             </div>
             <div class="page-block mobile">
                 <ul>
-                    <li><a ng-disabled="ctrl.pagination.currentPage == 0"
-                           ng-click="ctrl.pagination.currentPage = ctrl.pagination.currentPage-1" href="#"
-                           class="prev"></a></li>
-                    <li ng-repeat="page in ctrl.pagination.na(ctrl.pagination.numberOfPages()) | limitTo:4"><a href="#"
-                                                                                                               ng-class="ctrl.pagination.currentPage == page ? 'active-page' : 'sibling-page'"
-                                                                                                               ng-click="ctrl.pagination.currentPage = page">{{page
-                        + 1}}</a></li>
+                    <li><a ng-disabled="ctrl.pagination.currentPage == 0" ng-click="ctrl.pagination.currentPage = ctrl.pagination.currentPage-1" href="#" class="prev"></a></li>
+                    <li ng-repeat="page in ctrl.pagination.na(ctrl.pagination.numberOfPages()) | limitTo:4">
+                        <a href="#" ng-class="ctrl.pagination.currentPage == page ? 'active-page' : 'sibling-page'" ng-click="ctrl.pagination.currentPage = page">{{page + 1}}</a></li>
                     <li><a href="#" class="other-page">...</a></li>
-                    <li><a href="#" class="last-page"
-                           ng-click="ctrl.pagination.currentPage = ctrl.pagination.getLastPage()">{{ctrl.pagination.getLastPage()
-                        + 1}}</a></li>
+                    <li><a href="#" class="last-page" ng-click="ctrl.pagination.currentPage = ctrl.pagination.getLastPage()">{{ctrl.pagination.getLastPage() + 1}}</a></li>
                     <li>
-                        <button ng-disabled="ctrl.pagination.currentPage >= ctrl.restaurants.length/ctrl.pagination.pageSize - 1"
-                                ng-click="ctrl.pagination.currentPage=ctrl.pagination.currentPage+1" href="#"
-                                class="next"></button>
+                        <button ng-disabled="ctrl.pagination.currentPage >= ctrl.deliveries.length/ctrl.pagination.pageSize - 1" ng-click="ctrl.pagination.currentPage=ctrl.pagination.currentPage+1" href="#" class="next"></button>
                     </li>
                 </ul>
             </div>
         </div>
     </div>
-
-    <!--<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content filters">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <div class="title-filter">
-                        <p>Фильтр ресторанов</p>
-                    </div>
-                </div>
-                <div class="filters-block content-scrollable mCustomScrollbar _mCS_3 mCS_no_scrollbar">
-                    <div id="mCSB_3" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside"
-                         style="max-height: 0px;" tabindex="0">
-                        <div id="mCSB_3_container" class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y"
-                             style="position:relative; top:0; left:0;" dir="ltr">
-                            <div class="wrapper">
-                                <div class="change-item">
-                                    <h4>Тип ресторана</h4>
-                                    <div class="block-checkbox">
-                                        <label class="checkbox">
-                                            <input type="checkbox"> Суши/Маки
-                                            <span></span>
-                                        </label>
-                                    </div>
-                                    <div class="block-checkbox">
-                                        <label class="checkbox">
-                                            <input type="checkbox"> Пицца
-                                            <span></span>
-                                        </label>
-                                    </div>
-                                    <div class="block-checkbox">
-                                        <label class="checkbox">
-                                            <input type="checkbox"> Гриль/Шашлык
-                                            <span></span>
-                                        </label>
-                                    </div>
-                                    <div class="block-checkbox">
-                                        <label class="checkbox">
-                                            <input type="checkbox"> Рыба
-                                            <span></span>
-                                        </label>
-                                    </div>
-                                    <div class="block-checkbox">
-                                        <label class="checkbox">
-                                            <input type="checkbox"> Мясные блюда
-                                            <span></span>
-                                        </label>
-                                    </div>
-                                    <div class="block-checkbox">
-                                        <label class="checkbox">
-                                            <input type="checkbox"> Салаты
-                                            <span></span>
-                                        </label>
-                                    </div>
-                                    <div class="dropdown">
-                                        <button type="button" class="show-content">
-                                            Показать все
-                                            <span class="caret"></span>
-                                        </button>
-                                        <div class="collapse see-more">
-                                            <div class="block-checkbox">
-                                                <label class="checkbox">
-                                                    <input type="checkbox">Алкоголь
-                                                    <span></span>
-                                                </label>
-                                            </div>
-                                            <div class="block-checkbox">
-                                                <label class="checkbox">
-                                                    <input type="checkbox"> Десерты
-                                                    <span></span>
-                                                </label>
-                                            </div>
-                                            <button type="button" class="hide-content">Скрыть</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="change-item">
-                                    <h4>Тематика ресторана</h4>
-                                    <div class="block-checkbox">
-                                        <label class="checkbox">
-                                            <input type="checkbox"> Суши/Маки
-                                            <span></span>
-                                        </label>
-                                    </div>
-                                    <div class="block-checkbox">
-                                        <label class="checkbox">
-                                            <input type="checkbox"> Пицца
-                                            <span></span>
-                                        </label>
-                                    </div>
-                                    <div class="block-checkbox">
-                                        <label class="checkbox">
-                                            <input type="checkbox"> Гриль/Шашлык
-                                            <span></span>
-                                        </label>
-                                    </div>
-                                    <div class="block-checkbox">
-                                        <label class="checkbox">
-                                            <input type="checkbox"> Рыба
-                                            <span></span>
-                                        </label>
-                                    </div>
-                                    <div class="block-checkbox">
-                                        <label class="checkbox">
-                                            <input type="checkbox"> Мясные блюда
-                                            <span></span>
-                                        </label>
-                                    </div>
-                                    <div class="block-checkbox">
-                                        <label class="checkbox">
-                                            <input type="checkbox"> Салаты
-                                            <span></span>
-                                        </label>
-                                    </div>
-                                    <div class="dropdown">
-                                        <button type="button" class="show-content">
-                                            Показать все
-                                            <span class="caret"></span>
-                                        </button>
-                                        <div class="collapse see-more">
-                                            <div class="block-checkbox">
-                                                <label class="checkbox">
-                                                    <input type="checkbox">Алкоголь
-                                                    <span></span>
-                                                </label>
-                                            </div>
-                                            <div class="block-checkbox">
-                                                <label class="checkbox">
-                                                    <input type="checkbox"> Десерты
-                                                    <span></span>
-                                                </label>
-                                            </div>
-                                            <button type="button" class="hide-content">Скрыть</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="wrapper">
-                                <div class="change-item">
-                                    <h4>Особенности</h4>
-                                    <div class="block-checkbox">
-                                        <label class="checkbox">
-                                            <input type="checkbox"> Суши/Маки
-                                            <span></span>
-                                        </label>
-                                    </div>
-                                    <div class="block-checkbox">
-                                        <label class="checkbox">
-                                            <input type="checkbox"> Пицца
-                                            <span></span>
-                                        </label>
-                                    </div>
-                                    <div class="block-checkbox">
-                                        <label class="checkbox">
-                                            <input type="checkbox"> Гриль/Шашлык
-                                            <span></span>
-                                        </label>
-                                    </div>
-                                    <div class="block-checkbox">
-                                        <label class="checkbox">
-                                            <input type="checkbox"> Рыба
-                                            <span></span>
-                                        </label>
-                                    </div>
-                                    <div class="block-checkbox">
-                                        <label class="checkbox">
-                                            <input type="checkbox"> Мясные блюда
-                                            <span></span>
-                                        </label>
-                                    </div>
-                                    <div class="block-checkbox">
-                                        <label class="checkbox">
-                                            <input type="checkbox"> Салаты
-                                            <span></span>
-                                        </label>
-                                    </div>
-                                    <div class="dropdown">
-                                        <button type="button" class="show-content">
-                                            Показать все
-                                            <span class="caret"></span>
-                                        </button>
-                                        <div class="collapse see-more">
-                                            <div class="block-checkbox">
-                                                <label class="checkbox">
-                                                    <input type="checkbox">Алкоголь
-                                                    <span></span>
-                                                </label>
-                                            </div>
-                                            <div class="block-checkbox">
-                                                <label class="checkbox">
-                                                    <input type="checkbox"> Десерты
-                                                    <span></span>
-                                                </label>
-                                            </div>
-                                            <button type="button" class="hide-content">Скрыть</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="change-item">
-                                    <h4>Средний чек</h4>
-                                    <div id="slider-filter"
-                                         class="slider noUi-target noUi-ltr noUi-horizontal noUi-background"
-                                         style="margin: 0 0 100px;">
-                                        <div class="noUi-base">
-                                            <div class="noUi-origin noUi-connect" style="left: 25%;">
-                                                <div class="noUi-handle noUi-handle-lower">
-                                                    <div class="noUi-tooltip">25</div>
-                                                </div>
-                                            </div>
-                                            <div class="noUi-origin noUi-background" style="left: 70%;">
-                                                <div class="noUi-handle noUi-handle-upper">
-                                                    <div class="noUi-tooltip">70</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="mCSB_3_scrollbar_vertical"
-                             class="mCSB_scrollTools mCSB_3_scrollbar mCS-light mCSB_scrollTools_vertical"
-                             style="display: none;">
-                            <div class="mCSB_draggerContainer">
-                                <div id="mCSB_3_dragger_vertical" class="mCSB_dragger"
-                                     style="position: absolute; min-height: 18px; top: 0px;"
-                                     oncontextmenu="return false;">
-                                    <div class="mCSB_dragger_bar" style="line-height: 18px;"></div>
-                                </div>
-                                <div class="mCSB_draggerRail"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <button class="find">НАЙТИ</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div-->
 </div>

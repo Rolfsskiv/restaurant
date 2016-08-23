@@ -269,8 +269,26 @@ angular.module('Complaint', [])
     }]);
 
 angular.module('Index', [])
+    .controller('BaseController', ['LikerService', function (LikesService) {
+        var vm = this;
+        vm.like = LikesService.like;
+    }])
     .controller('IndexController', IndexController)
     .service('FilterService', FilterService)
+    .service('LikerService', ['$http', 'Notification', function ($http, Notification) {
+        var service = this;
+
+        service.like = function (id, type) {
+            $http.post(API_URL + '/favorite', {
+                type: type,
+                rest_id: id
+            }).then(function (response) {
+                if (response.status == 200) {
+                    Notification.success(response.data[0]);
+                }
+            });
+        };
+    }])
     .directive('footerComponent', function () {
         return {
             templateUrl: 'application/directives/footer.html',
@@ -408,12 +426,119 @@ angular.module('Profile', [])
         })
     }]);
 
-/*angular.module('RestaurantProfile', [])
-    .controller('RestaurantProfileController', RestaurantProfileController)
+angular.module('RestaurantProfile', [])
+    .controller('ReservationController', ReservationController)
+    .controller('RestDinnerController', RestDinnerController)
+    .controller('RestCookBossController', RestCookBossController)
+    .controller('InformationController', InformationController)
+    .controller('RestSpecialProposalController', RestSpecialProposalController)
+    .controller('PhotoController', PhotoController)
+    .controller('DeliveryFoodController', DeliveryFoodController)
+    .controller('MapController', MapController)
+    .controller('OrganizerController', OrganizerController)
+    .controller('MenuDeliveryController', MenuDeliveryController)
+    .controller('DiscountController', DiscountController)
+    .controller('FilterDeliveryController', FilterDeliveryController)
     .service('RestaurantProfileService', RestaurantProfileService)
+    .directive('restHead', function () {
+        return {
+            templateUrl: appComponents + 'restaurant-profile/templates/head.html'
+        }
+    })
+    .directive('restMenu', function () {
+        return {
+            templateUrl: appComponents + 'restaurant-profile/templates/menu.html'
+        }
+
+    })
     .config(['$routeProvider', function ($routeProvider) {
 
-    }]);*/
+        loadCss('css/rest.css');
+
+        var prefix = '/rest-';
+        var tpl = 'pages/';
+        var prefixComponent = 'restaurant-profile/';
+        var tUrl = appComponents + prefixComponent + tpl;
+        $routeProvider
+            .when(prefix + 'reservation', {
+                templateUrl: tUrl + 'reservation.html',
+                controller: ReservationController,
+                controllerAs: 'reservation',
+                authorize: true
+            })
+            .when(prefix + 'dinner', {
+                templateUrl: tUrl + 'dinner.html',
+                controller: RestDinnerController,
+                controllerAs: 'dinner',
+                authorize: true
+            })
+            .when(prefix + 'cook-boss', {
+                templateUrl: tUrl + 'cook-boss.html',
+                controller: RestCookBossController,
+                controllerAs: 'cook',
+                authorize: true
+            })
+            .when(prefix + 'information', {
+                templateUrl: tUrl + 'information.html',
+                controller: InformationController,
+                controllerAs: 'information',
+                authorize: true
+            })
+            .when(prefix + 'special-proposal', {
+                templateUrl: tUrl + 'special-proposal.html',
+                controller: RestSpecialProposalController,
+                controllerAs: 'special',
+                authorize: true
+            })
+            .when(prefix + 'photo', {
+                templateUrl: tUrl + 'photo.html',
+                controller: PhotoController,
+                controllerAs: 'photo',
+                authorize: true
+            })
+            .when(prefix + 'delivery-food', {
+                templateUrl: tUrl + 'delivery-food.html',
+                controller: DeliveryFoodController,
+                controllerAs: 'delivery',
+                authorize: true
+            })
+            .when(prefix + 'map', {
+                templateUrl: tUrl + 'map.html',
+                controller: MapController,
+                controllerAs: 'map',
+                authorize: true
+            })
+            .when(prefix + 'reservation', {
+                templateUrl: tUrl + 'reservation.html',
+                controller: ReservationController,
+                controllerAs: 'reservation',
+                authorize: true
+            })
+            .when(prefix + 'organizer', {
+                templateUrl: tUrl + 'organizer.html',
+                controller: OrganizerController,
+                controllerAs: 'organizer',
+                authorize: true
+            })
+            .when(prefix + 'menu-delivery', {
+                templateUrl: tUrl + 'menu-delivery.html',
+                controller: MenuDeliveryController,
+                controllerAs: 'menu',
+                authorize: true
+            })
+            .when(prefix + 'discount', {
+                templateUrl: tUrl + 'discount.html',
+                controller: DiscountController,
+                controllerAs: 'discount',
+                authorize: true
+            })
+            .when(prefix + 'filter-delivery', {
+                templateUrl: tUrl + 'filter-delivery.html',
+                controller: FilterDeliveryController,
+                controllerAs: 'filter',
+                authorize: true
+            });
+    }]);
 
 var app = angular.module('Application', [
     'ngRoute',
@@ -437,7 +562,7 @@ var app = angular.module('Application', [
     'Complaint',
 
     'Profile',
-    //'RestaurantProfile'
+    'RestaurantProfile'
 ])
     .config(['$routeProvider', '$locationProvider', '$httpProvider', '$authProvider', function ($routeProvider, $locationProvider, $httpProvider, $authProvider) {
 

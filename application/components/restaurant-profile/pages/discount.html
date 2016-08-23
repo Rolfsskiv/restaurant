@@ -1,0 +1,291 @@
+<div class="personal-restaurant">
+    <rest-head></rest-head>
+    <div id="home-page">
+        <rest-menu></rest-menu>
+        <div class="content-rest">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4 class="hidden-xs">Скидка</h4>
+                        <h4 class="visible-xs">список скидок</h4>
+                    </div>
+                </div>
+                <div class="dishes-boss">
+                    <div class="name-dish">Постоянная скидка: <span>15%</span></div>
+                    <div class="button-wrapper">
+                        <button class="edit blue">редактировать</button>
+                        <button class="cancel white">удалить</button>
+                    </div>
+                </div>
+                <div class="dishes-boss">
+                    <div class="name-dish">Скидка: <span>25%</span> от 25.02.2016 до 25.03.2016, Вт с 09:00 до 12:00</div>
+                    <div class="button-wrapper">
+                        <button class="edit blue">редактировать</button>
+                        <button class="cancel white">удалить</button>
+                    </div>
+                </div>
+                <div class="dishes-boss">
+                    <div class="name-dish">Скидка: <span>20%</span> от 25.02.2016 до 25.04.2016, Вт с 17:00 до 23:00, Ср с 17:00 до 23:00, Чт с 17:00 до 23:00</div>
+                    <div class="button-wrapper">
+                        <button class="edit blue">редактировать</button>
+                        <button class="cancel white">удалить</button>
+                    </div>
+                </div>
+                <div class="add-dish-holder">
+                    <h4>Предоставить скидку:</h4>
+                    <div class="add-dish-holder-inner">
+                        <form action="">
+                            <div class="row">
+                                <div class="col-md-12 first-sale">
+                                    <div class="main-type">
+                                        <div class="item">
+                                            <label for="discount">Скидка:</label>
+                                            <select class="form-control discount selectpicker hidden-xs bs-select-hidden">
+                                                <option>скидка 5%</option>
+                                                <option>скидка 10%</option>
+                                                <option>скидка 15%</option>
+                                                <option>скидка 20%</option>
+                                                <option>скидка 25%</option>
+                                                <option>скидка 30%</option>
+                                                <option>скидка 35%</option>
+                                            </select><div class="btn-group bootstrap-select form-control discount hidden-xs"><button type="button" class="btn dropdown-toggle btn-default" data-toggle="dropdown" title="скидка 5%"><span class="filter-option pull-left">скидка 5%</span>&nbsp;<span class="caret"></span></button><div class="dropdown-menu open"><ul class="dropdown-menu inner content-scrollable mCustomScrollbar _mCS_1 mCS_no_scrollbar" role="menu"><div id="mCSB_1" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside" style="max-height: 180px;" tabindex="0"><div id="mCSB_1_container" class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y" style="position:relative; top:0; left:0;" dir="ltr"><li data-original-index="0" class="selected"><a tabindex="0" class="" style="" data-tokens="null"><span class="text">скидка 5%</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="1"><a tabindex="0" class="" style="" data-tokens="null"><span class="text">скидка 10%</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="2"><a tabindex="0" class="" style="" data-tokens="null"><span class="text">скидка 15%</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="3"><a tabindex="0" class="" style="" data-tokens="null"><span class="text">скидка 20%</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="4"><a tabindex="0" class="" style="" data-tokens="null"><span class="text">скидка 25%</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="5"><a tabindex="0" class="" style="" data-tokens="null"><span class="text">скидка 30%</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li><li data-original-index="6"><a tabindex="0" class="" style="" data-tokens="null"><span class="text">скидка 35%</span><span class="glyphicon glyphicon-ok check-mark"></span></a></li></div><div id="mCSB_1_scrollbar_vertical" class="mCSB_scrollTools mCSB_1_scrollbar mCS-light mCSB_scrollTools_vertical" style="display: none;"><div class="mCSB_draggerContainer"><div id="mCSB_1_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 18px; top: 0px;" oncontextmenu="return false;"><div class="mCSB_dragger_bar" style="line-height: 18px;"></div></div><div class="mCSB_draggerRail"></div></div></div></div></ul></div></div>
+                                            <div class="dropdown wrapper-select-mobile visible-xs">
+                                                <a data-toggle="dropdown" href="#" class="form-control place">Выберите скидку<span class="caret"></span>
+                                                </a>
+                                                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                                    <button type="button" class="close" aria-hidden="true"></button>
+                                                    <ul>
+                                                        <li><a href="#">скидка 5%</a></li>
+                                                        <li><a href="#">скидка 10%</a></li>
+                                                        <li><a href="#">скидка 15%</a></li>
+                                                        <li><a href="#">скидка 20%</a></li>
+                                                        <li><a href="#">скидка 25%</a></li>
+                                                        <li><a href="#">скидка 30%</a></li>
+                                                        <li><a href="#">скидка 35%</a></li>
+                                                    </ul>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="features-discount ">
+                                        <label for="sale-constantly" class="img-check">Постоянная
+                                            <input type="checkbox" id="sale-constantly">
+                                            <span></span>
+                                        </label>
+                                        <label for="sale-temporary" class="img-check visible-lg">Временные интервалы
+                                            <input type="checkbox" id="sale-temporary">
+                                            <span></span>
+                                        </label>
+                                    </div>
+                                    <div class="right-block">
+                                        <label for="sale-temporary-mob" class="img-check hidden-lg">Временные интервалы
+                                            <input type="checkbox" id="sale-temporary-mob">
+                                            <span></span>
+                                        </label>
+                                        <button class="edit blue">добавить</button>
+                                        <div class="input-group bootstrap-timepicker">
+                                            <input type="time" name="hrs" placeholder="hrs:mins" value="00:00" pattern="^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$" class="timepicker-rest-from" required="">
+                                            <strong>-</strong>
+                                            <input type="time" name="hrs" placeholder="hrs:mins" value="00:00" pattern="^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$" class="timepicker-rest-to" required="">
+
+                                        </div>
+                                        <button class="close"></button>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="day-week" class="img-check">По дням недели
+                                        <input type="checkbox" id="day-week">
+                                        <span></span>
+                                    </label>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="choose-day mn">
+                                        <label for="monday" class="img-check">понедельник
+                                            <input type="checkbox" id="monday">
+                                            <span></span>
+                                        </label>
+                                        <div class="add-time-block">
+                                            <button class="edit blue">добавить период</button>
+                                            <div class="input-group bootstrap-timepicker">
+                                                <input type="time" name="hrs" placeholder="hrs:mins" value="00:00" pattern="^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$" class="timepicker-rest-from" required="">
+                                                <strong>-</strong>
+                                                <input type="time" name="hrs" placeholder="hrs:mins" value="00:00" pattern="^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$" class="timepicker-rest-to" required="">
+                                            </div>
+                                            <button class="close"></button>
+                                        </div>
+                                    </div>
+                                    <div class="choose-day">
+                                        <label for="tuesday" class="img-check">вторник
+                                            <input type="checkbox" id="tuesday">
+                                            <span></span>
+                                        </label>
+                                        <div class="add-time-block">
+                                            <button class="edit blue">добавить период</button>
+                                            <div class="input-group bootstrap-timepicker">
+                                                <input type="time" name="hrs" placeholder="hrs:mins" value="00:00" pattern="^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$" class="timepicker-rest-from" required="">
+                                                <strong>-</strong>
+                                                <input type="time" name="hrs" placeholder="hrs:mins" value="00:00" pattern="^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$" class="timepicker-rest-to" required="">
+                                            </div>
+                                            <button class="close"></button>
+                                        </div>
+                                    </div>
+                                    <div class="choose-day">
+                                        <label for="wednesday" class="img-check">среда
+                                            <input type="checkbox" id="wednesday">
+                                            <span></span>
+                                        </label>
+                                        <div class="add-time-block">
+                                            <button class="edit blue">добавить период</button>
+                                            <div class="input-group bootstrap-timepicker">
+                                                <input type="time" name="hrs" placeholder="hrs:mins" value="00:00" pattern="^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$" class="timepicker-rest-from" required="">
+                                                <strong>-</strong>
+                                                <input type="time" name="hrs" placeholder="hrs:mins" value="00:00" pattern="^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$" class="timepicker-rest-to" required="">
+                                            </div>
+                                            <button class="close"></button>
+                                        </div>
+                                    </div>
+                                    <div class="choose-day">
+                                        <label for="thursday" class="img-check">четверг
+                                            <input type="checkbox" id="thursday">
+                                            <span></span>
+                                        </label>
+                                        <div class="add-time-block">
+                                            <button class="edit blue">добавить период</button>
+                                            <div class="input-group bootstrap-timepicker">
+                                                <input type="time" name="hrs" placeholder="hrs:mins" value="00:00" pattern="^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$" class="timepicker-rest-from" required="">
+                                                <strong>-</strong>
+                                                <input type="time" name="hrs" placeholder="hrs:mins" value="00:00" pattern="^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$" class="timepicker-rest-to" required="">
+                                            </div>
+                                            <button class="close"></button>
+                                        </div>
+                                    </div>
+                                    <div class="choose-day visible-lg">
+                                        <label for="friday" class="img-check">пятница
+                                            <input type="checkbox" id="friday">
+                                            <span></span>
+                                        </label>
+                                        <div class="add-time-block">
+                                            <button class="edit blue">добавить период</button>
+                                            <div class="input-group bootstrap-timepicker">
+                                                <input type="time" name="hrs" placeholder="hrs:mins" value="00:00" pattern="^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$" class="timepicker-rest-from" required="">
+                                                <strong>-</strong>
+                                                <input type="time" name="hrs" placeholder="hrs:mins" value="00:00" pattern="^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$" class="timepicker-rest-to" required="">
+                                            </div>
+                                            <button class="close"></button>
+                                        </div>
+                                    </div>
+                                    <div class="choose-day visible-lg">
+                                        <label for="saturday" class="img-check">суббота
+                                            <input type="checkbox" id="saturday">
+                                            <span></span>
+                                        </label>
+                                        <div class="add-time-block">
+                                            <button class="edit blue">добавить период</button>
+                                            <div class="input-group bootstrap-timepicker">
+                                                <input type="time" name="hrs" placeholder="hrs:mins" value="00:00" pattern="^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$" class="timepicker-rest-from" required="">
+                                                <strong>-</strong>
+                                                <input type="time" name="hrs" placeholder="hrs:mins" value="00:00" pattern="^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$" class="timepicker-rest-to" required="">
+                                            </div>
+                                            <button class="close"></button>
+                                        </div>
+                                    </div>
+                                    <div class="choose-day sn visible-lg">
+                                        <label for="sunday" class="img-check">воскресенье
+                                            <input type="checkbox" id="sunday">
+                                            <span></span>
+                                        </label>
+                                        <div class="add-time-block">
+                                            <button class="edit blue">добавить период</button>
+                                            <div class="input-group bootstrap-timepicker">
+                                                <input type="time" name="hrs" placeholder="hrs:mins" value="00:00" pattern="^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$" class="timepicker-rest-from" required="">
+                                                <strong>-</strong>
+                                                <input type="time" name="hrs" placeholder="hrs:mins" value="00:00" pattern="^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$" class="timepicker-rest-to" required="">
+                                            </div>
+                                            <button class="close"></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 hidden-lg">
+
+                                    <div class="choose-day fr">
+                                        <label for="friday-m" class="img-check">пятница
+                                            <input type="checkbox" id="friday-m">
+                                            <span></span>
+                                        </label>
+                                        <div class="add-time-block">
+                                            <button class="edit blue">добавить период</button>
+                                            <div class="input-group bootstrap-timepicker">
+                                                <input type="time" name="hrs" placeholder="hrs:mins" value="00:00" pattern="^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$" class="timepicker-rest-from" required="">
+                                                <strong>-</strong>
+                                                <input type="time" name="hrs" placeholder="hrs:mins" value="00:00" pattern="^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$" class="timepicker-rest-to" required="">
+                                            </div>
+                                            <button class="close"></button>
+                                        </div>
+                                    </div>
+                                    <div class="choose-day">
+                                        <label for="saturday-m" class="img-check">суббота
+                                            <input type="checkbox" id="saturday-m">
+                                            <span></span>
+                                        </label>
+                                        <div class="add-time-block">
+                                            <button class="edit blue">добавить период</button>
+                                            <div class="input-group bootstrap-timepicker">
+                                                <input type="time" name="hrs" placeholder="hrs:mins" value="00:00" pattern="^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$" class="timepicker-rest-from" required="">
+                                                <strong>-</strong>
+                                                <input type="time" name="hrs" placeholder="hrs:mins" value="00:00" pattern="^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$" class="timepicker-rest-to" required="">
+                                            </div>
+                                            <button class="close"></button>
+                                        </div>
+                                    </div>
+                                    <div class="choose-day sn">
+                                        <label for="sunday-m" class="img-check">воскресенье
+                                            <input type="checkbox" id="sunday-m">
+                                            <span></span>
+                                        </label>
+                                        <div class="add-time-block">
+                                            <button class="edit blue">добавить период</button>
+                                            <div class="input-group bootstrap-timepicker">
+                                                <input type="time" name="hrs" placeholder="hrs:mins" value="00:00" pattern="^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$" class="timepicker-rest-from" required="">
+                                                <strong>-</strong>
+                                                <input type="time" name="hrs" placeholder="hrs:mins" value="00:00" pattern="^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$" class="timepicker-rest-to" required="">
+                                            </div>
+                                            <button class="close"></button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12 col-xs-12">
+                                    <div class="select-data">
+                                        <span class="title">Дата начала скидки:</span>
+                                        <div class="form-group">
+                                            <div id="datetimepicker2"><div class="datepicker datepicker-inline"><div class="datepicker-days" style="display: block;"><table class=" table-condensed"><thead><tr><th colspan="7" class="datepicker-title" style="display: none;"></th></tr><tr><th class="prev" style="visibility: visible;">«</th><th colspan="5" class="datepicker-switch">Август 2016</th><th class="next" style="visibility: visible;">»</th></tr><tr><th class="dow">ПН</th><th class="dow">ВТ</th><th class="dow">СР</th><th class="dow">ЧТ</th><th class="dow">ПТ</th><th class="dow">СБ</th><th class="dow">ВС</th></tr></thead><tbody><tr><td class="old day">25</td><td class="old day">26</td><td class="old day">27</td><td class="old day">28</td><td class="old day">29</td><td class="old day">30</td><td class="old day">31</td></tr><tr><td class="day">1</td><td class="day">2</td><td class="day">3</td><td class="day">4</td><td class="day">5</td><td class="day">6</td><td class="day">7</td></tr><tr><td class="day">8</td><td class="day">9</td><td class="day">10</td><td class="day">11</td><td class="day">12</td><td class="day">13</td><td class="day">14</td></tr><tr><td class="day">15</td><td class="day">16</td><td class="day">17</td><td class="day">18</td><td class="day">19</td><td class="day">20</td><td class="day">21</td></tr><tr><td class="today day">22</td><td class="day">23</td><td class="day">24</td><td class="day">25</td><td class="day">26</td><td class="day">27</td><td class="day">28</td></tr><tr><td class="day">29</td><td class="day">30</td><td class="day">31</td><td class="new day">1</td><td class="new day">2</td><td class="new day">3</td><td class="new day">4</td></tr></tbody><tfoot><tr><th colspan="7" class="today" style="display: none;">Today</th></tr><tr><th colspan="7" class="clear" style="display: none;">Clear</th></tr></tfoot></table></div><div class="datepicker-months" style="display: none;"><table class="table-condensed"><thead><tr><th colspan="7" class="datepicker-title" style="display: none;"></th></tr><tr><th class="prev" style="visibility: visible;">«</th><th colspan="5" class="datepicker-switch">2016</th><th class="next" style="visibility: visible;">»</th></tr></thead><tbody><tr><td colspan="7"><span class="month">Jan</span><span class="month">Feb</span><span class="month">Mar</span><span class="month">Apr</span><span class="month">May</span><span class="month">Jun</span><span class="month">Jul</span><span class="month focused active">Aug</span><span class="month">Sep</span><span class="month">Oct</span><span class="month">Nov</span><span class="month">Dec</span></td></tr></tbody><tfoot><tr><th colspan="7" class="today" style="display: none;">Today</th></tr><tr><th colspan="7" class="clear" style="display: none;">Clear</th></tr></tfoot></table></div><div class="datepicker-years" style="display: none;"><table class="table-condensed"><thead><tr><th colspan="7" class="datepicker-title" style="display: none;"></th></tr><tr><th class="prev" style="visibility: visible;">«</th><th colspan="5" class="datepicker-switch">2010-2019</th><th class="next" style="visibility: visible;">»</th></tr></thead><tbody><tr><td colspan="7"><span class="year old">2009</span><span class="year">2010</span><span class="year">2011</span><span class="year">2012</span><span class="year">2013</span><span class="year">2014</span><span class="year">2015</span><span class="year active focused">2016</span><span class="year">2017</span><span class="year">2018</span><span class="year">2019</span><span class="year new">2020</span></td></tr></tbody><tfoot><tr><th colspan="7" class="today" style="display: none;">Today</th></tr><tr><th colspan="7" class="clear" style="display: none;">Clear</th></tr></tfoot></table></div><div class="datepicker-decades" style="display: none;"><table class="table-condensed"><thead><tr><th colspan="7" class="datepicker-title" style="display: none;"></th></tr><tr><th class="prev" style="visibility: visible;">«</th><th colspan="5" class="datepicker-switch">2000-2090</th><th class="next" style="visibility: visible;">»</th></tr></thead><tbody><tr><td colspan="7"><span class="decade old">1990</span><span class="decade">2000</span><span class="decade active">2010</span><span class="decade">2020</span><span class="decade">2030</span><span class="decade">2040</span><span class="decade">2050</span><span class="decade">2060</span><span class="decade">2070</span><span class="decade">2080</span><span class="decade">2090</span><span class="decade new">2100</span></td></tr></tbody><tfoot><tr><th colspan="7" class="today" style="display: none;">Today</th></tr><tr><th colspan="7" class="clear" style="display: none;">Clear</th></tr></tfoot></table></div><div class="datepicker-centuries" style="display: none;"><table class="table-condensed"><thead><tr><th colspan="7" class="datepicker-title" style="display: none;"></th></tr><tr><th class="prev" style="visibility: visible;">«</th><th colspan="5" class="datepicker-switch">2000-2900</th><th class="next" style="visibility: visible;">»</th></tr></thead><tbody><tr><td colspan="7"><span class="century old">1900</span><span class="century active">2000</span><span class="century">2100</span><span class="century">2200</span><span class="century">2300</span><span class="century">2400</span><span class="century">2500</span><span class="century">2600</span><span class="century">2700</span><span class="century">2800</span><span class="century">2900</span><span class="century new">3000</span></td></tr></tbody><tfoot><tr><th colspan="7" class="today" style="display: none;">Today</th></tr><tr><th colspan="7" class="clear" style="display: none;">Clear</th></tr></tfoot></table></div></div></div>
+                                        </div>
+                                    </div>
+                                    <div class="select-data end">
+                                        <span class="title">Дата окончания скидки:</span>
+                                        <div class="form-group">
+                                            <div id="datetimepicker"><div class="datepicker datepicker-inline"><div class="datepicker-days" style="display: block;"><table class=" table-condensed"><thead><tr><th colspan="7" class="datepicker-title" style="display: none;"></th></tr><tr><th class="prev" style="visibility: visible;">«</th><th colspan="5" class="datepicker-switch">Август 2016</th><th class="next" style="visibility: visible;">»</th></tr><tr><th class="dow">ПН</th><th class="dow">ВТ</th><th class="dow">СР</th><th class="dow">ЧТ</th><th class="dow">ПТ</th><th class="dow">СБ</th><th class="dow">ВС</th></tr></thead><tbody><tr><td class="old day">25</td><td class="old day">26</td><td class="old day">27</td><td class="old day">28</td><td class="old day">29</td><td class="old day">30</td><td class="old day">31</td></tr><tr><td class="day">1</td><td class="day">2</td><td class="day">3</td><td class="day">4</td><td class="day">5</td><td class="day">6</td><td class="day">7</td></tr><tr><td class="day">8</td><td class="day">9</td><td class="day">10</td><td class="day">11</td><td class="day">12</td><td class="day">13</td><td class="day">14</td></tr><tr><td class="day">15</td><td class="day">16</td><td class="day">17</td><td class="day">18</td><td class="day">19</td><td class="day">20</td><td class="day">21</td></tr><tr><td class="today day">22</td><td class="day">23</td><td class="day">24</td><td class="day">25</td><td class="day">26</td><td class="day">27</td><td class="day">28</td></tr><tr><td class="day">29</td><td class="day">30</td><td class="day">31</td><td class="new day">1</td><td class="new day">2</td><td class="new day">3</td><td class="new day">4</td></tr></tbody><tfoot><tr><th colspan="7" class="today" style="display: none;">Today</th></tr><tr><th colspan="7" class="clear" style="display: none;">Clear</th></tr></tfoot></table></div><div class="datepicker-months" style="display: none;"><table class="table-condensed"><thead><tr><th colspan="7" class="datepicker-title" style="display: none;"></th></tr><tr><th class="prev" style="visibility: visible;">«</th><th colspan="5" class="datepicker-switch">2016</th><th class="next" style="visibility: visible;">»</th></tr></thead><tbody><tr><td colspan="7"><span class="month">Jan</span><span class="month">Feb</span><span class="month">Mar</span><span class="month">Apr</span><span class="month">May</span><span class="month">Jun</span><span class="month">Jul</span><span class="month focused active">Aug</span><span class="month">Sep</span><span class="month">Oct</span><span class="month">Nov</span><span class="month">Dec</span></td></tr></tbody><tfoot><tr><th colspan="7" class="today" style="display: none;">Today</th></tr><tr><th colspan="7" class="clear" style="display: none;">Clear</th></tr></tfoot></table></div><div class="datepicker-years" style="display: none;"><table class="table-condensed"><thead><tr><th colspan="7" class="datepicker-title" style="display: none;"></th></tr><tr><th class="prev" style="visibility: visible;">«</th><th colspan="5" class="datepicker-switch">2010-2019</th><th class="next" style="visibility: visible;">»</th></tr></thead><tbody><tr><td colspan="7"><span class="year old">2009</span><span class="year">2010</span><span class="year">2011</span><span class="year">2012</span><span class="year">2013</span><span class="year">2014</span><span class="year">2015</span><span class="year active focused">2016</span><span class="year">2017</span><span class="year">2018</span><span class="year">2019</span><span class="year new">2020</span></td></tr></tbody><tfoot><tr><th colspan="7" class="today" style="display: none;">Today</th></tr><tr><th colspan="7" class="clear" style="display: none;">Clear</th></tr></tfoot></table></div><div class="datepicker-decades" style="display: none;"><table class="table-condensed"><thead><tr><th colspan="7" class="datepicker-title" style="display: none;"></th></tr><tr><th class="prev" style="visibility: visible;">«</th><th colspan="5" class="datepicker-switch">2000-2090</th><th class="next" style="visibility: visible;">»</th></tr></thead><tbody><tr><td colspan="7"><span class="decade old">1990</span><span class="decade">2000</span><span class="decade active">2010</span><span class="decade">2020</span><span class="decade">2030</span><span class="decade">2040</span><span class="decade">2050</span><span class="decade">2060</span><span class="decade">2070</span><span class="decade">2080</span><span class="decade">2090</span><span class="decade new">2100</span></td></tr></tbody><tfoot><tr><th colspan="7" class="today" style="display: none;">Today</th></tr><tr><th colspan="7" class="clear" style="display: none;">Clear</th></tr></tfoot></table></div><div class="datepicker-centuries" style="display: none;"><table class="table-condensed"><thead><tr><th colspan="7" class="datepicker-title" style="display: none;"></th></tr><tr><th class="prev" style="visibility: visible;">«</th><th colspan="5" class="datepicker-switch">2000-2900</th><th class="next" style="visibility: visible;">»</th></tr></thead><tbody><tr><td colspan="7"><span class="century old">1900</span><span class="century active">2000</span><span class="century">2100</span><span class="century">2200</span><span class="century">2300</span><span class="century">2400</span><span class="century">2500</span><span class="century">2600</span><span class="century">2700</span><span class="century">2800</span><span class="century">2900</span><span class="century new">3000</span></td></tr></tbody><tfoot><tr><th colspan="7" class="today" style="display: none;">Today</th></tr><tr><th colspan="7" class="clear" style="display: none;">Clear</th></tr></tfoot></table></div></div></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="main-button">
+                                <button type="submit" class="blue">предоставить скидку</button>
+                                <button type="reset" class="white">отмена</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer-component></footer-component>
+</div>

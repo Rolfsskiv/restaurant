@@ -43,10 +43,6 @@ function CartService($http, ls, Notification) {
         return total;
     };
     
-    service.send = function () {
-
-    };
-    
     service.add = function (slug, item, count) {
         var total = item.price * count;
 

@@ -1,0 +1,78 @@
+<div class="personal-restaurant" ng-init="reservation.init()">
+    <rest-head></rest-head>
+    <div id="home-page">
+        <rest-menu></rest-menu>
+        <div class="content-rest">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Заявки на бронь <button class="hide-order pull-right visible-xs">-</button></h4>
+                    </div>
+                </div>
+                <div class="reservation-block-holder" style="display: block;">
+                    <div class="reservation-block">
+                        <button class="close"></button>
+                        <div class="wrapper-img">
+                            <img src="img/user-foto-rest.jpg" alt="user-photo1">
+                        </div>
+                        <div class="name-data">
+                            <p>Anneke Kreutswald  </p>
+                            <p>id3725107468</p>
+                            <p>+74956568989</p>
+                        </div>
+                        <div class="characteristic">
+                            <div class="characteristic-inner  left">
+                                <div class="time-visit">Время 17:00</div>
+                                <div class="discount">Скидка 15%</div>
+                            </div>
+                            <div class="characteristic-inner">
+                                <div class="day-visit">Дата: 10.02.2016</div>
+                                <div class="count-users">4 чел.</div>
+                            </div>
+                        </div>
+                        <div class="button-holder">
+                            <button ng-click="reservation.approve(reserv.id)" class="approve hidden-lg">одобрить</button>
+                            <button ng-click="reservation.deny(reserv.id)" class="refuse ">отказать</button>
+                            <button ng-click="reservation.approve(reserv.id)" class="approve visible-lg">одобрить</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Одобренные заявки <button class="hide-order-approve pull-right visible-xs">-</button></h4>
+                    </div>
+                </div>
+                <div class="reservation-block approve-application">
+                    <button class="close"></button>
+                    <div class="wrapper-img">
+                        <img src="img/user-foto-rest.jpg" alt="user-photo1">
+                    </div>
+                    <div class="name-data">
+                        <p>Anneke Kreutswald  </p>
+                        <p>id3725107468</p>
+                        <p>+74956568989</p>
+                    </div>
+                    <div class="characteristic">
+                        <div class="characteristic-inner  left">
+                            <div class="time-visit">Время 17:00</div>
+                            <div class="discount">Скидка 15%</div>
+                        </div>
+                        <div class="characteristic-inner">
+                            <div class="day-visit">Дата: 10.02.2016</div>
+                            <div class="count-users">4 чел.</div>
+                        </div>
+                    </div>
+                    <div class="button-holder">
+
+                        <button ng-click="reservation.complete(id)" class="approve">завершить</button>
+                        <div class="wrapper-button">
+                            <button ng-click="reservation.notCome(id)" class="refuse ">не пришел</button>
+                            <button ng-click="reservation.come(id)" class="refuse ">проблемы</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

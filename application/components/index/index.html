@@ -264,7 +264,7 @@
                                         <button type="button" class="dropdown check-price">
                                             <a data-toggle="dropdown" href="#">
                                                 <span class="check-val" id="slider-price-value-min">{{ctrl.sliderRestaurant.minValue}}-</span>
-                                                <span class="check-val" id="slider-price-value-max">{{ctrl.sliderRestaurant.maxValue}}</span>
+                                                <span class="check-val" id="slider-price-value-max">{{ctrl.sliderRestaurant.maxValue}}€</span>
                                             </a>
                                             <span class="caret"></span>
                                             <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
@@ -293,7 +293,7 @@
                                     <div ng-if="restaurant.get_resto" class="recommendations">GETRESTO РЕКОМЕНДУЕТ<i
                                             class="fa fa-thumbs-o-up"></i></div>
                                     <div class="name">
-                                        <a href="#" class="heart-icon"></a>
+                                        <a href="#" ng-init="liked = false" ng-click="ctrl.like(restaurant.id, 0); liked = true" ng-class="liked == true ? 'liked' : ''" class="heart-icon"></a>
                                         <span>{{restaurant.name}}</span>
                                         <div class="block-stars">
                                             <div ng-repeat="star in [1, 2, 3, 4, 5]" class="star"
@@ -412,7 +412,7 @@
                             <div ng-repeat="type_dinner in ctrl.filters.type_dinners | limitTo:6" class="block-checkbox">
                                 <label class="checkbox">
                                     <input type="checkbox" checklist-model="ctrl.currentFiltersDinner.type_dinners"
-                                           checklist-value="type_dinner.id">> {{type_dinner.name}}
+                                           checklist-value="type_dinner.id"> {{type_dinner.name}}
                                     <span></span>
                                 </label>
                             </div>
@@ -441,7 +441,7 @@
                                     <a data-toggle="dropdown" href="#">
                                         <span class="check-val"
                                               id="slider-food-min">{{ctrl.sliderFood.minValue}}-</span>
-                                        <span class="check-val" id="slider-food-max">{{ctrl.sliderFood.maxValue}}</span>
+                                        <span class="check-val" id="slider-food-max">{{ctrl.sliderFood.maxValue}}€</span>
                                     </a>
                                     <span class="caret"></span>
                                     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
@@ -492,7 +492,7 @@
                                         <button class="dropdown check-price">
                                             <a data-toggle="dropdown" href="#">
                                                 <span class="check-val" id="slider-food-min1">{{ctrl.sliderFood.minValue}}-</span>
-                                                <span class="check-val" id="slider-food-max1">{{ctrl.sliderFood.maxValue}}</span>
+                                                <span class="check-val" id="slider-food-max1">{{ctrl.sliderFood.maxValue}}€</span>
                                             </a>
                                             <span class="caret"></span>
                                             <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
@@ -520,7 +520,7 @@
                                 <img ng-src="{{delivery.image}}" alt="{{delivery.name}}">
                                 <!--<div class="sale">-40%</div>-->
                                 <div class="name">
-                                    <a href="#" class="heart-icon"></a>
+                                    <a ng-init="liked = false" ng-click="ctr.like(delivery.id, 1); liked = true" href="#" ng-class="liked == true ? 'liked' : ''" class="heart-icon"></a>
                                     <span>{{delivery.name}}</span>
                                     <div class="block-stars">
                                         <div ng-repeat="star in [1, 2, 3, 4, 5]" class="star"
@@ -768,7 +768,7 @@
                         <button type="button" class="dropdown check-price">
                             <a data-toggle="dropdown" href="#">
                                 <span class="check-val" id="slider-food-min">{{ctrl.sliderFood.minValue}}-</span>
-                                <span class="check-val" id="slider-food-max">{{ctrl.sliderFood.maxValue}}</span>
+                                <span class="check-val" id="slider-food-max">{{ctrl.sliderFood.maxValue}}€</span>
                             </a>
                             <span class="caret"></span>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
