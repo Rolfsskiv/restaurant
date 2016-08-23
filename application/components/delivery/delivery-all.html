@@ -55,54 +55,88 @@
             <div class="mobile-holder visible-xs">
                 <div class="breadcrumbs">
                     <ul>
-                        <li><a href="/">Главная</a></li>
-                        <li><a href="delivery" class="current">Рестораны</a></li>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="delivery.html" class="current">Рестораны</a></li>
 
                     </ul>
                 </div>
                 <div class="dropdown drop-option"><h3>ДОСТАВКА ЕДЫ</h3>
-                    <a data-toggle="dropdown" href="#"></a>
+                    <a data-toggle="dropdown" href="#" aria-expanded="false"></a>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                         <div class="menu-two">
-                            <li><a href="restaurants">РЕСТОРАНЫ</a></li>
-                            <li><a href="delivery">ДОСТАВКА ЕДЫ</a></li>
-                            <li><a href="complaints">КНИГА ЖАЛОБ И ПРЕДЛОЖЕНИЙ </a></li>
-                            <li><a href="dinner">ОБЕДЫ</a></li>
-                            <li><a href="special-proposal">СПЕЦПРЕДЛОЖЕНИЯ</a></li>
-                            <li><a href="cooking-boss">БЛЮДО ОТ ШЕФ ПОВАРА</a></li>
-                            <li><a href="top50">ТОП 50</a></li>
+                            <li><a href="restaurants.html">РЕСТОРАНЫ</a></li>
+                            <li><a href="delivery.html">ДОСТАВКА ЕДЫ</a></li>
+                            <li><a href="complaints.html">КНИГА ЖАЛОБ И ПРЕДЛОЖЕНИЙ </a></li>
+                            <li><a href="dinner.html">ОБЕДЫ</a></li>
+                            <li><a href="special-proposal.html">СПЕЦПРЕДЛОЖЕНИЯ</a></li>
+                            <li><a href="cooking-boss.html">БЛЮДО ОТ ШЕФ ПОВАРА</a></li>
+                            <li><a href="top50.html">ТОП 50</a></li>
                         </div>
                     </ul>
                 </div>
                 <button class="search"></button>
-                <button class="parametrs two"></button>
+                <button class="parametrs one"></button>
                 <div class="search-block">
                     <form action="">
                         <input type="text" placeholder="Найти">
                         <div class="close-menu"></div>
                     </form>
                 </div>
-                <div class="select-mobile two">
+                <div class="select-mobile one">
                     <form action="">
                         <div class="change-item">
-                            <h4>Кухня</h4>
-                            <div ng-repeat="food in ctrl.filters.foods | limitTo:7" class="block-checkbox">
+                            <h4>Тип ресторана</h4>
+                            <div class="block-checkbox">
                                 <label class="checkbox">
-                                    <input type="checkbox" checklist-model="ctrl.currentFilters.foods"
-                                           checklist-value="food.id"> {{food.name}}
+                                    <input type="checkbox"> Суши/Маки
                                     <span></span>
                                 </label>
                             </div>
-                            <div ng-if="ctrl.filters.foods.length > 7" class="dropdown">
+                            <div class="block-checkbox">
+                                <label class="checkbox">
+                                    <input type="checkbox"> Пицца
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div class="block-checkbox">
+                                <label class="checkbox">
+                                    <input type="checkbox"> Гриль/Шашлык
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div class="block-checkbox">
+                                <label class="checkbox">
+                                    <input type="checkbox"> Рыба
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div class="block-checkbox">
+                                <label class="checkbox">
+                                    <input type="checkbox"> Мясные блюда
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div class="block-checkbox">
+                                <label class="checkbox">
+                                    <input type="checkbox"> Салаты
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div class="dropdown">
                                 <button type="button" class="show-content">
                                     Показать все
                                     <span class="caret"></span>
                                 </button>
                                 <div class="collapse see-more">
-                                    <div ng-repeat="food in ctrl.filters.foods | startFrom:8" class="block-checkbox">
+                                    <div class="block-checkbox">
                                         <label class="checkbox">
-                                            <input type="checkbox" checklist-model="ctrl.currentFilters.foods"
-                                                   checklist-value="food.id"> {{food.name}}
+                                            <input type="checkbox">Алкоголь
+                                            <span></span>
+                                        </label>
+                                    </div>
+                                    <div class="block-checkbox">
+                                        <label class="checkbox">
+                                            <input type="checkbox"> Десерты
                                             <span></span>
                                         </label>
                                     </div>
@@ -111,52 +145,129 @@
                             </div>
                         </div>
                         <div class="change-item">
-                            <h4>Типы блюд</h4>
-
-                            <div ng-repeat="type_dinner in ctrl.filters.type_dinners | limitTo:6" class="block-checkbox">
+                            <h4>Тематика ресторана</h4>
+                            <div class="block-checkbox">
                                 <label class="checkbox">
-                                    <input type="checkbox" checklist-model="ctrl.currentFiltersDinner.type_dinners"
-                                           checklist-value="type_dinner.id">> {{type_dinner.name}}
+                                    <input type="checkbox"> Суши/Маки
                                     <span></span>
                                 </label>
                             </div>
-                            <div ng-if="ctrl.filters.type_dinners.length > 6" class="dropdown">
+                            <div class="block-checkbox">
+                                <label class="checkbox">
+                                    <input type="checkbox"> Пицца
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div class="block-checkbox">
+                                <label class="checkbox">
+                                    <input type="checkbox"> Гриль/Шашлык
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div class="block-checkbox">
+                                <label class="checkbox">
+                                    <input type="checkbox"> Рыба
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div class="block-checkbox">
+                                <label class="checkbox">
+                                    <input type="checkbox"> Мясные блюда
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div class="block-checkbox">
+                                <label class="checkbox">
+                                    <input type="checkbox"> Салаты
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div class="dropdown">
                                 <button type="button" class="show-content">
                                     Показать все
                                     <span class="caret"></span>
                                 </button>
                                 <div class="collapse see-more">
-                                    <div ng-repeat="type_dinner in ctrl.filters.type_dinners | startFrom:7" class="block-checkbox">
+                                    <div class="block-checkbox">
                                         <label class="checkbox">
-                                            <input type="checkbox" checklist-model="ctrl.currentFiltersDinner.type_dinners"
-                                                   checklist-value="type_dinner.id">>{{type_dinner.name}}
+                                            <input type="checkbox">Алкоголь
                                             <span></span>
                                         </label>
                                     </div>
-
+                                    <div class="block-checkbox">
+                                        <label class="checkbox">
+                                            <input type="checkbox"> Десерты
+                                            <span></span>
+                                        </label>
+                                    </div>
                                     <button type="button" class="hide-content">Скрыть</button>
                                 </div>
                             </div>
                         </div>
                         <div class="change-item">
-                            <p>Средний чек</p>
-                            <div class="wrapper">
-                                <button type="button" class="dropdown check-price">
-                                    <a data-toggle="dropdown" href="#">
-                                        <span class="check-val"
-                                              id="slider-food-min">{{ctrl.sliderFood.minValue}}-</span>
-                                        <span class="check-val" id="slider-food-max">{{ctrl.sliderFood.maxValue}}</span>
-                                    </a>
-                                    <span class="caret"></span>
-                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                        <rzslider
-                                                rz-slider-model="ctrl.sliderFood.minValue"
-                                                rz-slider-high="ctrl.sliderFood.maxValue"
-                                                rz-slider-options="ctrl.sliderFood.options"></rzslider>
-
-                                    </ul>
-                                </button>
+                            <h4>Особенности ресторана</h4>
+                            <div class="block-checkbox">
+                                <label class="checkbox">
+                                    <input type="checkbox"> Суши/Маки
+                                    <span></span>
+                                </label>
                             </div>
+                            <div class="block-checkbox">
+                                <label class="checkbox">
+                                    <input type="checkbox"> Пицца
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div class="block-checkbox">
+                                <label class="checkbox">
+                                    <input type="checkbox"> Гриль/Шашлык
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div class="block-checkbox">
+                                <label class="checkbox">
+                                    <input type="checkbox"> Рыба
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div class="block-checkbox">
+                                <label class="checkbox">
+                                    <input type="checkbox"> Мясные блюда
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div class="block-checkbox">
+                                <label class="checkbox">
+                                    <input type="checkbox"> Салаты
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div class="dropdown">
+                                <button type="button" class="show-content">
+                                    Показать все
+                                    <span class="caret"></span>
+                                </button>
+                                <div class="collapse see-more">
+                                    <div class="block-checkbox">
+                                        <label class="checkbox">
+                                            <input type="checkbox">Алкоголь
+                                            <span></span>
+                                        </label>
+                                    </div>
+                                    <div class="block-checkbox">
+                                        <label class="checkbox">
+                                            <input type="checkbox"> Десерты
+                                            <span></span>
+                                        </label>
+                                    </div>
+                                    <button type="button" class="hide-content">Скрыть</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="change-item">
+                            <h4>Средний чек</h4>
+                            <div id="slider-snap" class="slider noUi-target noUi-ltr noUi-horizontal noUi-background" style="margin: 0 0 100px;">
+                                <div class="noUi-base"><div class="noUi-origin noUi-connect" style="left: 25%;"><div class="noUi-handle noUi-handle-lower"><div class="noUi-tooltip">25</div></div></div><div class="noUi-origin noUi-background" style="left: 70%;"><div class="noUi-handle noUi-handle-upper"><div class="noUi-tooltip">70</div></div></div></div></div>
                         </div>
                         <button class="find">НАЙТИ</button>
                         <div class="close-menu"></div>
@@ -237,7 +348,7 @@
                                     <img ng-src="{{delivery.image}}" alt="{{delivery.name}}">
                                     <!--<div class="sale">-40%</div>-->
                                     <div class="name">
-                                        <a href="#" class="heart-icon"></a>
+                                        <a href="#" ng-init="liked = false" ng-click="ctrl.like(delivery.id, 1); liked = true" href="#" ng-class="liked == true ? 'liked' : ''"  class="heart-icon"></a>
                                         <span>{{delivery.name}}</span>
                                         <div class="block-stars">
                                             <div ng-repeat="star in [1, 2, 3, 4, 5]" class="star"
